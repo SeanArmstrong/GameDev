@@ -8,7 +8,17 @@
 #include "Matrix3.h"
 #include "Matrix4.h"
 
-void main(void) {
+#include <iostream>
+
+#include "Game.h"
+
+
+int main() {
+	Game game;
+	game.run();
+}
+
+/*void main(void) {
 	
 	int width = 640;
 	int height = 480;
@@ -68,4 +78,4 @@ void main(void) {
 
 		window.display();
 	}
-}
+}*/

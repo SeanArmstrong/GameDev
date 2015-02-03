@@ -1,7 +1,7 @@
 #pragma once
 
-#include "GameEngine.h"
-class GameEngine;
+#include "Game.h"
+class Game;
 
 class State
 {
@@ -13,11 +13,11 @@ public:
 	virtual void Pause() = 0;
 	virtual void Resume() = 0;
 
-	virtual void HandleEvents(GameEngine* game) = 0;
-	virtual void Update(GameEngine* game) = 0;
-	virtual void Draw(GameEngine* game) = 0;
+	virtual void HandleEvents(Game* game) = 0;
+	virtual void Update(Game* game) = 0;
+	virtual void Draw(Game* game) = 0;
 
-	void ChangeState(GameEngine* game, State* state);
+	void ChangeState(Game* game, Game* state);
 
 protected: 
 	State() { }

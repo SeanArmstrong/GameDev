@@ -11,11 +11,11 @@ public:
 	virtual void Pause();
 	virtual void Resume();
 
-	virtual void HandleEvents(GameEngine* game);
-	virtual void Update(GameEngine* game);
-	virtual void Draw(GameEngine* game);
+	virtual void HandleEvents(Game* game);
+	virtual void Update(Game* game);
+	virtual void Draw(Game* game);
 
-	void ChangeState(GameEngine* game, State* state) {
+	void ChangeState(Game* game, State* state) {
 		game->ChangeState(state);
 	}
 protected:
