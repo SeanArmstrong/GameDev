@@ -1,5 +1,6 @@
 #include <GL\glew.h>
-
+#include "Singleton.h"
+#include "TextureManager.h"
 #include "SFMLRenderer.h"
 #include "RenderObject.h"
 #include <SFML/Graphics.hpp>

@@ -3,9 +3,7 @@
 #include "Game.h"
 #include "State.h"
 
-Game::Game(){
-	screenWidth = 600;
-	screenHeight = 800;
+Game::Game() : screenHeight(800), screenWidth(600) {
 }
 
 Game::~Game(){}

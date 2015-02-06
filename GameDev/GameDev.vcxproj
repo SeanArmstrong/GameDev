@@ -86,7 +86,9 @@
     <ClCompile Include="SettingState.cpp" />
     <ClCompile Include="SFMLRenderer.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="State.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BasicFrag.glsl" />
@@ -104,10 +106,14 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SettingState.h" />
     <ClInclude Include="SFMLRenderer.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="Singleton.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
