@@ -1,6 +1,6 @@
 #include "SFMLRenderer.h"
 
-SFMLRenderer::SFMLRenderer(const int width, const int height){
+SFMLRenderer::SFMLRenderer(){
 	glEnable(GL_DEPTH_TEST);
 }
 
@@ -25,7 +25,12 @@ void SFMLRenderer::Render(const RenderObject &o) {
 
 		UpdateShaderMatrices(program);
 
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 		o.Draw();
+
+		glDisable(GL_BLEND);
 	}
 
 	for (vector<RenderObject*>::const_iterator i = o.GetChildren().begin(); i != o.GetChildren().end(); ++i) {

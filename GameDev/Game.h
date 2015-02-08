@@ -32,6 +32,16 @@ public:
 	void Quit() { running = false; }
 
 private:
+
+	// TEMP STUFF
+	RenderObject o;
+	Mesh*	m;
+	Shader* s;
+	SFMLRenderer r;
+	// END OF TEMP
+
+
+
 	void Initialise();
 
 	void gameLoop();

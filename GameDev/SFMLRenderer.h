@@ -7,7 +7,7 @@
 class SFMLRenderer
 {
 public:
-	SFMLRenderer(const int width, const int height);
+	SFMLRenderer();
 	~SFMLRenderer(void);
 
 	virtual void RenderScene();

@@ -15,8 +15,11 @@
 
 
 int main() {
+
 	Game game;
 	game.run();
+
+	return 0;
 }
 
 /*void main(void) {
@@ -32,12 +35,12 @@ int main() {
 		return;
 	}
 	
-	SFMLRenderer r(width, height);
-
+	SFMLRenderer r;
+	
 
 
 	Mesh*	m = Mesh::LoadMeshFile("cube.asciimesh");
-	Shader* s = new Shader("basicvert.glsl", "basicFrag.glsl");
+	Shader* s = new Shader("assets/shaders/basicvert.glsl", "assets/shaders/textureFrag.glsl");
 
 	if (s->UsingDefaultShader()) {
 		cout << "Warning: Using default shader! Your shader probably hasn't worked..." << endl;

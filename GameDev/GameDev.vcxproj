@@ -81,6 +81,7 @@
     <ClCompile Include="Matrix3.cpp" />
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="ObjLoader.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="SettingState.cpp" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="ObjLoader.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="ResourceManager.h" />
