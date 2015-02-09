@@ -2,9 +2,9 @@
 
 #include "Game.h"
 #include "State.h"
+#include "GameState.h"
 
 Game::Game() : screenHeight(600), screenWidth(800) {
-
 }
 
 Game::~Game(){}
@@ -12,18 +12,28 @@ Game::~Game(){}
 void Game::run(){
 	Initialise();
 
-	r = SFMLRenderer();
-	m = Mesh::LoadMeshFile("cube.asciimesh");
+	/*r = SFMLRenderer();
+	//m = Mesh::LoadMeshFile("cube.asciimesh");
 	//m = Mesh::LoadMeshObj("assets/models/cube.obj");
-	//m = Mesh::LoadMeshObj("assets/models/sphere.obj");
+	m = Mesh::LoadMeshObj("assets/models/sphere.obj");
 	s = new Shader("assets/shaders/basicvert.glsl", "assets/shaders/textureFrag.glsl");
-	o = RenderObject(m, s);
+
+	if (s->UsingDefaultShader()) {
+		cout << "Warning: Using default shader! Your shader probably hasn't worked..." << endl;
+		cout << "Press any key to continue." << endl;
+		std::cin.get();
+	}
+
+	o.Intialize(m, s);
+
 	o.SetModelMatrix(Matrix4::Translation(Vector3(0, 0, -10)) * Matrix4::Scale(Vector3(1, 1, 1)));
 	r.AddRenderObject(o);
+
 	r.SetProjectionMatrix(Matrix4::Perspective(1, 100, 1.33f, 45.0f));
 	r.SetViewMatrix(Matrix4::BuildViewMatrix(Vector3(0, 0, 0), Vector3(0, 0, -10)));
+	*/
 
-
+	states.push_back(new GameState());
 	gameLoop();
 }
 
@@ -40,31 +50,26 @@ void Game::Initialise(){
 
 
 void Game::gameLoop(){
+	sf::Clock clock;
+
 	while (running){
-		o.SetModelMatrix(o.GetModelMatrix() * Matrix4::Rotation(0.005f, Vector3(1, 0, 1)));
+		sf::Int32 elapsed1 = clock.getElapsedTime().asMilliseconds();
 		processInput();
-		r.UpdateScene(1.0);
-		Draw();
+
+		Update();
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		Render();
+		window.display();
 	}
 }
 void Game::processInput(){
 	sf::Event event;
 	while (window.pollEvent(event)){
-		switch(event.type){
-		case sf::Event::Closed:
+		if (event.type == sf::Event::Closed || (sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)){
 			running = false;
-			break;
-
-		case sf::Event::KeyPressed:
-			switch (event.key.code){
-			case sf::Keyboard::Escape:
-				running = false;
-				break;
-			}
-			break;
-
-		case sf::Event::MouseMoved:
-			std::cout << "x: " << event.mouseMove.x << "  y: " << event.mouseMove.y << std::endl;
+		}
+		else{
+			HandleEvents(event);
 		}
 	}
 }
@@ -76,28 +81,17 @@ void Game::Cleanup(){
 	}
 }
 
-void Game::HandleEvents(){
-	states.back()->HandleEvents(this);
+void Game::HandleEvents(sf::Event event){
+	states.front()->HandleEvents(event);
 }
 
 void Game::Update(){
-	states.back()->Update(this);
+	states.front()->Update();
 }
 
-void Game::Draw(){
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//window.clear(sf::Color(255, 0, 0, 255));
-	//window.pushGLStates();
-
-	//states.back()->Draw(this);
-	// Draw
-	r.RenderScene();
-	//window.popGLStates();
-	window.display();
+void Game::Render(){
+	states.front()->Render();
 }
-
-
-
 
 
 // State Stuff

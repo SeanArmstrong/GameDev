@@ -10,6 +10,8 @@ public:
 	RenderObject(Mesh*m, Shader*s, GLuint t = 0);
 	~RenderObject(void);
 
+	void Intialize(Mesh* m, Shader* s, GLuint t = 0);
+
 	Mesh*	GetMesh()	const			{return mesh;}
 	void	SetMesh(Mesh*m)				{mesh = m;}
 
@@ -19,7 +21,9 @@ public:
 	GLuint	GetTexture()		const	{ return texture; }
 	void	SetTexture(GLuint tex)		{ texture = tex; }
 
-	GLuint	GetSmileyTexture()		const	{ return smileyTex; }
+	GLuint	GetSmileyTexture()		const	{ 
+		return smileyTex;
+	}
 	void	SetSmileyTexture(GLuint tex)		{ smileyTex = tex; }
 
 	GLuint	GetStaticTexture()		const	{ return staticTex; }

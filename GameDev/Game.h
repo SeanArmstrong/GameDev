@@ -2,7 +2,7 @@
 #include "RenderObject.h"
 #include "SFMLRenderer.h"
 #include <SFML/Graphics.hpp>
-#include <SFML/OpenGL.hpp>
+#include <SFML/Window.hpp>
 #include <glm/glm.hpp>
 #include "Matrix3.h"
 #include "Matrix4.h"
@@ -24,9 +24,9 @@ public:
 	void PushState(State* state);
 	void PopState();
 
-	void HandleEvents();
+	void HandleEvents(sf::Event event);
 	void Update();
-	void Draw();
+	void Render();
 
 	bool Running() { return running; }
 	void Quit() { running = false; }

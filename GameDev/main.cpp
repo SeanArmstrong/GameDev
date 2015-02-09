@@ -4,7 +4,6 @@
 #include "SFMLRenderer.h"
 #include "RenderObject.h"
 #include <SFML/Graphics.hpp>
-#include <SFML/OpenGL.hpp>
 #include <glm/glm.hpp>
 #include "Matrix3.h"
 #include "Matrix4.h"
@@ -15,7 +14,6 @@
 
 
 int main() {
-
 	Game game;
 	game.run();
 
@@ -57,6 +55,17 @@ int main() {
 	r.SetProjectionMatrix(Matrix4::Perspective(1, 100, 1.33f, 45.0f));
 	r.SetViewMatrix(Matrix4::BuildViewMatrix(Vector3(0, 0, 0), Vector3(0, 0, -10)));
 	
+	//Set the default background colour
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearDepth(1.0f);
+
+	//Enable depth testing
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+
+	//Enable Texture Blending
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
 	while (window.isOpen()){
 
@@ -66,20 +75,24 @@ int main() {
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-
-		window.clear();
+		glClearDepth(1.0);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		//window.clear();
 
 		sf::Int32 elapsed1 = clock.getElapsedTime().asMilliseconds();
 		o.SetModelMatrix(o.GetModelMatrix() * Matrix4::Rotation(0.005f, Vector3(1, 0, 1)));
+		
+		window.resetGLStates();
+		//glDepthFunc(GL_TRUE);
+		//window.pushGLStates();
 
-
-		window.pushGLStates();
 
 		r.UpdateScene(elapsed1);
 		r.RenderScene();
 
-		window.popGLStates();
-
 		window.display();
+
+		//window.popGLStates();
+
 	}
 }*/
