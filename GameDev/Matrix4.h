@@ -16,6 +16,7 @@ up are currently public.
 #include "Vector4.h"
 
 class Vector3;
+class Vector4;
 
 class Matrix4	{
 public:
@@ -105,6 +106,7 @@ public:
 	//Puts the camera at 'from', with 'lookingAt' centered on the screen, with
 	//'up' as the...up axis (pointing towards the top of the screen)
 	static Matrix4 BuildViewMatrix(const Vector3 &from, const Vector3 &lookingAt, const Vector3 up = Vector3(0,1,0));
+	static Matrix4 BuildCameraMatrix(const Vector3& forward, const Vector3& up);
 
 	//Multiplies 'this' matrix by matrix 'a'. Performs the multiplication in 'OpenGL' order (ie, backwards)
 	inline Matrix4 operator*(const Matrix4 &a) const{	

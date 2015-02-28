@@ -1,7 +1,7 @@
 #version 150 core
 //Perform a non-trivial blend between two textures
 
-uniform sampler2D smileyTex;
+uniform sampler2D tex;
 
 uniform float scaleFactor;
 
@@ -13,5 +13,5 @@ in Vertex {
 out vec4 gl_FragColor;
 
 void main(void){
-	gl_FragColor = texture(smileyTex, IN.texCoord);
+	gl_FragColor = texture(tex, IN.texCoord);
 }

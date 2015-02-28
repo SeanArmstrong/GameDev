@@ -3,6 +3,7 @@
 #include "ShaderManager.h"
 #include "TextureManager.h"
 #include "AudioManager.h"
+#include "MeshManager.h"
 #include "Singleton.h"
 
 class ResourceManager : public Singleton<ResourceManager>
@@ -15,14 +16,24 @@ public:
 	/*
 	* TEXTURE METHODS
 	*/
-	inline unsigned int GetTexture(std::string textureName){ 
-		return TextureManager::Instance().GetTexture(textureName);
+	inline unsigned int GetTexture(std::string fileName){
+		return TextureManager::Instance().GetTexture(fileName);
 	}
 
 	inline unsigned int AddTexture(const std::string filename){ 
 		return TextureManager::Instance().AddTexture(filename); 
 	}
 
+	/*
+	* Mesh METHODS
+	*/
+	Mesh* GetMesh(const std::string meshName) { return MeshManager::Instance().GetMesh(meshName); }
+	Mesh* AddMeshFile(const std::string meshName, const int type, const std::string fileName = ""){
+		return MeshManager::Instance().AddMeshFile(meshName, type, fileName);
+	}
+	Mesh* AddMeshFromMethod(const std::string meshName, const std::string methodName){
+		return MeshManager::Instance().AddMeshFromMethod(meshName, methodName);
+	}
 
 	/*
 	* Shader METHODS

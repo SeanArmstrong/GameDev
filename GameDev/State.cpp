@@ -1,5 +1,5 @@
 #include "State.h"
 
-void ChangeState(Game* game, State* state){
-	game->ChangeState(state);
+void State::ChangeState(CoreEngine* engine, State* state){
+	engine->ChangeState(state);
 }

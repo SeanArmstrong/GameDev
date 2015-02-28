@@ -59,6 +59,7 @@ public:
 	static Mesh*	GenerateTriangle();
 	static Mesh*	LoadMeshFile(const string &filename);
 	static Mesh*	LoadMeshObj(const string &filename);
+	void			GenerateNormals();
 
 	GLuint	type;	//Primitive type for this mesh (GL_TRIANGLES...etc)
 

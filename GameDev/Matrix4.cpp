@@ -105,6 +105,33 @@ Matrix4 Matrix4::BuildViewMatrix(const Vector3 &from, const Vector3 &lookingAt, 
 	return m*r;
 }
 
+Matrix4 Matrix4::BuildCameraMatrix(const Vector3 &forward, const Vector3& up)	{
+	Matrix4 mat;
+	
+	Vector3 f = forward;
+	f.Normalise();
+
+	Vector3 r = up;
+	r.Normalise();
+	r = Vector3::Cross(r, f);
+
+	Vector3 u = Vector3::Cross(f, r);
+
+	mat.values[0] = r.x;
+	mat.values[4] = r.y;
+	mat.values[8] = r.z;
+
+	mat.values[1] = u.x;
+	mat.values[5] = u.y;
+	mat.values[9] = u.z;
+
+	mat.values[2] = f.x;
+	mat.values[6] = f.y;
+	mat.values[10] = f.z;
+
+	return mat;
+}
+
 Matrix4 Matrix4::Rotation(float degrees, const Vector3 &inaxis)	 {
 	Matrix4 m;
 

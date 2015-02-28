@@ -96,7 +96,8 @@ Mesh* Mesh::GenerateTriangle()	{
 	m->colours[0]	= Vector4(1.0f, 0.0f, 0.0f,1.0f); 
 	m->colours[1]	= Vector4(0.0f, 1.0f, 0.0f,1.0f);
 	m->colours[2]	= Vector4(0.0f, 0.0f, 1.0f,1.0f);
-
+	
+	m->GenerateNormals();
 	m->BufferData();
 
 	return m;
@@ -152,7 +153,7 @@ Mesh*	Mesh::LoadMeshFile(const string &filename) {
 			f >> m->textureCoords[i].y;
 		}
 	}
-
+	m->GenerateNormals();
 	m->BufferData();
 	return m;
 }
@@ -246,10 +247,29 @@ Mesh*	Mesh::LoadMeshObj(const string &filename){
 		m->normals[i] = temp_normals[normalIndex - 1];
 	}
 
+	m->GenerateNormals();
 	m->BufferData();
 
 	return m;
 
+}
+
+void Mesh::GenerateNormals() {
+	if (!normals) {
+		normals = new Vector3[numVertices];
+	}
+
+	for (unsigned int i = 0; i < numVertices; i += 3){
+		Vector3 & a = vertices[i];
+		Vector3 & b = vertices[i + 1];
+		Vector3 & c = vertices[i + 2];
+
+		Vector3 normal = Vector3::Cross(b - a, c - a);
+		normal.Normalise();
+		normals[i] = normal;
+		normals[i + 1] = normal;
+		normals[i + 2] = normal;
+	}
 }
 
 void	Mesh::BufferData()	{
@@ -319,6 +339,17 @@ void	Mesh::BufferData()	{
 		glGenBuffers(1, &bufferObject[INDEX_BUFFER]);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufferObject[INDEX_BUFFER]);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, numIndices*sizeof(GLuint), indices, GL_STATIC_DRAW);
+	}
+
+	# define normalIndex 3
+
+	if (normals) {
+		glGenBuffers(1, &bufferObject[NORMAL_BUFFER]);
+		glBindBuffer(GL_ARRAY_BUFFER, bufferObject[NORMAL_BUFFER]);
+		glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof (Vector3), normals, GL_STATIC_DRAW);
+
+		glVertexAttribPointer(normalIndex, 3, GL_FLOAT, GL_FALSE, 0, 0);
+		glEnableVertexAttribArray(normalIndex);
 	}
 
 	//Once we're done with the vertex buffer binding, we can unbind the VAO,

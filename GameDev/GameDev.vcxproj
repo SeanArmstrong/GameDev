@@ -51,6 +51,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -64,6 +66,8 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -74,23 +78,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AudioManager.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CoreEngine.cpp" />
+    <ClCompile Include="CubeObject.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Matrix3.cpp" />
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="ObjLoader.cpp" />
+    <ClCompile Include="MeshManager.cpp" />
+    <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="SettingState.cpp" />
     <ClCompile Include="SFMLRenderer.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="SphereObject.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BasicFrag.glsl" />
@@ -99,33 +110,52 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="common.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="CoreEngine.h" />
+    <ClInclude Include="CubeObject.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameTimer.h" />
     <ClInclude Include="IntroState.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="Mesh.h" />
-    <ClInclude Include="ObjLoader.h" />
+    <ClInclude Include="MeshManager.h" />
+    <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="RenderUtils.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SettingState.h" />
     <ClInclude Include="SFMLRenderer.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="SphereObject.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="noise.png" />
     <Image Include="perlin.png" />
     <Image Include="smiley.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dependencies\bullet\build\vs2010\BulletCollision.vcxproj">
+      <Project>{b3434531-654c-5a44-ae82-602a91fb8da0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Dependencies\bullet\build\vs2010\BulletDynamics.vcxproj">
+      <Project>{cd407784-e382-6d4c-b0fd-d4b6cdc09006}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Dependencies\bullet\build\vs2010\LinearMath.vcxproj">
+      <Project>{6036b8d3-1b55-da43-bda3-939488c98bcc}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

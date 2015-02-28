@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Game.h"
+#include "CoreEngine.h"
 #include "SFMLRenderer.h"
-class Game;
+class CoreEngine;
 
 class State
 {
@@ -14,15 +14,17 @@ public:
 	virtual void Pause() = 0;
 	virtual void Resume() = 0;
 
-	virtual void HandleEvents(sf::Event event) = 0;
+	virtual void HandleEvents(sf::Event event, const sf::RenderWindow& window) = 0;
 	virtual void Update() = 0;
 	virtual void Render() = 0;
 
-	void ChangeState(Game* game, Game* state);
+	void ChangeState(CoreEngine* engine, State* state);
+	bool isPaused(){ return paused; }
 
 protected: 
 	State() { }
-	SFMLRenderer renderer;
+	SFMLRenderer renderer; // Should this be here?
+	bool paused;
 
 };
 

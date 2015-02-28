@@ -3,6 +3,7 @@
 #include "SOIL.h"
 #include <string>
 #include <map>
+#include <GL/glew.h>
 
 class TextureManager : public Singleton<TextureManager>
 {
@@ -21,6 +22,6 @@ protected:
 
 private:
 
-	std::map<std::string, unsigned int> textures;
+	std::map<std::string, GLuint> textures;
 };
 

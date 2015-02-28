@@ -24,13 +24,9 @@ void SFMLRenderer::Render(const RenderObject &o) {
 		glUseProgram(program);
 
 		UpdateShaderMatrices(program);
-
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		ApplyShaderLight(program);
 
 		o.Draw();
-
-		glDisable(GL_BLEND);
 	}
 
 	for (vector<RenderObject*>::const_iterator i = o.GetChildren().begin(); i != o.GetChildren().end(); ++i) {
@@ -56,4 +52,15 @@ void SFMLRenderer::UpdateShaderMatrices(GLuint program)	{
 	glUniformMatrix4fv(glGetUniformLocation(program, "viewMatrix"), 1, false, (float*)&viewMatrix);
 	glUniformMatrix4fv(glGetUniformLocation(program, "projMatrix"), 1, false, (float*)&projMatrix);
 	glUniformMatrix4fv(glGetUniformLocation(program, "textureMatrix"), 1, false, (float*)&textureMatrix);
+}
+
+void SFMLRenderer::ApplyShaderLight(GLuint program){
+	Matrix3 rotation = Matrix3(viewMatrix);
+	Vector3 invCamPos = viewMatrix.GetPositionVector();
+	Vector3 camPos = rotation * -invCamPos;
+
+	glUniform3f(glGetUniformLocation(program, "cameraPos"), camPos.x, camPos.y, camPos.z);
+	glUniform3f(glGetUniformLocation(program, "lightColour"), currentLight.colour.x, currentLight.colour.y, currentLight.colour.z);
+	glUniform3f(glGetUniformLocation(program, "lightPos"), currentLight.position.x, currentLight.position.y, currentLight.position.z);
+	glUniform1f(glGetUniformLocation(program, "lightRadius"), currentLight.radius);
 }

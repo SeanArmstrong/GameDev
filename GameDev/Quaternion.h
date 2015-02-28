@@ -16,7 +16,9 @@ as quaternions.
 #include <iostream>
 #include "common.h"
 #include "Matrix4.h"
+#include "Vector3.h"
 
+class Vector3;
 class Matrix4;
 
 class Quaternion	{

@@ -31,7 +31,9 @@ Shader* ShaderManager::AddShader(const std::string shaderName, const std::string
 
 	if (shader == NULL){
 		const string PATH = "assets/Shaders/";
-		Shader* shader = new Shader(PATH + vertex, PATH + fragment, PATH + geometry, PATH + tcs, PATH + tes);
+
+		// TODO: Allow for geo, tcs and tes
+		Shader* shader = new Shader(PATH + vertex, PATH + fragment);
 		shaders.insert(make_pair(shaderName, shader));
 	}
 	return shader;

@@ -11,8 +11,11 @@ _-_-_-_-_-_-_-|   /\_/\   NYANYANYAN
 _-_-_-_-_-_-_-""  ""   
 
 */
+#pragma once
+
 #include <cmath>
 #include <iostream>
+#include "common.h"
 
 class Vector3	{
 public:
@@ -41,6 +44,15 @@ public:
 			y = y * length;
 			z = z * length;
 		}
+	}
+
+	Vector3 unitVector(){
+		Vector3 newVector;
+		float magnitude = this->Length();
+		newVector.x = this->x / magnitude;
+		newVector.y = this->y / magnitude;
+		newVector.z = this->z / magnitude;
+		return newVector;
 	}
 
 	void		ToZero() {
