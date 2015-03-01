@@ -6,15 +6,19 @@
 class PhysicsObject
 {
 public:
-	PhysicsObject(RenderObject* renderObject, const Vector3& pos);
+	PhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass);
 	virtual ~PhysicsObject();
 
-	btRigidBody* getBody();
-	void updateRenderObject();
 
-private:
+	btRigidBody* getBody() const;
+	virtual void updateRenderObject() = 0;
+
+protected:
 
 	btRigidBody* body;
+	btCollisionShape* shape;
+	float mass;
+
 	RenderObject *ro;
 	Vector3 position;
 

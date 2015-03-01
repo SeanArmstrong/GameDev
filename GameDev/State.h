@@ -2,11 +2,13 @@
 
 #include "CoreEngine.h"
 #include "SFMLRenderer.h"
+
 class CoreEngine;
 
 class State
 {
 public:
+	State(const float& width, const float& height) : screenWidth(width), screenHeight(height){};
 
 	virtual void Initialise() = 0;
 	virtual void Cleanup() = 0;
@@ -14,7 +16,7 @@ public:
 	virtual void Pause() = 0;
 	virtual void Resume() = 0;
 
-	virtual void HandleEvents(sf::Event event, const sf::RenderWindow& window) = 0;
+	virtual void HandleEvents(CoreEngine& engine, sf::Event event) = 0;
 	virtual void Update() = 0;
 	virtual void Render() = 0;
 
@@ -22,9 +24,11 @@ public:
 	bool isPaused(){ return paused; }
 
 protected: 
-	State() { }
 	SFMLRenderer renderer; // Should this be here?
 	bool paused;
+
+	const float screenWidth;
+	const float screenHeight;
 
 };
 

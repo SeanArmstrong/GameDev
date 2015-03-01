@@ -103,6 +103,31 @@ Mesh* Mesh::GenerateTriangle()	{
 	return m;
 }
 
+Mesh* Mesh::GenerateQuad() {
+	Mesh*m = new Mesh();
+	m->numVertices = 6;
+
+	m->vertices = new Vector3[m->numVertices];
+	m->vertices[0] = Vector3(-1, 1, 0);
+	m->vertices[1] = Vector3(1, 1, 0);
+	m->vertices[2] = Vector3(1, -1, 0);
+	m->vertices[3] = Vector3(1, -1, 0);
+	m->vertices[4] = Vector3(-1, -1, 0);
+	m->vertices[5] = Vector3(-1, 1, 0);
+
+	m->textureCoords = new Vector2[m->numVertices];
+	m->textureCoords[0] = Vector2(0.0f, 1.0f);
+	m->textureCoords[1] = Vector2(1.0f, 1.0f);
+	m->textureCoords[2] = Vector2(1.0f, 0.0f);
+	m->textureCoords[3] = Vector2(1.0f, 0.0f);
+	m->textureCoords[4] = Vector2(0.0f, 0.0f);
+	m->textureCoords[5] = Vector2(0.0f, 1.0f);
+
+	m->BufferData();
+
+	return m;
+}
+
 Mesh*	Mesh::LoadMeshFile(const string &filename) {
 	ifstream f(filename);
 

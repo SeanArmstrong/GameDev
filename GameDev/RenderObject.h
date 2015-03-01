@@ -21,7 +21,9 @@ public:
 	GLuint	GetTexture()		const	{ return tex; }
 	void	SetTexture(GLuint tex)		{ this->tex = tex; }
 
-	void	SetModelMatrix(Matrix4 mat) {modelMatrix = mat;}
+	void	SetModelMatrix(Matrix4 mat) {
+		modelMatrix = mat;
+	}
 	Matrix4 GetModelMatrix()	const	{return modelMatrix;}
 
 	virtual void Update(float msec);

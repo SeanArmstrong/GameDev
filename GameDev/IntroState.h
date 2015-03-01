@@ -1,9 +1,15 @@
 #pragma once
 #include "State.h"
+#include "RenderObject.h"
+#include "ResourceManager.h"
+#include "MainMenuState.h"
 
-/*class IntroState : State
+
+class IntroState : public State
 {
 public:
+	IntroState(const float& width, const float& height);
+	virtual ~IntroState();
 
 	virtual void Initialise();
 	virtual void Cleanup();
@@ -11,17 +17,15 @@ public:
 	virtual void Pause();
 	virtual void Resume();
 
-	virtual void HandleEvents(Game* game);
-	virtual void Update(Game* game);
-	virtual void Draw(Game* game);
+	virtual void HandleEvents(CoreEngine& engine, sf::Event event);
+	virtual void Update();
+	virtual void Render();
 
-	void ChangeState(Game* game, State* state) {
-		game->ChangeState(state);
-	}
 protected:
-	IntroState() { }
 
 private:
 
-};*/
+	RenderObject* title;
+
+};
 

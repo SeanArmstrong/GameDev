@@ -106,3 +106,17 @@ void Camera::setForward(const Vector3& forward){
 void Camera::setUp(const Vector3& up){
 	this->up = up;
 }
+
+Matrix4 Camera::setPlayerCam(const PhysicsObject* player){
+	btVector3 bodyPosition = player->getBody()->getWorldTransform().getOrigin();
+
+	Vector3 from(bodyPosition.getX(),
+				 bodyPosition.getY() + 10,
+				 bodyPosition.getZ() + 30);
+
+	Vector3 lookingAt(bodyPosition.getX(),
+					  bodyPosition.getY(),
+					  bodyPosition.getZ());
+
+	return Matrix4::BuildViewMatrix(from, lookingAt);
+}

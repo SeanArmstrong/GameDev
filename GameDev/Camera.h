@@ -1,6 +1,9 @@
 #pragma once
 #include "Vector3.h"
 #include "Quaternion.h"
+#include "PhysicsObject.h"
+#include <btBulletCollisionCommon.h>
+#include <btBulletDynamicsCommon.h>
 
 class Camera
 {
@@ -32,7 +35,10 @@ public:
 	void setForward(const Vector3& forward);
 	void setUp(const Vector3& up);
 
+	Matrix4 setPlayerCam(const PhysicsObject* player);
+
 	const static Vector3 yAxis;
+
 private:
 	Vector3 position;
 	Vector3 forward;

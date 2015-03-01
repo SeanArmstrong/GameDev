@@ -21,6 +21,13 @@ void GameObject::update(){
 	po->updateRenderObject();
 }
 
+RenderObject* GameObject::getRenderObject(){
+	return ro;
+}
+
+PhysicsObject* GameObject::getPhysicsObject(){
+	return po;
+}
 
 
 

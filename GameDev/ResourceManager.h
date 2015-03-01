@@ -73,7 +73,7 @@ protected:
 		Singleton<AudioManager>::Instance();
 	}
 
-	~ResourceManager(){
+	virtual ~ResourceManager(){
 		Singleton<TextureManager>::ResetInstance();
 		Singleton<ShaderManager>::ResetInstance();
 		Singleton<AudioManager>::ResetInstance();

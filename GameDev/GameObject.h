@@ -17,6 +17,11 @@ public:
 
 	//void addChild(const GameObject& child);
 
+	// Getters
+	
+	RenderObject* getRenderObject();
+	PhysicsObject* getPhysicsObject();
+
 	void update();
 
 protected:

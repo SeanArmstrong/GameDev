@@ -64,6 +64,12 @@
     <Filter Include="Source Files\Game\Objects">
       <UniqueIdentifier>{2b01fdc0-6f10-47be-acf1-d14be6d00aee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Physics\Objects">
+      <UniqueIdentifier>{ce8aaa4c-3695-4c28-acc0-d529421508d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics\Objects">
+      <UniqueIdentifier>{d9ba2560-be9e-4896-a4b5-a89a851eaf10}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Quaternion.cpp">
@@ -123,9 +129,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
@@ -135,11 +138,29 @@
     <ClCompile Include="World.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="SphereObject.cpp">
+    <ClCompile Include="CubeGameObject.cpp">
       <Filter>Source Files\Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="CubeObject.cpp">
+    <ClCompile Include="SphereGameObject.cpp">
       <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CubePhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SpherePhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerGameObject.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerPhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,20 +251,35 @@
     <ClInclude Include="State.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsObject.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="World.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="SphereObject.h">
+    <ClInclude Include="CubeGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="CubeObject.h">
+    <ClInclude Include="SphereGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CubePhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SpherePhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerGameObject.h">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerPhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -33,6 +33,8 @@ public:
 	bool Running() { return running; }
 	void Quit() { running = false; }
 
+	sf::RenderWindow* getWindow();
+
 private:
 	void Initialise();
 	void gameLoop();
