@@ -19,7 +19,6 @@ SpherePhysicsObject::SpherePhysicsObject(RenderObject* renderObject, const Vecto
 	body->setFriction(1.0f);
 }
 
-
 SpherePhysicsObject::~SpherePhysicsObject()
 {
 }
@@ -27,8 +26,7 @@ SpherePhysicsObject::~SpherePhysicsObject()
 void SpherePhysicsObject::updateRenderObject(){
 	btTransform trans;
 	body->getMotionState()->getWorldTransform(trans);
-	Vector3 pos = Vector3(trans.getOrigin().x(), trans.getOrigin().y(), trans.getOrigin().z());
 
-	ro->SetModelMatrix(Matrix4::Translation(pos)* Matrix4::Scale(Vector3(radius, radius, radius)));
-
+	ro->SetModelMatrix(trans);
+	ro->SetModelMatrix(ro->GetModelMatrix() * Matrix4::Scale(Vector3(radius, radius, radius)));
 }

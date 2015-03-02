@@ -39,3 +39,22 @@ Mesh* MeshManager::AddMeshFile(const std::string meshName, const int type, const
 	}
 	return mesh;
 }
+
+Mesh* MeshManager::AddMeshFromMethod(const std::string meshName, int method){
+	Mesh* mesh = GetMesh(meshName);
+
+	if (mesh == NULL){
+
+		if (method == 1){
+			mesh = Mesh::GenerateTriangle();
+		}
+		else if (method == 2){
+			mesh = Mesh::GenerateQuad();
+		}
+		else if (method == 3){
+			// Needs Vectors
+			//mesh = Mesh::GenerateLine();
+		}
+	}
+	return mesh;
+}

@@ -16,7 +16,6 @@ void RenderObject::Intialize(Mesh*m, Shader*s, GLuint t) {
 	mesh = m;
 	shader = s;
 	tex = t;
-	std::cout << tex << std::endl;
 	parent = NULL;
 	//glGenTextures(1, &brickTex);
 

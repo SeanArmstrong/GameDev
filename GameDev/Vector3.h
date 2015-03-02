@@ -16,6 +16,7 @@ _-_-_-_-_-_-_-""  ""
 #include <cmath>
 #include <iostream>
 #include "common.h"
+#include <LinearMath\btVector3.h>
 
 class Vector3	{
 public:
@@ -27,6 +28,12 @@ public:
 		this->x = x;
 		this->y = y;
 		this->z = z;
+	}
+
+	Vector3(const btVector3& vector){
+		this->x = vector.getX();
+		this->y = vector.getY();
+		this->z = vector.getZ();
 	}
 
 	~Vector3(void){}

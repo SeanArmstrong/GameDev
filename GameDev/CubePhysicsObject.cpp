@@ -28,8 +28,7 @@ CubePhysicsObject::~CubePhysicsObject()
 void CubePhysicsObject::updateRenderObject(){
 	btTransform trans;
 	body->getMotionState()->getWorldTransform(trans);
-	Vector3 pos = Vector3(trans.getOrigin().x(), trans.getOrigin().y(), trans.getOrigin().z());
 
-	ro->SetModelMatrix(Matrix4::Translation(pos) * Matrix4::Scale(Vector3(length, length, length)));
-
+	ro->SetModelMatrix(trans);
+	ro->SetModelMatrix(ro->GetModelMatrix() * Matrix4::Scale(Vector3(length, length, length)));
 }

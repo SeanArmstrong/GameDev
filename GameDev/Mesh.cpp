@@ -103,6 +103,28 @@ Mesh* Mesh::GenerateTriangle()	{
 	return m;
 }
 
+Mesh* Mesh::GenerateLine(const Vector3 &from, const Vector3 &to, const Vector3 c0, const Vector3 c1){
+	Mesh* m = new Mesh();
+	m->type = GL_LINES;
+
+	m->numVertices = 2;
+	m->vertices = new Vector3[m->numVertices];
+	m->colours = new Vector4[m->numVertices];
+	m->textureCoords = new Vector2[m->numVertices];
+
+	m->vertices[0] = Vector3(from.x, from.y, from.z);
+	m->vertices[1] = Vector3(to.x, to.y, to.z);
+
+
+	m->colours[0] = Vector4(c0.x, c0.y, c0.z, 1);
+	m->colours[1] = Vector4(c1.x, c1.y, c1.z, 1);
+
+	m->textureCoords[0] = Vector2();
+	m->textureCoords[1] = Vector2();
+
+	return m;
+}
+
 Mesh* Mesh::GenerateQuad() {
 	Mesh*m = new Mesh();
 	m->numVertices = 6;

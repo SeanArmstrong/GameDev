@@ -10,6 +10,12 @@ class ResourceManager : public Singleton<ResourceManager>
 {
 public:
 
+	enum MeshGenerationMethods{
+		GENERATE_TRIANGLE = 1,
+		GENERATE_QUAD = 2,
+		GENERATE_LINE = 3
+	};
+
 	// Friend can access protected Constructors
 	friend class Singleton<ResourceManager>;
 
@@ -31,8 +37,8 @@ public:
 	Mesh* AddMeshFile(const std::string meshName, const int type, const std::string fileName = ""){
 		return MeshManager::Instance().AddMeshFile(meshName, type, fileName);
 	}
-	Mesh* AddMeshFromMethod(const std::string meshName, const std::string methodName){
-		return MeshManager::Instance().AddMeshFromMethod(meshName, methodName);
+	Mesh* AddMeshFromMethod(const std::string meshName, int method){
+		return MeshManager::Instance().AddMeshFromMethod(meshName, method);
 	}
 
 	/*

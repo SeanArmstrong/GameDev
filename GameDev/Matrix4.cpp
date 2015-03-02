@@ -8,6 +8,41 @@ Matrix4::Matrix4( float elements[16] )	{
 	memcpy(this->values,elements,16*sizeof(float));
 }
 
+/*Matrix4::Matrix4(btTransform& transform){
+	btMatrix3x3 rotation = transform.getBasis();
+
+	for (int i = 0; i < 3; ++i){
+		SetRow(i, Vector3(rotation.getRow(i)));
+	}
+	SetPositionVector(transform.getOrigin());
+}*/
+Matrix4::Matrix4(btTransform& trans)
+{
+	btMatrix3x3 rotation = trans.getBasis();
+	btVector3 position = trans.getOrigin();
+
+	values[0] = rotation[0].getX();
+	values[1] = rotation[1].getX();
+	values[2] = rotation[2].getX();
+	values[3] = 0;
+
+	values[4] = rotation[0].getY();
+	values[5] = rotation[1].getY();
+	values[6] = rotation[2].getY();
+	values[7] = 0;
+
+	values[8] = rotation[0].getZ();
+	values[9] = rotation[1].getZ();
+	values[10] = rotation[2].getZ();
+	values[11] = 0;
+
+	values[12] = position.getX();
+	values[13] = position.getY();
+	values[14] = position.getZ();
+	values[15] = 1;
+}
+
+
 Matrix4::~Matrix4(void)	{
 	ToIdentity();
 }

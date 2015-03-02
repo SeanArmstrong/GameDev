@@ -1,4 +1,5 @@
 #include "World.h"
+#include "BulletDebugDraw.h"
 
 
 World::World(){
@@ -8,6 +9,11 @@ World::World(){
 	solver = new btSequentialImpulseConstraintSolver;
 	physicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConfiguration);
 	physicsWorld->setGravity(btVector3(0, -9.81f, 0));
+	BulletDebugDraw* drawer = new BulletDebugDraw();
+	//drawer->DBG_DrawWireframe;
+	//drawer->setDebugMode
+	drawer->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
+	physicsWorld->setDebugDrawer(drawer);
 }
 
 

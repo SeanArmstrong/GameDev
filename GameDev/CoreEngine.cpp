@@ -89,9 +89,8 @@ void CoreEngine::processInput(){
 		else if (event.type == sf::Event::Resized){
 			glViewport(0, 0, event.size.width, event.size.height);
 		}
-		else{
-			HandleEvents(event);
-		}
+
+		HandleEvents(event);
 	}
 }
 

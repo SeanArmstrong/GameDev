@@ -37,6 +37,8 @@ public:
 
 	Matrix4 setPlayerCam(const PhysicsObject* player);
 
+	Matrix4 setPlayerCam(const PhysicsObject* player, const float rotateAmount);
+
 	const static Vector3 yAxis;
 
 private:

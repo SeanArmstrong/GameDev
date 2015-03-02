@@ -22,6 +22,8 @@ PlayerPhysicsObject::PlayerPhysicsObject(RenderObject* renderObject, const Vecto
 	body->setActivationState(DISABLE_DEACTIVATION); // always active
 	body->setAngularFactor(0.0f); // Keep upright
 	body->setCollisionFlags(btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	body->setUserIndex(1);
+	//body->setUserPointer(*)
 	
 }
 
@@ -33,8 +35,7 @@ PlayerPhysicsObject::~PlayerPhysicsObject()
 void PlayerPhysicsObject::updateRenderObject(){
 	btTransform trans;
 	body->getMotionState()->getWorldTransform(trans);
-	Vector3 pos = Vector3(trans.getOrigin().x(), trans.getOrigin().y(), trans.getOrigin().z());
 
-	ro->SetModelMatrix(Matrix4::Translation(pos)* Matrix4::Scale(Vector3(radius, radius, radius)));
-
+	ro->SetModelMatrix(trans);
+	ro->SetModelMatrix(ro->GetModelMatrix() * Matrix4::Scale(Vector3(radius, radius, radius)));
 }

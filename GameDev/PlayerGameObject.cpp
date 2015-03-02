@@ -12,6 +12,26 @@ PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const floa
 PlayerGameObject::~PlayerGameObject()
 {
 }
+void PlayerGameObject::setPosition(Vector3 view){
+	btTransform trans;
+	trans.setOrigin(btVector3(view.x, view.y, view.z));
+	po->getBody()->setCenterOfMassTransform(trans);
+}
+
+void PlayerGameObject::update(){
+
+	if (jumping){
+		timeSinceJumped += GameTimer::getDelta();
+		std::cout << timeSinceJumped << std::endl;
+		if (timeSinceJumped >= JUMPRESETTIME){
+			jumping = false;
+			timeSinceJumped = 0.0f;
+		}
+	}
+
+	po->updateRenderObject();
+
+}
 
 void PlayerGameObject::moveForward(){
 	std::cout << "Forward";
@@ -31,6 +51,9 @@ void PlayerGameObject::moveRight(){
 }
 
 void PlayerGameObject::jump(){
-	std::cout << "Jump";
-	po->getBody()->applyImpulse(btVector3(0, 5, 0), po->getBody()->getCenterOfMassPosition());
+	if (!jumping){
+		std::cout << "Jump";
+		po->getBody()->applyImpulse(btVector3(0, 10, 0), po->getBody()->getCenterOfMassPosition());
+		jumping = true;
+	}
 }

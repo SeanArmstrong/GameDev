@@ -1,12 +1,35 @@
-﻿Build started 01/03/2015 14:20:48.
+﻿Build started 02/03/2015 12:21:49.
      1>Project "E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\GameDev\GameDev.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameState.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp CoinGameObject.cpp CoinPhysicsObject.cpp CoreEngine.cpp CubeGameObject.cpp CubePhysicsObject.cpp GameObject.cpp GameState.cpp IntroState.cpp MainMenuState.cpp PhysicsObject.cpp PlaneGameObject.cpp PlanePhysicsObject.cpp PlayerGameObject.cpp PlayerPhysicsObject.cpp SphereGameObject.cpp SpherePhysicsObject.cpp World.cpp
+         SpherePhysicsObject.cpp
+         SphereGameObject.cpp
+         PlayerPhysicsObject.cpp
+         PlayerGameObject.cpp
+         PlanePhysicsObject.cpp
+         PlaneGameObject.cpp
+         PhysicsObject.cpp
+         MainMenuState.cpp
+         IntroState.cpp
          GameState.cpp
-     1>e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\gamestate.cpp(10): warning C4018: '<' : signed/unsigned mismatch
+         GameObject.cpp
+         CubePhysicsObject.cpp
+         CubeGameObject.cpp
+         CoreEngine.cpp
+     1>e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\coreengine.cpp(17): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+         CoinPhysicsObject.cpp
+         CoinGameObject.cpp
+         Camera.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         World.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.exe" /INCREMENTAL /NOLOGO glew32.lib glew32s.lib SOIL.lib opengl32.lib "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.lib" /MACHINE:X86 Debug\AudioManager.obj
+         Debug\BulletDebugDraw.obj
          Debug\Camera.obj
+         Debug\CameraNew.obj
+         Debug\CoinGameObject.obj
+         Debug\CoinPhysicsObject.obj
          Debug\CoreEngine.obj
          Debug\CubeGameObject.obj
          Debug\CubePhysicsObject.obj
@@ -22,6 +45,8 @@
          Debug\Mesh.obj
          Debug\MeshManager.obj
          Debug\PhysicsObject.obj
+         Debug\PlaneGameObject.obj
+         Debug\PlanePhysicsObject.obj
          Debug\PlayerGameObject.obj
          Debug\PlayerPhysicsObject.obj
          Debug\Quaternion.obj
@@ -43,4 +68,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.62
+Time Elapsed 00:00:16.30

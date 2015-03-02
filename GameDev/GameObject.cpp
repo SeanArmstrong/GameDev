@@ -18,7 +18,9 @@ void GameObject::addRenderObjectToWorld(SFMLRenderer& renderer){
 }
 
 void GameObject::update(){
-	po->updateRenderObject();
+	if (po->hasRenderObject()){
+		po->updateRenderObject();
+	}
 }
 
 RenderObject* GameObject::getRenderObject(){

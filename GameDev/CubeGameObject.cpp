@@ -12,3 +12,4 @@ CubeGameObject::CubeGameObject(Shader*s, const Vector3& position, const float ma
 CubeGameObject::~CubeGameObject()
 {
 }
+

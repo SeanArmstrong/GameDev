@@ -162,6 +162,24 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="CoinPhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinGameObject.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraNew.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletDebugDraw.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="PlanePhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneGameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cube.asciimesh" />
@@ -280,6 +298,27 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\bullet\build\vs2010\PhysicsUtils.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinGameObject.h">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinPhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraNew.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletDebugDraw.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="PlanePhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneGameObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

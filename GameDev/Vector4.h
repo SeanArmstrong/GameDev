@@ -11,6 +11,8 @@ _-_-_-_-_-_-_-""  ""
 
 */
 #pragma once
+#include "Vector3.h"
+class Vector3;
 
 class Vector4	{
 public:
@@ -22,6 +24,13 @@ public:
 		this->y = y;
 		this->z = z;
 		this->w = w;
+	}
+
+	Vector4(Vector3& vec){
+		this->x = vec.x;
+		this->y = vec.y;
+		this->z = vec.z;
+		this->w = 0;
 	}
 
 	~Vector4(void){}

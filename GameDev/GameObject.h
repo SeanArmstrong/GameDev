@@ -5,6 +5,7 @@
 #include "SFMLRenderer.h"
 #include "btBulletDynamicsCommon.h"
 #include "ResourceManager.h"
+#include "GameTimer.h"
 
 class GameObject
 {
@@ -22,7 +23,7 @@ public:
 	RenderObject* getRenderObject();
 	PhysicsObject* getPhysicsObject();
 
-	void update();
+	virtual void update();
 
 protected:
 	RenderObject* ro;

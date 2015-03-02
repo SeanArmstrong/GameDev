@@ -12,6 +12,7 @@ public:
 
 	btRigidBody* getBody() const;
 	virtual void updateRenderObject() = 0;
+	bool hasRenderObject();
 
 protected:
 

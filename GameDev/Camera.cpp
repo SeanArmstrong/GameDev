@@ -120,3 +120,33 @@ Matrix4 Camera::setPlayerCam(const PhysicsObject* player){
 
 	return Matrix4::BuildViewMatrix(from, lookingAt);
 }
+
+Matrix4 Camera::setPlayerCam(const PhysicsObject* player, const float rotateAmount){
+	/*btVector3 bodyPosition = player->getBody()->getWorldTransform().getOrigin();
+	float mouseX = mouse.x;
+	float mouseY = mouse.y;
+
+	Vector3 from(bodyPosition.getX(),
+		bodyPosition.getY() + 10,
+		bodyPosition.getZ() + 30);
+
+	Vector3 lookingAt(bodyPosition.getX(),
+		bodyPosition.getY(),
+		bodyPosition.getZ());
+
+	return Matrix4::BuildViewMatrix(from, lookingAt);*/
+
+	Vector3 bodyPosition = player->getBody()->getWorldTransform().getOrigin();
+	Vector3 camFocusVector = position - bodyPosition;
+	Matrix4 pos;
+	pos.SetPositionVector(camFocusVector);
+
+	Matrix4 rotation = Matrix4::Rotation(1.0f, Vector3(0, 1, 0));
+	Matrix4 final = pos * rotation;
+
+	final.GetPositionVector();
+	// have a lookm to fix this
+	// also try new cam and make sure i used the correct Matrix build
+	return Matrix4::BuildViewMatrix(final.GetPositionVector(), bodyPosition);
+	
+}

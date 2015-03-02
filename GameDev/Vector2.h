@@ -12,6 +12,7 @@ _-_-_-_-_-_-_-""  ""
 
 */
 #include <iostream>
+#include <SFML/System/Vector2.hpp>
 
 class Vector2	{
 public:
@@ -22,6 +23,11 @@ public:
 	Vector2(const float x, const float y) {
 		this->x = x;
 		this->y = y;
+	}
+
+	Vector2(sf::Vector2<int> vec){
+		this->x = static_cast<float> (vec.x);
+		this->y = static_cast<float> (vec.y);
 	}
 
 	~Vector2(void){}
