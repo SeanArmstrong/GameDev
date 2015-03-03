@@ -7,6 +7,13 @@ void GameObject::addRenderObjectToWorld(SFMLRenderer& renderer){
 	renderer.AddRenderObject(*ro);
 }
 
+void GameObject::removePhysicsObjectFromWorld(btDynamicsWorld& world){
+	world.removeRigidBody(po->getBody());
+}
+void GameObject::removeRenderObjectFromWorld(SFMLRenderer& renderer){
+	renderer.RemoveRenderObject(*ro);
+}
+
 void GameObject::update(){
 	if (po->hasRenderObject()){
 		po->updateRenderObject();

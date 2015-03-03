@@ -1,6 +1,7 @@
   #pragma once
 #include "RenderObject.h"
 #include "Matrix3.h"
+#include <algorithm>
 
 
 struct Light {
@@ -29,13 +30,14 @@ public:
 		renderObjects.push_back(&r);
 	}
 
-	void RemoveRenderObject(const RenderObject &r){
-		for (vector<RenderObject*>::const_iterator i; i != renderObjects.end(); ++i){
-			if ((*i) == &r){
-				renderObjects.erase(i);
+	void RemoveRenderObject(RenderObject &r){
+		for (unsigned int i = 0; i < renderObjects.size(); ++i){
+			if (renderObjects[i] == &r){
+				renderObjects.erase(renderObjects.begin() + i);
+				break;
 			}
 		}
-	};
+	}
 
 	void SetShaderLight(Vector3 position, Vector3 colour, float radius) {
 		currentLight.position = position;

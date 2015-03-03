@@ -46,14 +46,7 @@ void GameState::Resume(){}
 void GameState::Update(CoreEngine& engine){
 	world.getPhysicsWorld()->stepSimulation(GameTimer::getDelta());
 	world.callbackChecker(player, eventObjects);
-	
-	/*for (vector<GameObject*>::iterator i = eventObjects.begin(); i != eventObjects.end(); ++i) {
-		if (!(**i).getExistsInWorld()){
-			renderer.RemoveRenderObject(*(**i).getRenderObject());
-			world.getPhysicsWorld()->removeRigidBody((**i).getPhysicsObject()->getBody());
-			eventObjects.erase(i);
-		}
-	}*/
+	removeDeletedObjects();
 
 	player->update();
 	//tpc->Update(player->getPosition());
@@ -68,12 +61,11 @@ void GameState::Update(CoreEngine& engine){
 
 	std::vector<GameObject*>::iterator obj;
 	for (obj = worldObjects.begin(); obj < worldObjects.end(); ++obj) {
-		if (!(**obj).getExistsInWorld()){
-			worldObjects.erase(obj);
-		}
-		else{
-			(**obj).update();
-		}
+		(**obj).update();
+	}
+
+	for (obj = eventObjects.begin(); obj < eventObjects.end(); ++obj) {
+		(**obj).update();
 	}
 
 	renderer.SetViewMatrix(cam.setPlayerCam(player->getPhysicsObject()/*, rotateAmount*/));
@@ -114,7 +106,6 @@ void GameState::loadScene(){
 
 	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -30);
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	worldObjects.push_back(invisibleGround);
 	eventObjects.push_back(invisibleGround);
 
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, -10), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
@@ -124,8 +115,12 @@ void GameState::loadScene(){
 	GameObject* coin = new CoinGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, -18, -120), 0, 1, ResourceManager::Instance().AddTexture("coin.jpg"));
 	coin->addRenderObjectToWorld(renderer);
 	coin->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	worldObjects.push_back(coin);
 	eventObjects.push_back(coin);
+
+	GameObject* coin2 = new CoinGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 5, -10), 0, 1, ResourceManager::Instance().AddTexture("coin.jpg"));
+	coin2->addRenderObjectToWorld(renderer);
+	coin2->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+	eventObjects.push_back(coin2);
 
 	GameObject* cube1 = new CubeGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, -70, 0), 0, 50, ResourceManager::Instance().AddTexture("ground.jpg"));
 	cube1->addRenderObjectToWorld(renderer);
@@ -151,4 +146,20 @@ void GameState::loadScene(){
 	cube5->addRenderObjectToWorld(renderer);
 	cube5->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	worldObjects.push_back(cube5);
+}
+
+void GameState::removeDeletedObjects(){
+	std::set<int> elementsToRemove;
+
+	for (unsigned int i = 0; i < eventObjects.size(); ++i){
+		if (!(*eventObjects[i]).getExistsInWorld()){
+			elementsToRemove.insert(i);
+		}
+	}
+	std::set<int>::reverse_iterator rit;
+	for (rit = elementsToRemove.rbegin(); rit != elementsToRemove.rend(); ++rit){
+		(eventObjects[*rit])->removePhysicsObjectFromWorld(*world.getPhysicsWorld());
+		(eventObjects[*rit])->removeRenderObjectFromWorld(renderer);
+		eventObjects.erase(eventObjects.begin() + *rit);
+	}
 }

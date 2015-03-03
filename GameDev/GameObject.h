@@ -20,6 +20,8 @@ public:
 
 	void addPhysicsObjectToWorld(btDynamicsWorld& world);
 	void addRenderObjectToWorld(SFMLRenderer& renderer);
+	void removePhysicsObjectFromWorld(btDynamicsWorld& world);
+	void removeRenderObjectFromWorld(SFMLRenderer& renderer);
 
 	/* Getters */
 	

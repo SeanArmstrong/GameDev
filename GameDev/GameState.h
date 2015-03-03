@@ -40,6 +40,7 @@ protected:
 private:
 
 	void loadScene();
+	void removeDeletedObjects();
 
 	World world;
 	Camera cam;
