@@ -71,6 +71,10 @@ public:
 		return AudioManager::Instance().AddMusic(filename);
 	}
 
+	void AudioPlaySound(const std::string filename){
+		AudioManager::Instance().AudioPlaySound(filename);
+	}
+
 protected:
 
 	ResourceManager(){

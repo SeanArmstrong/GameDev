@@ -17,7 +17,7 @@ public:
 	virtual void Resume() = 0;
 
 	virtual void HandleEvents(CoreEngine& engine, sf::Event event) = 0;
-	virtual void Update() = 0;
+	virtual void Update(CoreEngine& engine) = 0;
 	virtual void Render() = 0;
 
 	void ChangeState(CoreEngine* engine, State* state);

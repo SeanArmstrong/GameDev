@@ -2,6 +2,7 @@
 #include "Singleton.h"
 #include <string>
 #include <map>
+#include <vector>
 #include <SFML/Audio.hpp>
 
 
@@ -20,6 +21,8 @@ public:
 	sf::Music* GetMusic(const std::string filename);
 	sf::Music* AddMusic(const std::string filename);
 
+	void AudioPlaySound(const std::string filename);
+
 protected:
 
 	AudioManager();
@@ -29,6 +32,8 @@ private:
 
 	std::map<std::string, sf::Music*> music;
 	std::map<std::string, sf::Sound*> sounds;
+
+	std::vector<sf::SoundBuffer*> buffs;
 
 };
 

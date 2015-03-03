@@ -38,7 +38,7 @@ void MainMenuState::Resume(){
 
 }
 
-void MainMenuState::Update(){
+void MainMenuState::Update(CoreEngine& engine){
 	renderer.UpdateScene(GameTimer::getDelta());
 }
 
@@ -47,7 +47,7 @@ void MainMenuState::Render(){
 }
 
 void MainMenuState::HandleEvents(CoreEngine& engine, sf::Event event){
-	if (event.type == sf::Event::KeyPressed){
+	if (event.key.code == sf::Keyboard::Return){
 		engine.ChangeState(new GameState(screenWidth, screenHeight));
 	}
 

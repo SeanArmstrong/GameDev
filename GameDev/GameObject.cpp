@@ -1,15 +1,5 @@
 #include "GameObject.h"
 
-GameObject::GameObject(){
-
-}
-
-
-GameObject::~GameObject(){
-	delete ro;
-	delete po;
-}
-
 void GameObject::addPhysicsObjectToWorld(btDynamicsWorld& world){
 	world.addRigidBody(po->getBody());
 }
@@ -29,6 +19,14 @@ RenderObject* GameObject::getRenderObject(){
 
 PhysicsObject* GameObject::getPhysicsObject(){
 	return po;
+}
+
+bool GameObject::getExistsInWorld(){
+	return existsInWorld;
+}
+
+void GameObject::setExistsInWorld(bool status){
+	existsInWorld = status;
 }
 
 

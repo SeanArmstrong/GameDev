@@ -1,6 +1,6 @@
 #include "IntroState.h"
 
-IntroState::IntroState(const float& width, const float& height) : State(width, height){
+IntroState::IntroState(const int width, const int height) : State(width, height){
 	Initialise();
 }
 
@@ -38,7 +38,7 @@ void IntroState::Resume(){
 
 }
 
-void IntroState::Update(){
+void IntroState::Update(CoreEngine& engine){
 	renderer.UpdateScene(GameTimer::getDelta());
 }
 

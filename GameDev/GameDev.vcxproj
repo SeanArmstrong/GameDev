@@ -83,6 +83,7 @@
     <ClCompile Include="CameraNew.cpp" />
     <ClCompile Include="CoinGameObject.cpp" />
     <ClCompile Include="CoinPhysicsObject.cpp" />
+    <ClCompile Include="CollisionResponse.cpp" />
     <ClCompile Include="CoreEngine.cpp" />
     <ClCompile Include="CubeGameObject.cpp" />
     <ClCompile Include="CubePhysicsObject.cpp" />
@@ -112,6 +113,7 @@
     <ClCompile Include="SpherePhysicsObject.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="ThirdPersonCamera.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +129,7 @@
     <ClInclude Include="CameraNew.h" />
     <ClInclude Include="CoinGameObject.h" />
     <ClInclude Include="CoinPhysicsObject.h" />
+    <ClInclude Include="CollisionResponse.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="CoreEngine.h" />
     <ClInclude Include="CubeGameObject.h" />
@@ -150,6 +153,7 @@
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="RenderUtils.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="SettingState.h" />
     <ClInclude Include="SFMLRenderer.h" />
     <ClInclude Include="Shader.h" />
@@ -159,6 +163,7 @@
     <ClInclude Include="SpherePhysicsObject.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="ThirdPersonCamera.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />

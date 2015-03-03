@@ -103,11 +103,11 @@ void CoreEngine::Cleanup(){
 }
 
 void CoreEngine::HandleEvents(sf::Event event){
- 	states.front()->HandleEvents(*this, event);
+	states.front()->HandleEvents(*this, event);
 }
 
 void CoreEngine::Update(const float& msec){
-	states.front()->Update();
+	states.front()->Update(*this);
 }
 
 void CoreEngine::Render(const float& msec){

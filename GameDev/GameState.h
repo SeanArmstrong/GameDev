@@ -5,15 +5,16 @@
 #include "ResourceManager.h"
 #include "Camera.h"
 #include "btBulletDynamicsCommon.h"
-#include "CubeGameObject.h"
-#include "SphereGameObject.h"
 #include "GameObject.h"
 #include "PlayerGameObject.h"
 #include "CoinGameObject.h"
 #include "PlaneGameObject.h"
+#include "CubeGameObject.h"
+#include "SphereGameObject.h"
 #include "World.h"
 #include "MainMenuState.h"
 #include "CameraNew.h"
+#include "ThirdPersonCamera.h"
 
 class GameState : public State
 {
@@ -27,7 +28,7 @@ public:
 	virtual void Pause();
 	virtual void Resume();
 
-	virtual void Update();
+	virtual void Update(CoreEngine& engine);
 	virtual void Render();
 
 	virtual void HandleEvents(CoreEngine& engine, sf::Event event);
@@ -42,10 +43,8 @@ private:
 
 	World world;
 	Camera cam;
-	CameraNew CamNew;
-	RenderObject o;
 	std::vector<GameObject*> worldObjects;
-	float rotateAmount;
+	std::vector<GameObject*> eventObjects;
 
 	PlayerGameObject* player;
 

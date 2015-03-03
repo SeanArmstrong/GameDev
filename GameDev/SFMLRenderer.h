@@ -1,4 +1,4 @@
-#pragma once
+  #pragma once
 #include "RenderObject.h"
 #include "Matrix3.h"
 
@@ -28,6 +28,14 @@ public:
 	void AddRenderObject(RenderObject& r) {
 		renderObjects.push_back(&r);
 	}
+
+	void RemoveRenderObject(const RenderObject &r){
+		for (vector<RenderObject*>::const_iterator i; i != renderObjects.end(); ++i){
+			if ((*i) == &r){
+				renderObjects.erase(i);
+			}
+		}
+	};
 
 	void SetShaderLight(Vector3 position, Vector3 colour, float radius) {
 		currentLight.position = position;

@@ -24,47 +24,62 @@ void GameState::Initialise(){
 	ResourceManager::Instance().AddTexture("ground.jpg");
 	ResourceManager::Instance().AddTexture("checkboard.jpg");
 	ResourceManager::Instance().AddTexture("coin.jpg");
-	// End load resources
+	ResourceManager::Instance().AddSound("CoinCollection.wav");
+	ResourceManager::Instance().AddSound("LostGame.wav");
 
+	// End load resources
 	loadScene();
 	mouseHeld = false;
 }
+
 void GameState::Cleanup(){
 	ResourceManager::Instance().ResetInstance();
 }
+
 void GameState::Pause(){
 	paused = !paused;
 }
+
 void GameState::Resume(){}
 
 
-
-void GameState::Update(){
+void GameState::Update(CoreEngine& engine){
 	world.getPhysicsWorld()->stepSimulation(GameTimer::getDelta());
+	world.callbackChecker(player, eventObjects);
+	
+	/*for (vector<GameObject*>::iterator i = eventObjects.begin(); i != eventObjects.end(); ++i) {
+		if (!(**i).getExistsInWorld()){
+			renderer.RemoveRenderObject(*(**i).getRenderObject());
+			world.getPhysicsWorld()->removeRigidBody((**i).getPhysicsObject()->getBody());
+			eventObjects.erase(i);
+		}
+	}*/
 
 	player->update();
+	//tpc->Update(player->getPosition());
+
+	// Check for end of game;
+	if (!player->isAlive()){
+		engine.ChangeState(new MainMenuState(screenWidth, screenHeight));
+	}
+	if (player->getScore() == 20){ // this(scene).score){
+		engine.ChangeState(new MainMenuState(screenWidth, screenHeight));
+	}
 
 	std::vector<GameObject*>::iterator obj;
 	for (obj = worldObjects.begin(); obj < worldObjects.end(); ++obj) {
-		(**obj).update();
+		if (!(**obj).getExistsInWorld()){
+			worldObjects.erase(obj);
+		}
+		else{
+			(**obj).update();
+		}
 	}
 
 	renderer.SetViewMatrix(cam.setPlayerCam(player->getPhysicsObject()/*, rotateAmount*/));
-	//renderer.SetViewMatrix(Matrix4::BuildCameraMatrix(cam.getForward(), cam.getUp()) *
-		//Matrix4::Translation(Vector3(cam.getPosition().x, cam.getPosition().y, cam.getPosition().z)));
-	//o.SetModelMatrix(Matrix4::BuildCameraMatrix(cam.getForward(), cam.getUp()) *
-		//Matrix4::Translation(Vector3(cam.getPosition().x, cam.getPosition().y, cam.getPosition().z)));
+	//renderer.SetViewMatrix(tpc->cameraPosition);
 	renderer.UpdateScene(GameTimer::getDelta());
-
-	int action = world.callbackChecker();
-	if (action == 1){
-		// Collect coin
-	}
-	else if (action == 9){
-		endGame = true;
-	}
 }
-
 
 
 void GameState::Render(){
@@ -74,111 +89,8 @@ void GameState::Render(){
 
 
 void GameState::HandleEvents(CoreEngine& engine, sf::Event event){
-	if (endGame || event.key.code == sf::Keyboard::Escape){
+	if (event.key.code == sf::Keyboard::Escape){
 		engine.ChangeState(new MainMenuState(screenWidth, screenHeight));
-	}
-
-	float movAmt = (float)(20 * GameTimer::getDelta());
-	float rotAmt = (float)(200 * GameTimer::getDelta());
-
-	if (event.type == sf::Event::MouseButtonPressed){
-		if (event.mouseButton.button == sf::Mouse::Left){
-			std::cout << "Held";
-			mouseHeld = true;
-		}
-	}
-	if (event.type == sf::Event::MouseButtonReleased){
-		if (event.mouseButton.button == sf::Mouse::Left){
-			std::cout << "Released";
-			mouseHeld = false;
-		}
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
-		std::cout << "Forward";
-		player->moveForward();
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-		player->moveLeft();
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-		player->moveBackwards();
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-		player->moveRight();
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-		player->jump();
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)){
-		rotateAmount = -1.0f;
-	}	
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-		rotateAmount = 1.0f;
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-		std::cout << "UP" << std::endl;
-		cam.rotateX(rotAmt);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-		cam.rotateX(-rotAmt);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-		cam.rotateY(rotAmt);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-		cam.rotateY(-rotAmt);
-	}
-
-	/*
-	switch (event.type){
-	case sf::Event::KeyPressed:
-		switch (event.key.code){
-		case sf::Keyboard::I:
-			cam.move(cam.getForward(), movAmt);
-			break;
-		case sf::Keyboard::J:
-			cam.move(cam.getLeft(), movAmt);
-			break;
-		case sf::Keyboard::K:
-			cam.move(cam.getForward(), -movAmt);
-			break;
-		case sf::Keyboard::L:
-			cam.move(cam.getRight(), movAmt);
-			break;
-		case sf::Keyboard::Up:
-			cam.rotateX(rotAmt);
-			break;
-		case sf::Keyboard::Down:
-			cam.rotateX(-rotAmt);
-			break;
-		case sf::Keyboard::Left:
-			cam.rotateY(rotAmt);
-			break;
-		case sf::Keyboard::Right:
-			cam.rotateY(-rotAmt);
-			break;
-		}
-		break;
-	}*/
-	if (mouseHeld){
-		std::cout << "moving";
-		sf::Vector2i position = sf::Mouse::getPosition();
-
-		boolean rotX = position.y != 0;
-		boolean rotY = position.x != 0;
-
-		if (rotY){
-			cam.rotateY(position.x * 0.001f);
-		}
-		if (rotX){
-			cam.rotateY(-position.y * 0.001f);
-		}
-		if (rotX || rotY){
-			//sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);
-		}
 	}
 }
 
@@ -200,11 +112,10 @@ void GameState::loadScene(){
 	cam.setUp(Vector3(0.02f, 0.9f, -0.5f));
 	renderer.SetViewMatrix(Matrix4::BuildViewMatrix(cam.getPosition(), Vector3(0, 0, -1), cam.getUp()));
 
-	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -30
-		/*ResourceManager::Instance().GetShader("Basic"), ResourceManager::Instance().AddTexture("checkboard.jpg")*/);
-	//invisibleGround->addRenderObjectToWorld(renderer);
+	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -30);
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	worldObjects.push_back(invisibleGround);
+	eventObjects.push_back(invisibleGround);
 
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, -10), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
 	player->addRenderObjectToWorld(renderer);
@@ -214,6 +125,7 @@ void GameState::loadScene(){
 	coin->addRenderObjectToWorld(renderer);
 	coin->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	worldObjects.push_back(coin);
+	eventObjects.push_back(coin);
 
 	GameObject* cube1 = new CubeGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, -70, 0), 0, 50, ResourceManager::Instance().AddTexture("ground.jpg"));
 	cube1->addRenderObjectToWorld(renderer);
@@ -240,11 +152,3 @@ void GameState::loadScene(){
 	cube5->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	worldObjects.push_back(cube5);
 }
-
-/*camera stuff
-
-//renderer.SetViewMatrix(Matrix4::BuildViewMatrix(Vector3(0, 0, 0), Vector3(0, 0, -10)));
-//renderer.SetViewMatrix(Matrix4::BuildViewMatrix(cam.getPosition(), Vector3(0, 0, -10), cam.getUp()));
-//Matrix4 camView = Matrix4::BuildCameraMatrix(cam.getForward(), cam.getUp());
-//camView.Translation(Vector3(cam.getPosition().x, cam.getPosition().y, cam.getPosition().z));
-*/

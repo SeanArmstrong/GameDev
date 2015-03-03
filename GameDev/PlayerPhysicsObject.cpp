@@ -17,14 +17,10 @@ PlayerPhysicsObject::PlayerPhysicsObject(RenderObject* renderObject, const Vecto
 	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, shape, fallInertia);
 	body = new btRigidBody(fallRigidBodyCI);
 	
-	body->setRestitution(0.8f);
-	body->setFriction(1.0f);
+	//body->setRestitution(0.8f);
+	//body->setFriction(1.0f);
 	body->setActivationState(DISABLE_DEACTIVATION); // always active
-	body->setAngularFactor(0.0f); // Keep upright
-	body->setCollisionFlags(btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-	body->setUserIndex(1);
-	//body->setUserPointer(*)
-	
+	//body->setAngularFactor(0.0f); // Keep upright
 }
 
 

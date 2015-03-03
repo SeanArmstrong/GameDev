@@ -10,13 +10,10 @@ PlanePhysicsObject::PlanePhysicsObject(RenderObject* renderObject, Vector3& norm
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(0, 0, 0));
 
-
 	btDefaultMotionState* groundMotionState = new btDefaultMotionState(startTransform);
 	btRigidBody::btRigidBodyConstructionInfo groundRigidBody(mass, groundMotionState, shape, btVector3(0, 0, 0));
 	body = new btRigidBody(groundRigidBody);
-	//body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
-	body->setUserIndex(2);
-
+	body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 }
 
 

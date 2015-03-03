@@ -8,7 +8,7 @@
 class IntroState : public State
 {
 public:
-	IntroState(const float& width, const float& height);
+	IntroState(const int width, const int height);
 	virtual ~IntroState();
 
 	virtual void Initialise();
@@ -18,7 +18,7 @@ public:
 	virtual void Resume();
 
 	virtual void HandleEvents(CoreEngine& engine, sf::Event event);
-	virtual void Update();
+	virtual void Update(CoreEngine& engine);
 	virtual void Render();
 
 protected:

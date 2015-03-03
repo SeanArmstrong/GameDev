@@ -18,7 +18,7 @@ public:
 	virtual void Resume();
 
 	virtual void HandleEvents(CoreEngine& engine, sf::Event event);
-	virtual void Update();
+	virtual void Update(CoreEngine& engine);
 	virtual void Render();
 
 protected:
