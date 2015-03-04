@@ -8,7 +8,7 @@
 class MainMenuState : public State
 {
 public:
-	MainMenuState(const float& width, const float& height);
+	MainMenuState(sf::RenderWindow* w);
 	virtual ~MainMenuState();
 
 	virtual void Initialise();

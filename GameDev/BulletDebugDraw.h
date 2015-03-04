@@ -31,7 +31,7 @@ public:
 	virtual void setDebugMode(int debugMode);
 	virtual int getDebugMode() const { return m_debugMode; }
 
-	SFMLRenderer r;
-	Shader *s = ResourceManager::Instance().AddShader("basic", "basicVert.glsl", "textureFrag.glsl");
+	//SFMLRenderer r;
+	//Shader *s = ResourceManager::Instance().AddShader("basic", "basicVert.glsl", "textureFrag.glsl");
 };
 

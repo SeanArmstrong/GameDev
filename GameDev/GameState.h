@@ -15,11 +15,12 @@
 #include "MainMenuState.h"
 #include "CameraNew.h"
 #include "ThirdPersonCamera.h"
+#include "GameHUD.h"
 
 class GameState : public State
 {
 public:
-	GameState(const float& width, const float& height);
+	GameState(sf::RenderWindow* w);
 	virtual  ~GameState();
 
 	virtual void Initialise();
@@ -44,6 +45,9 @@ private:
 
 	World world;
 	Camera cam;
+	//SFMLRenderer HUD;
+	GameHUD hud;
+
 	std::vector<GameObject*> worldObjects;
 	std::vector<GameObject*> eventObjects;
 

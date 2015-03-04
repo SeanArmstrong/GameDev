@@ -12,9 +12,9 @@ public:
 	~PlayerGameObject();
 
 	/* Getters */
-	Vector3 getPosition();
-	bool isAlive();
-	int getScore();
+	Vector3 getPosition() const;
+	bool isAlive() const;
+	int getScore() const;
 
 	/* Settters */
 	void setPosition(Vector3 view);

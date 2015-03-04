@@ -1,6 +1,6 @@
 #include "GameState.h"
 
-GameState::GameState(const float& width, const float& height) : State(width, height){
+GameState::GameState(sf::RenderWindow* w) : State(w), hud(w->getSize().x, w->getSize().y){
 	Initialise();
 }
 
@@ -9,6 +9,9 @@ GameState::~GameState(){
 	delete player;
 	for (unsigned int i = 0; i < worldObjects.size(); ++i){
 		delete worldObjects[i];
+	}
+	for (unsigned int i = 0; i < worldObjects.size(); ++i){
+		delete eventObjects[i];
 	}
 }
 
@@ -26,6 +29,7 @@ void GameState::Initialise(){
 	ResourceManager::Instance().AddTexture("coin.jpg");
 	ResourceManager::Instance().AddSound("CoinCollection.wav");
 	ResourceManager::Instance().AddSound("LostGame.wav");
+	ResourceManager::Instance().AddSound("Clapping.wav");
 
 	// End load resources
 	loadScene();
@@ -33,7 +37,7 @@ void GameState::Initialise(){
 }
 
 void GameState::Cleanup(){
-	ResourceManager::Instance().ResetInstance();
+	ResourceManager::ResetInstance();
 }
 
 void GameState::Pause(){
@@ -49,14 +53,14 @@ void GameState::Update(CoreEngine& engine){
 	removeDeletedObjects();
 
 	player->update();
-	//tpc->Update(player->getPosition());
 
 	// Check for end of game;
 	if (!player->isAlive()){
-		engine.ChangeState(new MainMenuState(screenWidth, screenHeight));
+		engine.ChangeState(new MainMenuState(window));
 	}
-	if (player->getScore() == 20){ // this(scene).score){
-		engine.ChangeState(new MainMenuState(screenWidth, screenHeight));
+	if (player->getScore() == 3){ // this(scene).score){
+		ResourceManager::Instance().AudioPlaySound("Clapping.wav");
+		engine.ChangeState(new MainMenuState(window));
 	}
 
 	std::vector<GameObject*>::iterator obj;
@@ -69,20 +73,22 @@ void GameState::Update(CoreEngine& engine){
 	}
 
 	renderer.SetViewMatrix(cam.setPlayerCam(player->getPhysicsObject()/*, rotateAmount*/));
-	//renderer.SetViewMatrix(tpc->cameraPosition);
 	renderer.UpdateScene(GameTimer::getDelta());
+
+	hud.Update(*player);
 }
 
 
 void GameState::Render(){
 	renderer.RenderScene();
+	hud.Draw(window);
 	//world.getPhysicsWorld()->debugDrawWorld();
 }
 
 
 void GameState::HandleEvents(CoreEngine& engine, sf::Event event){
 	if (event.key.code == sf::Keyboard::Escape){
-		engine.ChangeState(new MainMenuState(screenWidth, screenHeight));
+		engine.ChangeState(new MainMenuState(window));
 	}
 }
 
@@ -108,7 +114,7 @@ void GameState::loadScene(){
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(invisibleGround);
 
-	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, -10), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
+	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, 20), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
 	player->addRenderObjectToWorld(renderer);
 	player->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 
@@ -117,10 +123,15 @@ void GameState::loadScene(){
 	coin->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(coin);
 
-	GameObject* coin2 = new CoinGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 5, -10), 0, 1, ResourceManager::Instance().AddTexture("coin.jpg"));
+	GameObject* coin2 = new CoinGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(30, -18, -120), 0, 1, ResourceManager::Instance().AddTexture("coin.jpg"));
 	coin2->addRenderObjectToWorld(renderer);
 	coin2->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(coin2);
+
+	GameObject* coin3 = new CoinGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, -18, -55), 0, 1, ResourceManager::Instance().AddTexture("coin.jpg"));
+	coin3->addRenderObjectToWorld(renderer);
+	coin3->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+	eventObjects.push_back(coin3);
 
 	GameObject* cube1 = new CubeGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, -70, 0), 0, 50, ResourceManager::Instance().AddTexture("ground.jpg"));
 	cube1->addRenderObjectToWorld(renderer);

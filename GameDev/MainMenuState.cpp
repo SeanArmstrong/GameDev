@@ -1,6 +1,6 @@
 #include "MainMenuState.h"
 
-MainMenuState::MainMenuState(const float& width, const float& height) : State(width, height){
+MainMenuState::MainMenuState(sf::RenderWindow* w) : State(w){
 	Initialise();
 }
 
@@ -17,9 +17,9 @@ void MainMenuState::Initialise(){
 		ResourceManager::Instance().GetShader("Basic"),
 		ResourceManager::Instance().AddTexture("menu.png"));
 
-	title->SetModelMatrix(Matrix4::Translation(Vector3(screenWidth / 2, screenHeight / 2, 0)) * Matrix4::Scale(Vector3(100, 100, 0)));
+	title->SetModelMatrix(Matrix4::Translation(Vector3((float)window->getSize().x / 2, (float)window->getSize().y / 2, 0)) * Matrix4::Scale(Vector3(100, 100, 0)));
 
-	renderer.SetProjectionMatrix(Matrix4::Orthographic(-1, 1, screenWidth, 0, 0, screenHeight));
+	renderer.SetProjectionMatrix(Matrix4::Orthographic(-1, 1, (float)window->getSize().x, 0, 0, (float)window->getSize().y));
 	Matrix4 view;
 	view.ToIdentity();
 	renderer.SetViewMatrix(view);
@@ -27,7 +27,7 @@ void MainMenuState::Initialise(){
 }
 
 void MainMenuState::Cleanup(){
-	ResourceManager::Instance().ResetInstance();
+	ResourceManager::ResetInstance();
 }
 
 void MainMenuState::Pause(){
@@ -48,7 +48,7 @@ void MainMenuState::Render(){
 
 void MainMenuState::HandleEvents(CoreEngine& engine, sf::Event event){
 	if (event.key.code == sf::Keyboard::Return){
-		engine.ChangeState(new GameState(screenWidth, screenHeight));
+		engine.ChangeState(new GameState(window));
 	}
 
 }

@@ -5,10 +5,6 @@
 #include <vector>
 #include <SFML/Audio.hpp>
 
-
-/*
-* SFML cannot blend? Need research
-*/
 class AudioManager : public Singleton<AudioManager>
 {
 public:

@@ -9,12 +9,14 @@ CoreEngine::CoreEngine(const int width, const int height, const float framerate)
 			screenHeight(height), screenWidth(width), framerate(framerate) {
 }
 
-CoreEngine::~CoreEngine(){}
+CoreEngine::~CoreEngine(){
+	Cleanup();
+}
 
 void CoreEngine::run(){
 	if (!running){
 		Initialise();
-		states.push_back(new IntroState(screenWidth, screenHeight));
+		states.push_back(new IntroState(&window));
 		gameLoop();
 	}
 }
@@ -65,12 +67,23 @@ void CoreEngine::gameLoop(){
 			// Start of update/render
 			processInput();
 
-
+			if (polygons){
+				glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			}
+			else {
+				glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			}
 			Update(frameTime);
 
 			clearScreen();
 
 			Render(frameTime);
+
+			if (showDebugInfo){
+				debugInfo.Update((frames / frameCounter) * 1000);
+				debugInfo.Draw(window);
+			}
+
 
 			window.display();
 			frames++;
@@ -83,8 +96,11 @@ void CoreEngine::processInput(){
 		if (event.type == sf::Event::Closed){
 			running = false;
 		}
-		else if (sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1){
-			states.front()->Pause();
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F1)){
+			showDebugInfo = !showDebugInfo;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2)){
+			polygons = !polygons;
 		}
 		else if (event.type == sf::Event::Resized){
 			glViewport(0, 0, event.size.width, event.size.height);
@@ -96,7 +112,8 @@ void CoreEngine::processInput(){
 
 void CoreEngine::Cleanup(){
 	while (!states.empty()) {
-		states.back()->Cleanup();
+		//states.back()->Cleanup();
+		delete states.back();
 		states.pop_back();
 	}
 	window.close();

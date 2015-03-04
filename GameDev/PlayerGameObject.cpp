@@ -13,17 +13,17 @@ PlayerGameObject::~PlayerGameObject()
 {
 }
 
-Vector3 PlayerGameObject::getPosition(){
+Vector3 PlayerGameObject::getPosition() const {
 	btTransform trans;
 	po->getBody()->getMotionState()->getWorldTransform(trans);
 	return trans.getOrigin();
 }
 
-bool PlayerGameObject::isAlive(){
+bool PlayerGameObject::isAlive() const {
 	return alive;
 }
 
-int PlayerGameObject::getScore(){
+int PlayerGameObject::getScore() const {
 	return score;
 }
 

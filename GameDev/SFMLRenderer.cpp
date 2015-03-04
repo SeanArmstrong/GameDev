@@ -5,8 +5,10 @@ SFMLRenderer::SFMLRenderer(){
 }
 
 
-SFMLRenderer::~SFMLRenderer(void)
-{
+SFMLRenderer::~SFMLRenderer(void){
+	for (vector<RenderObject*>::iterator i = renderObjects.begin(); i != renderObjects.end(); ++i) {
+		delete *i;
+	}
 }
 
 void SFMLRenderer::RenderScene(){

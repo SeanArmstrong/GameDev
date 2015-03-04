@@ -15,8 +15,8 @@ class CoinGameObject;
 class GameObject
 {
 public:
-	//GameObject();
-	//virtual ~GameObject();
+	GameObject(){};
+	virtual ~GameObject();
 
 	void addPhysicsObjectToWorld(btDynamicsWorld& world);
 	void addRenderObjectToWorld(SFMLRenderer& renderer);

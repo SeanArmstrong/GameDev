@@ -10,6 +10,7 @@
 #include <vector>
 #include "GameTimer.h"
 #include "RenderUtils.h"
+#include "DebugHUD.h"
 
 class State;
 
@@ -48,5 +49,10 @@ private:
 	float framerate;
 
 	bool running;
+	bool polygons;
+	bool showDebugInfo;
+
+	DebugHUD debugInfo;
+	
 };
 

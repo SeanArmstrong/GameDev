@@ -1,5 +1,10 @@
 #include "GameObject.h"
 
+GameObject::~GameObject(){
+	delete ro;
+	delete po;
+}
+
 void GameObject::addPhysicsObjectToWorld(btDynamicsWorld& world){
 	world.addRigidBody(po->getBody());
 }

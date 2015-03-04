@@ -1,6 +1,6 @@
 #include "IntroState.h"
 
-IntroState::IntroState(const int width, const int height) : State(width, height){
+IntroState::IntroState(sf::RenderWindow* w) : State(w){
 	Initialise();
 }
 
@@ -17,9 +17,9 @@ void IntroState::Initialise(){
 							 ResourceManager::Instance().GetShader("Basic"),
 							 ResourceManager::Instance().AddTexture("splashscreen.png"));
 
-	title->SetModelMatrix(Matrix4::Translation(Vector3(screenWidth/2,screenHeight/2,0)) * Matrix4::Scale(Vector3(100,100,0)));
+	title->SetModelMatrix(Matrix4::Translation(Vector3((float)window->getSize().x / 2, (float)window->getSize().y / 2, 0)) * Matrix4::Scale(Vector3(100, 100, 0)));
 
-	renderer.SetProjectionMatrix(Matrix4::Orthographic(-1, 1, screenWidth, 0, 0, screenHeight));
+	renderer.SetProjectionMatrix(Matrix4::Orthographic(-1, 1, (float)window->getSize().x, 0, 0, (float)window->getSize().y));
 	Matrix4 view;
 	view.ToIdentity();
 	renderer.SetViewMatrix(view);
@@ -27,7 +27,7 @@ void IntroState::Initialise(){
 }
 
 void IntroState::Cleanup(){
-	ResourceManager::Instance().ResetInstance();
+	ResourceManager::ResetInstance();
 }
 
 void IntroState::Pause(){
@@ -48,7 +48,7 @@ void IntroState::Render(){
 
 void IntroState::HandleEvents(CoreEngine& engine, sf::Event event){
 	if (event.type == sf::Event::KeyPressed){
-		engine.ChangeState(new MainMenuState(screenWidth, screenHeight));
+		engine.ChangeState(new MainMenuState(window));
 	}
 
 }

@@ -53,9 +53,9 @@ void RenderObject::Draw() const {
 
 		glEnable(GL_TEXTURE_2D);
 
+		glUniform1i(glGetUniformLocation(program, "tex"), 0);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, tex);
-		glUniform1i(glGetUniformLocation(program, "tex"), GL_TEXTURE0);
 
 		mesh->Draw();
 	}

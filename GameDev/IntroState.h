@@ -8,7 +8,7 @@
 class IntroState : public State
 {
 public:
-	IntroState(const int width, const int height);
+	IntroState(sf::RenderWindow* w);
 	virtual ~IntroState();
 
 	virtual void Initialise();
