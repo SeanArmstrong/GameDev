@@ -4,13 +4,13 @@ GameHUD::GameHUD(const int width, const int height){
 	font.loadFromFile("assets/fonts/arial.ttf");
 	scoreText.setFont(font);
 	scoreText.setCharacterSize(20);
-	scoreText.setPosition(sf::Vector2f(5, height - 25));
+	scoreText.setPosition(sf::Vector2f(5.0f, (float)height - 25.0f));
 	scoreText.setColor(sf::Color::White);
 	scoreText.setStyle(sf::Text::Regular);
 
 	timerText.setFont(font);
 	timerText.setCharacterSize(20);
-	timerText.setPosition(sf::Vector2f(width - 40, 5));
+	timerText.setPosition(sf::Vector2f((float)width - 40.0f, 5.0f));
 	timerText.setColor(sf::Color::White);
 	timerText.setStyle(sf::Text::Regular);
 }

@@ -1,8 +1,24 @@
-﻿Build started 05/03/2015 14:05:45.
+﻿Build started 05/03/2015 20:38:40.
      1>Project "E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\GameDev\GameDev.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameState.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CoinGameObject.cpp CollisionResponse.cpp CoreEngine.cpp CubeGameObject.cpp GameHUD.cpp GameObject.cpp GameState.cpp IntroState.cpp LevelLostState.cpp LevelWonState.cpp MainMenuState.cpp PlaneGameObject.cpp PlayerGameObject.cpp SphereGameObject.cpp World.cpp
+         CoinGameObject.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         SphereGameObject.cpp
+         GameObject.cpp
+         CubeGameObject.cpp
+         World.cpp
+         PlayerGameObject.cpp
+         PlaneGameObject.cpp
+         MainMenuState.cpp
+         LevelWonState.cpp
+         LevelLostState.cpp
+         IntroState.cpp
          GameState.cpp
+         GameHUD.cpp
+         CoreEngine.cpp
+         CollisionResponse.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.exe" /INCREMENTAL /NOLOGO glew32.lib glew32s.lib SOIL.lib opengl32.lib "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.lib" /MACHINE:X86 Debug\AudioManager.obj
          Debug\BulletDebugDraw.obj
@@ -54,4 +70,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.01
+Time Elapsed 00:00:01.78

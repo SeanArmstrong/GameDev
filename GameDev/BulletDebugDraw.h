@@ -6,6 +6,16 @@
 #include "SFMLRenderer.h"
 #include "ResourceManager.h"
 
+/**
+ * @class	BulletDebugDraw
+ *
+ * @brief	Extends btIDebugDraw. A abstract class that enables drawing of physical
+ * 			objects to the screen
+ *
+ * @author	Sean Armstrong
+ * @date	05/03/2015
+ */
+
 class BulletDebugDraw : public btIDebugDraw
 {
  int m_debugMode;
@@ -13,6 +23,20 @@ class BulletDebugDraw : public btIDebugDraw
 public:
 	BulletDebugDraw();
 	virtual ~BulletDebugDraw();
+
+	/**
+	 * @fn	virtual void BulletDebugDraw::drawLine(const btVector3& from, const btVector3& to, const btVector3& fromColor, const btVector3& toColor);
+	 *
+	 * @brief	Draw the line for the physical object
+	 *
+	 * @author	Sean Armstrong
+	 * @date	05/03/2015
+	 *
+	 * @param	from	 	Starting vector
+	 * @param	to		 	Ending Vector
+	 * @param	fromColor	Starting colour
+	 * @param	toColor  	Ending colour
+	 */
 
 	virtual void drawLine(const btVector3& from, const btVector3& to, const btVector3& fromColor, const btVector3& toColor);
 

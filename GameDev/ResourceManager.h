@@ -6,6 +6,24 @@
 #include "MeshManager.h"
 #include "Singleton.h"
 
+/**
+ * @class	ResourceManager
+ *
+ * @brief	Manager for all types of resources in the engine
+ * 			Contains methods for
+ * 			Textures
+ * 			Meshes
+ * 			Shaders
+ * 			Audio
+ * 			
+ * 			Future Work
+ * 			Settings
+ * 
+ * 
+ * @author	Sean Armstrong
+ * @date	05/03/2015
+ */
+
 class ResourceManager : public Singleton<ResourceManager>
 {
 public:
@@ -77,11 +95,29 @@ public:
 
 protected:
 
+	/**
+	 * @fn	ResourceManager::ResourceManager()
+	 *
+	 * @brief	Creates instances of managers
+	 *
+	 * @author	Sean Armstrong
+	 * @date	05/03/2015
+	 */
+
 	ResourceManager(){
 		Singleton<TextureManager>::Instance();
 		Singleton<ShaderManager>::Instance();
 		Singleton<AudioManager>::Instance();
 	}
+
+	/**
+	 * @fn	virtual ResourceManager::~ResourceManager()
+	 *
+	 * @brief	Destructs instances of managers
+	 *
+	 * @author	Sean Armstrong
+	 * @date	05/03/2015
+	 */
 
 	virtual ~ResourceManager(){
 		Singleton<TextureManager>::ResetInstance();

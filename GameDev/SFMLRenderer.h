@@ -10,9 +10,17 @@ struct Light {
 	Vector3 colour;
 };
 
-/*
-* Adapted from NCLGL Renderer and OGLRenderer to use SFML
-*/
+/**
+ * @class	SFMLRenderer
+ *
+ * @brief	Adapted from NCLGL OGLRenderer and renderer
+ * 			Hols renderobjects to be displayed to the screen
+ * 			Also has proj and view matrices for drawing 
+ *
+ * @author	Sean Armstrong
+ * @date	05/03/2015
+ */
+
 class SFMLRenderer
 {
 public:

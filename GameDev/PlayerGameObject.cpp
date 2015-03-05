@@ -41,7 +41,7 @@ void PlayerGameObject::setScore(int newScore){
 	score = newScore;
 }
 
-void PlayerGameObject::increaseScore(){
+void PlayerGameObject::incrementScore(){
 	score++;
 }
 

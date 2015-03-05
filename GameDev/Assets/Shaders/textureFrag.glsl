@@ -1,5 +1,4 @@
 #version 150 core
-//Perform a non-trivial blend between two textures
 
 uniform sampler2D tex;
 
