@@ -132,9 +132,6 @@
     <ClCompile Include="State.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsObject.cpp">
-      <Filter>Source Files\Physics</Filter>
-    </ClCompile>
     <ClCompile Include="World.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
@@ -191,6 +188,15 @@
     </ClCompile>
     <ClCompile Include="GameHUD.cpp">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelWonState.cpp">
+      <Filter>Source Files\Game\States</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelLostState.cpp">
+      <Filter>Source Files\Game\States</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -346,6 +352,12 @@
     </ClInclude>
     <ClInclude Include="GameHUD.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelWonState.h">
+      <Filter>Header Files\Game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLostState.h">
+      <Filter>Header Files\Game\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

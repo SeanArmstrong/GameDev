@@ -94,6 +94,8 @@
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IntroState.cpp" />
+    <ClCompile Include="LevelLostState.cpp" />
+    <ClCompile Include="LevelWonState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Matrix3.cpp" />
@@ -143,6 +145,8 @@
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IntroState.h" />
+    <ClInclude Include="LevelLostState.h" />
+    <ClInclude Include="LevelWonState.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="Matrix4.h" />

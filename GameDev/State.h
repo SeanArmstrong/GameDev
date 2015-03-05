@@ -12,7 +12,6 @@ public:
 	State(sf::RenderWindow* w) : window(w) {};
 
 	virtual void Initialise() = 0;
-	virtual void Cleanup() = 0;
 
 	virtual void Pause() = 0;
 	virtual void Resume() = 0;

@@ -14,13 +14,15 @@ public:
 	GameHUD(const int width, const int height);
 	~GameHUD();
 
-	void Update(const PlayerGameObject& player);
+	void Update(const PlayerGameObject& player, const float& timer);
 	void Draw(sf::RenderWindow* window);
 
 private:
 
-	std::string info;
-	sf::Text text;
+	std::string scoreInfo;
+	std::string timerInfo;
+	sf::Text scoreText;
+	sf::Text timerText;
 	sf::Font font;
 };
 

@@ -13,7 +13,6 @@ CollisionResponse::~CollisionResponse()
 void CollisionResponse::handleCollision(PlayerGameObject& player, PlaneGameObject& plane){
 	if (plane.isDeadly()){
 		player.setAlive(false);
-		ResourceManager::Instance().AudioPlaySound("LostGame.wav");
 	}
 }
 

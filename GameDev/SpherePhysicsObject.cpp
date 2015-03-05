@@ -3,6 +3,7 @@
 
 SpherePhysicsObject::SpherePhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const float radius) : PhysicsObject(renderObject, pos, mass)
 {
+	std::cout << "HERE " << std::endl;
 	this->radius = radius;
 	shape = new btSphereShape(radius);
 
@@ -15,8 +16,6 @@ SpherePhysicsObject::SpherePhysicsObject(RenderObject* renderObject, const Vecto
 	shape->calculateLocalInertia(mass, fallInertia);
 	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, shape, fallInertia);
 	body = new btRigidBody(fallRigidBodyCI);
-	body->setRestitution(0.8f);
-	body->setFriction(1.0f);
 }
 
 SpherePhysicsObject::~SpherePhysicsObject()

@@ -9,7 +9,7 @@ public:
 
 	virtual void updateRenderObject();
 
-private:
+protected:
 
 	float radius;
 };

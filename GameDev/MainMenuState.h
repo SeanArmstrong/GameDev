@@ -12,7 +12,6 @@ public:
 	virtual ~MainMenuState();
 
 	virtual void Initialise();
-	virtual void Cleanup();
 
 	virtual void Pause();
 	virtual void Resume();

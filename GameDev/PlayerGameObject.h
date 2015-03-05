@@ -4,6 +4,7 @@
 #include <SFML\Window.hpp>
 #include "PlaneGameObject.h"
 #include "CollisionResponse.h"
+#include "CubeGameObject.h"
 
 class PlayerGameObject : public GameObject
 {
@@ -30,6 +31,10 @@ public:
 	virtual void handleCollision(PlaneGameObject& plane);
 	virtual void handleCollision(CoinGameObject& coin);
 
+	/* Game Logic */
+	GameObject* spawnCube();
+
+
 private:
 
 	/* Life Variables */
@@ -43,5 +48,9 @@ private:
 	bool jumping;
 	const float JUMPRESETTIME = 1.0f;
 	float timeSinceJumped;
+
+	/* Weapon options */
+	const float SHOOT_DELAY = 2.0f;
+	float timeSinceShot = 0;
 };
 

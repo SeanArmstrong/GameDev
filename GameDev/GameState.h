@@ -16,6 +16,8 @@
 #include "CameraNew.h"
 #include "ThirdPersonCamera.h"
 #include "GameHUD.h"
+#include "LevelWonState.h"
+#include "LevelLostState.h"
 
 class GameState : public State
 {
@@ -24,17 +26,20 @@ public:
 	virtual  ~GameState();
 
 	virtual void Initialise();
-	virtual void Cleanup();
 
 	virtual void Pause();
 	virtual void Resume();
 
+
 	virtual void Update(CoreEngine& engine);
+	void gameLogic(CoreEngine& engine);
+
 	virtual void Render();
 
 	virtual void HandleEvents(CoreEngine& engine, sf::Event event);
 
 	void resetScene();
+
 protected:
 
 
@@ -55,5 +60,7 @@ private:
 
 	bool mouseHeld;
 	bool endGame = false;
+
+	float timer;
 };
 

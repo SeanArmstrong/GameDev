@@ -26,10 +26,6 @@ void IntroState::Initialise(){
 	renderer.AddRenderObject(*title);
 }
 
-void IntroState::Cleanup(){
-	ResourceManager::ResetInstance();
-}
-
 void IntroState::Pause(){
 
 }

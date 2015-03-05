@@ -1,7 +1,7 @@
 #pragma once
-#include "PhysicsObject.h"
+#include "SpherePhysicsObject.h"
 
-class CoinPhysicsObject : public PhysicsObject
+class CoinPhysicsObject : public SpherePhysicsObject
 {
 public:
 	CoinPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const float radius);
@@ -10,7 +10,5 @@ public:
 	virtual void updateRenderObject();
 
 private:
-
-	float radius;
 };
 

@@ -160,7 +160,7 @@ void CoreEngine::PushState(State* state){
 
 void CoreEngine::PopState(){
 	if (!states.empty()) {
-		states.back()->Cleanup();
+		//states.back()->Cleanup();
 		states.pop_back();
 	}
 

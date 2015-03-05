@@ -1,8 +1,8 @@
 #pragma once
-#include "PhysicsObject.h"
+#include "SpherePhysicsObject.h"
 #include "RenderObject.h"
 
-class PlayerPhysicsObject : public PhysicsObject
+class PlayerPhysicsObject : public SpherePhysicsObject
 {
 public:
 	PlayerPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const float radius);
@@ -11,8 +11,6 @@ public:
 	void PlayerPhysicsObject::updateRenderObject();
 
 private:
-
-	float radius;
 
 	float deceleration;
 	float maxSpeed;

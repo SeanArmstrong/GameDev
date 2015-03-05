@@ -76,6 +76,9 @@ void PlayerGameObject::update(){
 			timeSinceJumped = 0.0f;
 		}
 	}
+
+	timeSinceShot += GameTimer::getDelta();
+
 	po->updateRenderObject();
 }
 
@@ -92,4 +95,12 @@ void PlayerGameObject::handleCollision(PlaneGameObject& plane){
 
 void PlayerGameObject::handleCollision(CoinGameObject& coin){
 	CollisionResponse::handleCollision(*this, coin);
+}
+
+GameObject* PlayerGameObject::spawnCube(){
+	if (timeSinceShot > SHOOT_DELAY){
+		timeSinceShot = 0;
+		return new CubeGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(getPosition().x, getPosition().y, getPosition().z - 5), 0, 1, ResourceManager::Instance().AddTexture("ground.jpg"));
+	}
+	return NULL;
 }

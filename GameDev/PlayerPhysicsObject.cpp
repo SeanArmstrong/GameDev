@@ -2,23 +2,11 @@
 
 
 
-PlayerPhysicsObject::PlayerPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const float radius) : PhysicsObject(renderObject, pos, mass)
-{
-	this->radius = radius;
-	shape = new btSphereShape(radius);
-
-	btTransform startTransform;
-	startTransform.setIdentity();
-	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
-
-	btDefaultMotionState* fallMotionState = new btDefaultMotionState(startTransform);
-	btVector3 fallInertia(0, 0, 0);
-	shape->calculateLocalInertia(mass, fallInertia);
-	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, shape, fallInertia);
-	body = new btRigidBody(fallRigidBodyCI);
-	
+PlayerPhysicsObject::PlayerPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const float radius) 
+		: SpherePhysicsObject(renderObject, pos, mass, radius)
+{	
 	//body->setRestitution(0.8f);
-	//body->setFriction(1.0f);
+	body->setFriction(1.0f);
 	body->setActivationState(DISABLE_DEACTIVATION); // always active
 	//body->setAngularFactor(0.0f); // Keep upright
 }

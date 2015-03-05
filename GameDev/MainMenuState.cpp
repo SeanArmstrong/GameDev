@@ -26,10 +26,6 @@ void MainMenuState::Initialise(){
 	renderer.AddRenderObject(*title);
 }
 
-void MainMenuState::Cleanup(){
-	ResourceManager::ResetInstance();
-}
-
 void MainMenuState::Pause(){
 
 }

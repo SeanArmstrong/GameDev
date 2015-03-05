@@ -34,10 +34,7 @@ void GameState::Initialise(){
 	// End load resources
 	loadScene();
 	mouseHeld = false;
-}
-
-void GameState::Cleanup(){
-	ResourceManager::ResetInstance();
+	timer = 30.0f;
 }
 
 void GameState::Pause(){
@@ -54,14 +51,9 @@ void GameState::Update(CoreEngine& engine){
 
 	player->update();
 
-	// Check for end of game;
-	if (!player->isAlive()){
-		engine.ChangeState(new MainMenuState(window));
-	}
-	if (player->getScore() == 3){ // this(scene).score){
-		ResourceManager::Instance().AudioPlaySound("Clapping.wav");
-		engine.ChangeState(new MainMenuState(window));
-	}
+	timer = timer - GameTimer::getDelta();
+
+	gameLogic(engine);
 
 	std::vector<GameObject*>::iterator obj;
 	for (obj = worldObjects.begin(); obj < worldObjects.end(); ++obj) {
@@ -75,7 +67,28 @@ void GameState::Update(CoreEngine& engine){
 	renderer.SetViewMatrix(cam.setPlayerCam(player->getPhysicsObject()/*, rotateAmount*/));
 	renderer.UpdateScene(GameTimer::getDelta());
 
-	hud.Update(*player);
+	hud.Update(*player, timer);
+}
+
+void GameState::gameLogic(CoreEngine& engine){
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
+		GameObject* cube = player->spawnCube();
+		if (cube){
+			cube->addRenderObjectToWorld(renderer);
+			cube->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+			worldObjects.push_back(cube);
+		}
+	}
+
+	// Check for end of game;
+	if (!player->isAlive() || timer <= 0.0f){
+		ResourceManager::Instance().AudioPlaySound("LostGame.wav");
+		engine.ChangeState(new LevelLostState(window));
+	}
+	if (player->getScore() == 3){ // this(scene).score){
+		ResourceManager::Instance().AudioPlaySound("Clapping.wav");
+		engine.ChangeState(new LevelWonState(window));
+	}
 }
 
 
