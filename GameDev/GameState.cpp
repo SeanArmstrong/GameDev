@@ -56,7 +56,7 @@ void GameState::Update(CoreEngine& engine){
 
 	timer = timer - GameTimer::getDelta();
 
-	gameLogic(engine);
+	GameLogic(engine);
 
 	std::vector<GameObject*>::iterator obj;
 	for (obj = worldObjects.begin(); obj < worldObjects.end(); ++obj) {
@@ -73,7 +73,7 @@ void GameState::Update(CoreEngine& engine){
 	hud.Update(*player, timer);
 }
 
-void GameState::gameLogic(CoreEngine& engine){
+void GameState::GameLogic(CoreEngine& engine){
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
 		GameObject* cube = player->spawnCube();
 		if (cube){

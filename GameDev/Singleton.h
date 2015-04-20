@@ -1,6 +1,17 @@
 #pragma once
 #include <stddef.h>
 
+/**
+ * @class	Singleton
+ *
+ * @brief	A singleton.
+ *
+ * @author	Sean Armstrong
+ * @date	08/03/2015
+ *
+ * @tparam	T	Generic type parameter.
+ */
+
 template <typename T>
 class Singleton
 {

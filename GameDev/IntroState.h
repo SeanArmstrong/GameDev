@@ -4,6 +4,16 @@
 #include "ResourceManager.h"
 #include "MainMenuState.h"
 
+/**
+ * @class	IntroState
+ *
+ * @brief	A splash screen state for the game
+ * 			first screen you see
+ * 			progresses to menu screen
+ *
+ * @author	Sean Armstrong
+ * @date	08/03/2015
+ */
 
 class IntroState : public State
 {

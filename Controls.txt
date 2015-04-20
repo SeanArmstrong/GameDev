@@ -1,0 +1,15 @@
+Splash Screen - Press any button to continue
+Menu Screen - Enter/Return Key
+Win/Lost Screens - Press any key to continue ( may miss them due to this)
+
+Game Screen
+WASD - move 
+Space - Jump
+LShift - Spawn box
+ESC - Quit to menu
+
+
+All Screens
+
+F1 - FPS
+F2 - Render Objects WireFrame

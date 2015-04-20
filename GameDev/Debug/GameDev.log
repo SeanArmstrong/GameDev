@@ -1,9 +1,59 @@
-﻿Build started 08/03/2015 13:52:55.
+﻿Build started 20/04/2015 11:07:41.
      1>Project "E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\GameDev\GameDev.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameState.cpp
+         GameState.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.exe" /INCREMENTAL /NOLOGO glew32.lib glew32s.lib SOIL.lib opengl32.lib "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.lib" /MACHINE:X86 Debug\AudioManager.obj
+         Debug\BulletDebugDraw.obj
+         Debug\Camera.obj
+         Debug\CameraNew.obj
+         Debug\CoinGameObject.obj
+         Debug\CoinPhysicsObject.obj
+         Debug\CollisionResponse.obj
+         Debug\CoreEngine.obj
+         Debug\CubeGameObject.obj
+         Debug\CubePhysicsObject.obj
+         Debug\DebugHUD.obj
+         Debug\GameHUD.obj
+         Debug\GameObject.obj
+         Debug\GameState.obj
+         Debug\GameTimer.obj
+         Debug\InputManager.obj
+         Debug\IntroState.obj
+         Debug\LevelLostState.obj
+         Debug\LevelWonState.obj
+         Debug\main.obj
+         Debug\MainMenuState.obj
+         Debug\Matrix3.obj
+         Debug\Matrix4.obj
+         Debug\Mesh.obj
+         Debug\MeshManager.obj
+         Debug\PhysicsObject.obj
+         Debug\PlaneGameObject.obj
+         Debug\PlanePhysicsObject.obj
+         Debug\PlatformGameObject.obj
+         Debug\PlatformPhysicsObject.obj
+         Debug\PlayerGameObject.obj
+         Debug\PlayerPhysicsObject.obj
+         Debug\Quaternion.obj
+         Debug\RenderObject.obj
+         Debug\SettingState.obj
+         Debug\SFMLRenderer.obj
+         Debug\Shader.obj
+         Debug\ShaderManager.obj
+         Debug\SphereGameObject.obj
+         Debug\SpherePhysicsObject.obj
+         Debug\State.obj
+         Debug\TextureManager.obj
+         Debug\ThirdPersonCamera.obj
+         Debug\World.obj
+         "E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\lib\BulletCollision_vs2010_debug.lib"
+         "E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\lib\BulletDynamics_vs2010_debug.lib"
+         "E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Dependencies\bullet\lib\LinearMath_vs2010_debug.lib"
          GameDev.vcxproj -> E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\Debug\GameDev.exe
      1>Done Building Project "E:\Dropbox\Year 3\Game Dev\GameDevCoursework\GameDev\GameDev\GameDev.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.22
+Time Elapsed 00:00:01.77

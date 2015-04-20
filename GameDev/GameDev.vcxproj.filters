@@ -70,6 +70,12 @@
     <Filter Include="Header Files\Physics\Objects">
       <UniqueIdentifier>{d9ba2560-be9e-4896-a4b5-a89a851eaf10}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Levels">
+      <UniqueIdentifier>{7401f4ec-88e5-4a6e-bbff-d75e203d04fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Levels">
+      <UniqueIdentifier>{cb255905-e6ec-4be7-b21f-4222368fea44}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Quaternion.cpp">
@@ -198,6 +204,15 @@
     <ClCompile Include="PhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="PlatformPhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Game\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="PlatformGameObject.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cube.asciimesh" />
@@ -317,9 +332,6 @@
     <ClInclude Include="InputManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Dependencies\bullet\build\vs2010\PhysicsUtils.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="CoinGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
     </ClInclude>
@@ -358,6 +370,15 @@
     </ClInclude>
     <ClInclude Include="LevelLostState.h">
       <Filter>Header Files\Game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformPhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformGameObject.h">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files\Game\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

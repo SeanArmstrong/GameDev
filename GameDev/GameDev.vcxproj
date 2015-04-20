@@ -94,6 +94,7 @@
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IntroState.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelLostState.cpp" />
     <ClCompile Include="LevelWonState.cpp" />
     <ClCompile Include="main.cpp" />
@@ -105,6 +106,8 @@
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="PlaneGameObject.cpp" />
     <ClCompile Include="PlanePhysicsObject.cpp" />
+    <ClCompile Include="PlatformGameObject.cpp" />
+    <ClCompile Include="PlatformPhysicsObject.cpp" />
     <ClCompile Include="PlayerGameObject.cpp" />
     <ClCompile Include="PlayerPhysicsObject.cpp" />
     <ClCompile Include="Quaternion.cpp" />
@@ -126,7 +129,6 @@
     <None Include="cube.asciimesh" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Dependencies\bullet\build\vs2010\PhysicsUtils.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BulletDebugDraw.h" />
     <ClInclude Include="Camera.h" />
@@ -145,6 +147,7 @@
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IntroState.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="LevelLostState.h" />
     <ClInclude Include="LevelWonState.h" />
     <ClInclude Include="MainMenuState.h" />
@@ -155,6 +158,8 @@
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="PlaneGameObject.h" />
     <ClInclude Include="PlanePhysicsObject.h" />
+    <ClInclude Include="PlatformGameObject.h" />
+    <ClInclude Include="PlatformPhysicsObject.h" />
     <ClInclude Include="PlayerGameObject.h" />
     <ClInclude Include="PlayerPhysicsObject.h" />
     <ClInclude Include="Quaternion.h" />

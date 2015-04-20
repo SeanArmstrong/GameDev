@@ -1,3 +1,9 @@
+/**
+ * @file	CameraNew.h
+ *
+ * @brief	Unused.
+ */
+
 #pragma once
 #include "Vector3.h"
 

@@ -5,6 +5,15 @@
 #include <btBulletCollisionCommon.h>
 #include <btBulletDynamicsCommon.h>
 
+/**
+ * @class	Camera
+ *
+ * @brief	*****UNUSED*****
+ *
+ * @author	Sean Armstrong
+ * @date	08/03/2015
+ */
+
 class Camera
 {
 public:

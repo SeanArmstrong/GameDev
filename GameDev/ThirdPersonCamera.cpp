@@ -1,4 +1,4 @@
-#include "ThirdPersonCamera.h"
+/*#include "ThirdPersonCamera.h"
 
 ThirdPersonCamera::ThirdPersonCamera(float distance, float height, float mouseSensitivity){
 	this->distance = distance;
@@ -17,4 +17,4 @@ void ThirdPersonCamera::Update(const Vector3& target)
 	Matrix4 rot = Matrix4::Rotation(rotation, Vector3(0, 1, 0));
 
 	cameraPosition = offset * rot * pos;
-}
+}*/

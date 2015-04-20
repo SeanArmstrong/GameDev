@@ -4,6 +4,18 @@
 #include "MainMenuState.h"
 #pragma once
 
+/**
+ * @class	LevelLostState
+ *
+ * @brief	Occurs when the user wins a level
+ *			currently just displays a box that states 
+ * 			that you lost. 
+ * 			Press any key to continue
+ * 
+ * @author	Sean Armstrong
+ * @date	08/03/2015
+ */
+
 class LevelLostState : public State
 {
 public:

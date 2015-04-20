@@ -1,6 +1,15 @@
 #pragma once
 #include "PlayerGameObject.h"
 
+/**
+ * @class	Scene
+ *
+ * @brief	Unused abstract class for all scenes/levels
+ *
+ * @author	Sean Armstrong
+ * @date	08/03/2015
+ */
+
 class Scene {
 
 public:
