@@ -32,6 +32,8 @@ public:
 
 	virtual void Render(const RenderObject &o);
 
+	virtual void RenderSkybox(const RenderObject &o);
+
 	virtual void UpdateScene(float msec);
 
 	void AddRenderObject(RenderObject& r) {

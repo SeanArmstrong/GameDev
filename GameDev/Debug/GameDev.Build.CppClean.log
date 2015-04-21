@@ -42,10 +42,13 @@ e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\mainmenustate
 e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\matrix3.obj
 e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\audiomanager.obj
 e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\bulletdebugdraw.obj
+e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\platformgameobject.obj
+e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\platformphysicsobject.obj
+e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\level.obj
+e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\level1.obj
 e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\debug\gamedev.ilk
 e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\debug\gamedev.exe
 e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\debug\gamedev.pdb
-e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\gamedev.vcxprojresolveassemblyreference.cache
 e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\gamedev.tlog\cl.command.1.tlog
 e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\gamedev.tlog\cl.read.1.tlog
 e:\dropbox\year 3\game dev\gamedevcoursework\gamedev\gamedev\debug\gamedev.tlog\cl.write.1.tlog

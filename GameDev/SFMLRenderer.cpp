@@ -36,6 +36,19 @@ void SFMLRenderer::Render(const RenderObject &o) {
 	}
 }
 
+void SFMLRenderer::RenderSkybox(const RenderObject& o){
+	if (o.GetShader() && o.GetMesh()) {
+		GLuint program = o.GetShader()->GetShaderProgram();
+
+		glUseProgram(program);
+
+		UpdateShaderMatrices(program);
+		ApplyShaderLight(program);
+
+		o.DrawSkybox();
+	}
+}
+
 void SFMLRenderer::UpdateScene(float msec) {
 	for (vector<RenderObject*>::iterator i = renderObjects.begin(); i != renderObjects.end(); ++i) {
 		(*i)->Update(msec);

@@ -77,6 +77,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnotherCamera.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BulletDebugDraw.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -95,6 +96,8 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Level1.cpp" />
+    <ClCompile Include="Level2.cpp" />
     <ClCompile Include="LevelLostState.cpp" />
     <ClCompile Include="LevelWonState.cpp" />
     <ClCompile Include="main.cpp" />
@@ -116,6 +119,7 @@
     <ClCompile Include="SFMLRenderer.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="SphereGameObject.cpp" />
     <ClCompile Include="SpherePhysicsObject.cpp" />
     <ClCompile Include="State.cpp" />
@@ -129,6 +133,7 @@
     <None Include="cube.asciimesh" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnotherCamera.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BulletDebugDraw.h" />
     <ClInclude Include="Camera.h" />
@@ -148,6 +153,8 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IntroState.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="Level1.h" />
+    <ClInclude Include="Level2.h" />
     <ClInclude Include="LevelLostState.h" />
     <ClInclude Include="LevelWonState.h" />
     <ClInclude Include="MainMenuState.h" />
@@ -172,6 +179,7 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Skybox.h" />
     <ClInclude Include="SphereGameObject.h" />
     <ClInclude Include="SpherePhysicsObject.h" />
     <ClInclude Include="State.h" />

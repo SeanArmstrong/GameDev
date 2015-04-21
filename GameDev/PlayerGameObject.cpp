@@ -6,6 +6,7 @@ PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const floa
 	this->ro->SetModelMatrix(Matrix4::Translation(position) * Matrix4::Scale(Vector3(radius, radius, radius)));
 	this->po = new PlayerPhysicsObject(ro, position, mass, radius);
 	this->po->getBody()->setUserPointer((void*)this);
+	this->forward = Vector3(-1, 0, 0);
 }
 
 
@@ -49,16 +50,16 @@ void PlayerGameObject::update(){
 	Vector3 angularVelocity = po->getBody()->getAngularVelocity();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
-		po->getBody()->applyTorque(btVector3(-1, 0, 0) * movementSpeed);
+		po->getBody()->applyTorque(btVector3(forward.x, forward.y, forward.z) * movementSpeed);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-		po->getBody()->applyTorque(btVector3(0, 0, 1) * movementSpeed);
+		po->getBody()->applyTorque(btVector3(left.x, left.y, left.z) * movementSpeed);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-		po->getBody()->applyTorque(btVector3(1, 0, 0) * movementSpeed);
+		po->getBody()->applyTorque(btVector3(backward.x, backward.y, backward.z) * movementSpeed);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-		po->getBody()->applyTorque(btVector3(0, 0, -1) * movementSpeed);
+		po->getBody()->applyTorque(btVector3(right.x, right.y, right.z) * movementSpeed);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
 		if (!jumping){

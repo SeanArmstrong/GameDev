@@ -211,6 +211,16 @@ public:
 
 	GameObject* spawnCube();
 
+	void setDirectionVectors(const Vector3& forward, 
+							const Vector3& backward, 
+							const Vector3& left, 
+							const Vector3& right){
+		this->forward = forward;
+		this->backward = backward;
+		this->left = left;
+		this->right = right;
+	}
+
 
 private:
 
@@ -221,6 +231,10 @@ private:
 	int score = 0;
 
 	/* Movement variables */
+	Vector3 forward;
+	Vector3 backward;
+	Vector3 left;
+	Vector3 right;
 	float movementSpeed = 20.0f;
 	bool jumping;
 	const float JUMPRESETTIME = 1.0f;

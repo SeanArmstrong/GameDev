@@ -2,6 +2,7 @@
 #include "Matrix4.h"
 #include "Mesh.h"
 #include "Shader.h"
+#include "ResourceManager.h"
 
 
 class RenderObject	{
@@ -30,6 +31,8 @@ public:
 
 	virtual void Draw() const;
 
+	virtual void DrawSkybox() const;
+
 	//virtual void Update(float msec);
 
 	void	AddChild(RenderObject &child) {
@@ -48,6 +51,7 @@ public:
 protected:
 	Mesh*	mesh;
 	Shader*	shader;
+	unsigned int cubemap;
 
 	GLuint tex;
 

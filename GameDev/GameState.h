@@ -19,6 +19,8 @@
 #include "GameHUD.h"
 #include "LevelWonState.h"
 #include "LevelLostState.h"
+#include "Level1.h"
+#include "Level2.h"
 
 /**
  * @class	GameState
@@ -57,7 +59,6 @@ public:
 	 */
 
 	virtual void Update(CoreEngine& engine);
-	void GameLogic(CoreEngine& engine);
 
 	/**
 	 * @fn	virtual void GameState::Render();
@@ -93,23 +94,13 @@ public:
 	 * @date	08/03/2015
 	 */
 
-	void resetScene();
+	//void resetScene();
 
 protected:
 
 
 private:
 
-	/**
-	 * @fn	void GameState::loadScene();
-	 *
-	 * @brief	Loads the scene game objects
-	 *
-	 * @author	Sean Armstrong
-	 * @date	08/03/2015
-	 */
-
-	void loadScene();
 
 	/**
 	 * @fn	void GameState::removeDeletedObjects();
@@ -123,19 +114,8 @@ private:
 
 	void removeDeletedObjects();
 
-	World world;
-	Camera cam;
-	//SFMLRenderer HUD;
-	GameHUD hud;
+	Level* level;
 
-	std::vector<GameObject*> worldObjects;
-	std::vector<GameObject*> eventObjects;
-
-	PlayerGameObject* player;
-
-	bool mouseHeld;
 	bool endGame = false;
-
-	float timer;
 };
 
