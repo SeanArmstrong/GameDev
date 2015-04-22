@@ -5,42 +5,27 @@ MainMenuState::MainMenuState(sf::RenderWindow* w) : State(w){
 }
 
 MainMenuState::~MainMenuState(){
-	delete title;
-	delete play;
+
 }
 
 void MainMenuState::Initialise(){
-	ResourceManager::Instance().AddMeshFile("cube", 1, "cube.obj");
-	ResourceManager::Instance().AddShader("Basic", "basicvert.glsl", "textureFrag.glsl");
+	font.loadFromFile("assets/fonts/arial.ttf");
+	menu[0].setFont(font);
+	menu[0].setColor(sf::Color::Blue);
+	menu[0].setString("Level1");
+	menu[0].setPosition((float) window->getSize().x / 2.0f, (float) window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + 1) * 1);
 
-	title = new RenderObject(Mesh::GenerateQuad(),
-		ResourceManager::Instance().GetShader("Basic"),
-		ResourceManager::Instance().AddTexture("menu.png"));
+	menu[1].setFont(font);
+	menu[1].setColor(sf::Color::White);
+	menu[1].setString("Level2");
+	menu[1].setPosition((float)window->getSize().x / 2.0f, (float)window->getSize().y / (float) (MAX_NUMBER_OF_ITEMS + 1) * 2);
 
-	float percentX = (float)window->getSize().x * 0.01f;
-	float percentY = (float)window->getSize().y * 0.01f;
+	menu[2].setFont(font);
+	menu[2].setColor(sf::Color::White);
+	menu[2].setString("Exit");
+	menu[2].setPosition((float)window->getSize().x / 2.0f, (float)window->getSize().y / (float) (MAX_NUMBER_OF_ITEMS + 1) * 3);
 
-	title->SetModelMatrix(Matrix4::Translation(Vector3((float)window->getSize().x / 2, percentY * 30, 0)) * Matrix4::Scale(Vector3(100, 100, 0)));
-
-
-	play = new RenderObject(Mesh::GenerateQuad(),
-		ResourceManager::Instance().GetShader("Basic"),
-		ResourceManager::Instance().AddTexture("menu.png"));
-
-	play->SetModelMatrix(Matrix4::Translation(Vector3((float)window->getSize().x / 2, percentY * 60, 0)) * Matrix4::Scale(Vector3(100, 100, 0)));
-
-
-	renderer.SetProjectionMatrix(Matrix4::Orthographic(-1, 1, (float)window->getSize().x, 0, 0, (float)window->getSize().y));
-	Matrix4 view;
-	view.ToIdentity();
-	renderer.SetViewMatrix(view);
-	renderer.AddRenderObject(*title);
-	renderer.AddRenderObject(*play);
-
-	elementSelected = 0;
-	actions[0] = play;
-	actions[1] = settings;
-	actions[2] = quit;
+	selectedItemIndex = 0;
 }
 
 void MainMenuState::Pause(){
@@ -52,37 +37,51 @@ void MainMenuState::Resume(){
 }
 
 void MainMenuState::Update(CoreEngine& engine){
-	renderer.UpdateScene(GameTimer::getDelta());
+}
 
-	//std::cout << sf::Mouse::getPosition().x << ", " << sf::Mouse::getPosition().y << std::endl;
+void MainMenuState::MoveUp(){
+	menu[selectedItemIndex].setColor(sf::Color::White);
+	selectedItemIndex--;
+	if (selectedItemIndex < 0){
+		selectedItemIndex = 2;
+	}
+	menu[selectedItemIndex].setColor(sf::Color::Red);
+}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-		elementSelected--;
-		if (elementSelected < 0){
-			elementSelected = 2;
-		}
-	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-		elementSelected = (elementSelected + 1) % 3;
-	}
-	std::cout << elementSelected << std::endl;
-	switch (elementSelected){
-	case 0:
-		break;
-	case 1:
-		break;
-	case 2:
-		break;
-	}
+void MainMenuState::MoveDown(){
+	menu[selectedItemIndex].setColor(sf::Color::White);
+	selectedItemIndex = (selectedItemIndex + 1) % 3;
+	menu[selectedItemIndex].setColor(sf::Color::Red);
 }
 
 void MainMenuState::Render(){
-	renderer.RenderScene();
+	window->pushGLStates();
+	for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++){
+		window->draw(menu[i]);
+	}
+	window->popGLStates();
 }
 
 void MainMenuState::HandleEvents(CoreEngine& engine, sf::Event event){
-	if (event.key.code == sf::Keyboard::Return){
-		engine.ChangeState(new GameState(window));
+	if (event.type == sf::Event::KeyReleased){
+		if (event.key.code == sf::Keyboard::Up){
+			MoveUp();
+		}
+		else if (event.key.code == sf::Keyboard::Down){
+			MoveDown();
+		}
+		else if (event.key.code == sf::Keyboard::Return){
+			switch (selectedItemIndex){
+			case 0:
+				engine.ChangeState(new GameState(window, 1));
+				break;
+			case 1:
+				engine.ChangeState(new GameState(window, 2));
+				break;
+			case 2:
+				engine.Quit();
+				break;
+			}
+		}
 	}
-
 }

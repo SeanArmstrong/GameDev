@@ -1,7 +1,17 @@
 #include "GameState.h"
 
-GameState::GameState(sf::RenderWindow* w) : State(w){
-	level = new Level2(w, &renderer);
+GameState::GameState(sf::RenderWindow* w, const int l) : State(w){
+	switch (l){
+	case 1:
+		level = new Level1(w, &renderer);
+		break;
+	case 2:
+		level = new Level2(w, &renderer);
+		break;
+	default:
+		level = new Level1(w, &renderer);
+		break;
+	}
 }
 
 

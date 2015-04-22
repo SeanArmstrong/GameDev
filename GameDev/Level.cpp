@@ -3,16 +3,7 @@
 Level::Level(sf::RenderWindow* w, SFMLRenderer* r) : hud(w->getSize().x, w->getSize().y){
 	this->window = w;
 	this->renderer = r;
-
-	gravityDirections[0] = btVector3(0, -9.81f, 0);
-	gravityDirections[1] = btVector3(9.81f, 0, 0);
-	gravityDirections[2] = btVector3(0, 9.81f, 0);
-	gravityDirections[3] = btVector3(-9.81f, 0, 0);
-	upVectorDirections[0] = btVector3(0, 1, 0);
-	upVectorDirections[1] = btVector3(-1, 0, 0);
-	upVectorDirections[2] = btVector3(0, -1, 0);
-	upVectorDirections[3] = btVector3(1, 0, 0);
-	gravityTracker = 0;
+	setUpGravity();
 	//sb.Render();
 }
 
@@ -78,7 +69,7 @@ void Level::GeneralGameLogic(){
 }
 
 void Level::changeGravity(){
-	if (timeSinceGravityChanged > 1.0f){
+	if (timeSinceGravityChanged > GRAVITY_RESET_TIME){
 		timeSinceGravityChanged = 0;
 		gravityTracker = (gravityTracker + 1) % 4;
 		cam.setUpVector(upVectorDirections[gravityTracker]);
@@ -121,4 +112,16 @@ void Level::addEventObject(GameObject* g){
 void Level::addToWorlds(GameObject* g){
 	g->addRenderObjectToWorld(*renderer);
 	g->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+}
+
+void Level::setUpGravity(){
+	gravityDirections[0] = btVector3(0, -9.81f, 0);
+	gravityDirections[1] = btVector3(9.81f, 0, 0);
+	gravityDirections[2] = btVector3(0, 9.81f, 0);
+	gravityDirections[3] = btVector3(-9.81f, 0, 0);
+	upVectorDirections[0] = btVector3(0, 1, 0);
+	upVectorDirections[1] = btVector3(-1, 0, 0);
+	upVectorDirections[2] = btVector3(0, -1, 0);
+	upVectorDirections[3] = btVector3(1, 0, 0);
+	gravityTracker = 0;
 }

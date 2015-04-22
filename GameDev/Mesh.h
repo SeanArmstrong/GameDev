@@ -58,6 +58,16 @@ public:
 
 	GLuint	type;	//Primitive type for this mesh (GL_TRIANGLES...etc)
 
+	Vector3* getVertices() const {
+		return vertices;
+	}
+
+	int getNumberOfVertices() const {
+		return numVertices;
+	}
+
+
+
 protected:
 	//Buffers all VBO data into graphics memory. Required before drawing!
 	void	BufferData();

@@ -1,6 +1,4 @@
 #include "Level2.h"
-#include "LevelLostState.h"
-#include "LevelWonState.h"
 
 
 Level2::Level2(sf::RenderWindow* w, SFMLRenderer* r) : Level(w, r) {
@@ -55,6 +53,7 @@ void Level2::LoadResources(){
 	ResourceManager::Instance().AddSound("CoinCollection.wav");
 	ResourceManager::Instance().AddSound("LostGame.wav");
 	ResourceManager::Instance().AddSound("Clapping.wav");
+	ResourceManager::Instance().AddMeshFile("funkyshape", 1, "funkyshape.obj");
 }
 
 void Level2::LoadMap(){
@@ -73,6 +72,12 @@ void Level2::LoadMap(){
 
 	GameObject* platform4 = new PlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 20, 0), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform4);
+
+	//GameObject* special1 = new ConvexGameObject(ResourceManager::Instance().GetShader("Basic"), "funkyshape", Vector3(0, 2, 0), 0, 2, ResourceManager::Instance().AddTexture("brick.jpg"));
+	//addWorldObject(special1);
+
+	//GameObject* special2 = new ConcaveGameObject(ResourceManager::Instance().GetShader("Basic"), "funkyshape", Vector3(0, 2, 3), 0, 2, ResourceManager::Instance().AddTexture("brick.jpg"));
+	//addWorldObject(special2);
 }
 
 void Level2::LoadObjects(){

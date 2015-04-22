@@ -37,7 +37,7 @@
 class GameState : public State
 {
 public:
-	GameState(sf::RenderWindow* w);
+	GameState(sf::RenderWindow* w, const int level);
 	virtual  ~GameState();
 
 	virtual void Initialise();

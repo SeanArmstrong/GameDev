@@ -3,7 +3,6 @@
 
 SpherePhysicsObject::SpherePhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const float radius) : PhysicsObject(renderObject, pos, mass)
 {
-	std::cout << "HERE " << std::endl;
 	this->radius = radius;
 	shape = new btSphereShape(radius);
 

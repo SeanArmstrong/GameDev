@@ -9,6 +9,9 @@
 #include "CameraNew.h"
 #include "GameHUD.h"
 #include "Skybox.h"
+#include "PlatformGameObject.h"
+#include "ConvexGameObject.h"
+#include "ConcaveGameObject.h"
 
 class Level {
 public:
@@ -70,12 +73,13 @@ protected:
 	btVector3 gravityDirections[4];
 	btVector3 upVectorDirections[4];
 	int gravityTracker;
-	const float GRAVITY_RESET_TIME = 0.2f;
+	const float GRAVITY_RESET_TIME = 1.0f;
 	float timeSinceGravityChanged;
 
 
 private:
 	enum LevelState { PLAYING, WON, LOST };
 	LevelState levelState = PLAYING;
+	void setUpGravity();
 };
 

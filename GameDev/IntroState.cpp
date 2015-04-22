@@ -43,7 +43,7 @@ void IntroState::Render(){
 }
 
 void IntroState::HandleEvents(CoreEngine& engine, sf::Event event){
-	if (event.type == sf::Event::KeyPressed){
+	if (event.type == sf::Event::KeyPressed && event.key.code != sf::Keyboard::Return){
 		engine.ChangeState(new MainMenuState(window));
 	}
 

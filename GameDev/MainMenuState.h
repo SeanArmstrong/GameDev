@@ -23,6 +23,8 @@
  * @date	08/03/2015
  */
 
+#define MAX_NUMBER_OF_ITEMS 3
+
 class MainMenuState : public State
 {
 public:
@@ -122,18 +124,14 @@ public:
 
 	virtual void Render();
 
+	void MoveUp();
+	void MoveDown();
+
 protected:
 
 private:
-
-	RenderObject* title;
-	RenderObject* play;
-	RenderObject* quit;
-	RenderObject* settings;
-
-	RenderObject* actions[3];
-	RenderObject* selected;
-	int elementSelected;
-	bool changed = false;
+	int selectedItemIndex;
+	sf::Font font;
+	sf::Text menu[MAX_NUMBER_OF_ITEMS];
 
 };

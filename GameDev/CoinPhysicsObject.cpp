@@ -23,5 +23,4 @@ void CoinPhysicsObject::updateRenderObject(){
 
 	ro->SetModelMatrix(trans);
 	ro->SetModelMatrix(ro->GetModelMatrix() * rotation * Matrix4::Scale(Vector3(radius, radius, radius)));
-
 }

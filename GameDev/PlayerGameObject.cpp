@@ -6,7 +6,6 @@ PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const floa
 	this->ro->SetModelMatrix(Matrix4::Translation(position) * Matrix4::Scale(Vector3(radius, radius, radius)));
 	this->po = new PlayerPhysicsObject(ro, position, mass, radius);
 	this->po->getBody()->setUserPointer((void*)this);
-	this->forward = Vector3(-1, 0, 0);
 }
 
 

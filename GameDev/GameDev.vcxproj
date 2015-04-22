@@ -84,6 +84,8 @@
     <ClCompile Include="CoinGameObject.cpp" />
     <ClCompile Include="CoinPhysicsObject.cpp" />
     <ClCompile Include="CollisionResponse.cpp" />
+    <ClCompile Include="ConcaveGameObject.cpp" />
+    <ClCompile Include="ConcavePhysicsObject.cpp" />
     <ClCompile Include="CoreEngine.cpp" />
     <ClCompile Include="CubeGameObject.cpp" />
     <ClCompile Include="CubePhysicsObject.cpp" />
@@ -119,6 +121,8 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="ConvexGameObject.cpp" />
+    <ClCompile Include="ConvexPhysicsObject.cpp" />
     <ClCompile Include="SphereGameObject.cpp" />
     <ClCompile Include="SpherePhysicsObject.cpp" />
     <ClCompile Include="State.cpp" />
@@ -139,6 +143,8 @@
     <ClInclude Include="CoinPhysicsObject.h" />
     <ClInclude Include="CollisionResponse.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="ConcaveGameObject.h" />
+    <ClInclude Include="ConcavePhysicsObject.h" />
     <ClInclude Include="CoreEngine.h" />
     <ClInclude Include="CubeGameObject.h" />
     <ClInclude Include="CubePhysicsObject.h" />
@@ -177,6 +183,8 @@
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Skybox.h" />
+    <ClInclude Include="ConvexGameObject.h" />
+    <ClInclude Include="ConvexPhysicsObject.h" />
     <ClInclude Include="SphereGameObject.h" />
     <ClInclude Include="SpherePhysicsObject.h" />
     <ClInclude Include="State.h" />
