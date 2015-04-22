@@ -77,7 +77,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnotherCamera.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BulletDebugDraw.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -124,7 +123,6 @@
     <ClCompile Include="SpherePhysicsObject.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="TextureManager.cpp" />
-    <ClCompile Include="ThirdPersonCamera.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -133,7 +131,6 @@
     <None Include="cube.asciimesh" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnotherCamera.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BulletDebugDraw.h" />
     <ClInclude Include="Camera.h" />
@@ -184,7 +181,6 @@
     <ClInclude Include="SpherePhysicsObject.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="ThirdPersonCamera.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />

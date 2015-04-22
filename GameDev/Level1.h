@@ -1,7 +1,5 @@
 #pragma once
 #include "Level.h"
-#include "LevelLostState.h"
-#include "LevelWonState.h"
 
 class Level1 : public Level {
 public:
@@ -14,7 +12,7 @@ public:
 	virtual ~Level1();
 	virtual void Initialise();
 
-	virtual void GameLogic(CoreEngine& engine);
+	virtual void GameLogic();
 
 	virtual void SetView();
 	virtual void LoadResources();

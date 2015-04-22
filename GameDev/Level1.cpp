@@ -10,6 +10,9 @@ Level1::~Level1(){
 }
 
 void Level1::Initialise(){
+	gravityOn = false;
+	levelScore = 3;
+
 	SetView();
 	LoadResources();
 	LoadMap();
@@ -19,7 +22,7 @@ void Level1::Initialise(){
 	timer = 30.0f;
 }
 
-void Level1::GameLogic(CoreEngine& engine){
+void Level1::GameLogic(){
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
 		GameObject* cube = player->spawnCube();
 		if (cube){
@@ -27,15 +30,6 @@ void Level1::GameLogic(CoreEngine& engine){
 			cube->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 			worldObjects.push_back(cube);
 		}
-	}
-
-	if (!player->isAlive() || timer <= 0.0f){
-		ResourceManager::Instance().AudioPlaySound("LostGame.wav");
-		engine.ChangeState(new LevelLostState(window));
-	}
-	if (player->getScore() == 3){ // this(scene).score){
-		ResourceManager::Instance().AudioPlaySound("Clapping.wav");
-		engine.ChangeState(new LevelWonState(window));
 	}
 }
 
@@ -68,46 +62,31 @@ void Level1::LoadMap(){
 	eventObjects.push_back(invisibleGround);
 
 	GameObject* cube1 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, 0), 0, 50, ResourceManager::Instance().AddTexture("terrain.jpg"));
-	cube1->addRenderObjectToWorld(*renderer);
-	cube1->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	worldObjects.push_back(cube1);
+	addWorldObject(cube1);
 
 	GameObject* cube2 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -120), 0, 50, ResourceManager::Instance().AddTexture("terrain.jpg"));
-	cube2->addRenderObjectToWorld(*renderer);
-	cube2->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	worldObjects.push_back(cube2);
+	addWorldObject(cube2);
 
 	GameObject* cube3 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(165, 0, -65), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg"));
-	cube3->addRenderObjectToWorld(*renderer);
-	cube3->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	worldObjects.push_back(cube3);
+	addWorldObject(cube3);
 
 	GameObject* cube4 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-165, 0, -65), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg"));
-	cube4->addRenderObjectToWorld(*renderer);
-	cube4->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	worldObjects.push_back(cube4);
+	addWorldObject(cube4);
 
 	GameObject* cube5 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -295), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg"));
-	cube5->addRenderObjectToWorld(*renderer);
-	cube5->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	worldObjects.push_back(cube5);
+	addWorldObject(cube5);
+
 }
 
 void Level1::LoadObjects(){
-	GameObject* coin = new CoinGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 52, -120), 0, 1, ResourceManager::Instance().AddTexture("coin.jpg"));
-	coin->addRenderObjectToWorld(*renderer);
-	coin->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(coin);
+	GameObject* coin1 = new CoinGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 52, -120), 0, 1, ResourceManager::Instance().AddTexture("coin.jpg"));
+	addEventObject(coin1);
 
 	GameObject* coin2 = new CoinGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(30, 52, -120), 0, 1, ResourceManager::Instance().AddTexture("coin.jpg"));
-	coin2->addRenderObjectToWorld(*renderer);
-	coin2->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(coin2);
+	addEventObject(coin2);
 
 	GameObject* coin3 = new CoinGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 52, -55), 0, 1, ResourceManager::Instance().AddTexture("coin.jpg"));
-	coin3->addRenderObjectToWorld(*renderer);
-	coin3->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(coin3);
+	addEventObject(coin3);
 }
 
 void Level1::LoadPlayer(){

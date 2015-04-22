@@ -64,7 +64,7 @@ void PlayerGameObject::update(){
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
 		if (!jumping){
 			std::cout << "Jump";
-			po->getBody()->applyImpulse(btVector3(0, 15, 0), btVector3(0,0,0));
+			po->getBody()->applyImpulse(btVector3(jumpDirection.x * 15, jumpDirection.y * 15, 0), btVector3(0, 0, 0));
 			jumping = true;
 		}
 	}
@@ -101,7 +101,17 @@ void PlayerGameObject::handleCollision(CoinGameObject& coin){
 GameObject* PlayerGameObject::spawnCube(){
 	if (timeSinceShot > SHOOT_DELAY){
 		timeSinceShot = 0;
-		return new CubeGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(getPosition().x, getPosition().y, getPosition().z - 5), 0, 1, ResourceManager::Instance().AddTexture("ground.jpg"));
+		std::cout << forward << std::endl;
+		return new CubeGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(getPosition().x, getPosition().y, getPosition().z) + (right * 5), 20, 1, ResourceManager::Instance().AddTexture("ground.jpg"));
 	}
 	return NULL;
+}
+
+void PlayerGameObject::setDirectionVectors(const Vector3& forward, const Vector3& backward,
+											const Vector3& left, const Vector3& right){
+	this->forward = forward;
+	this->backward = backward;
+	this->left = left;
+	this->right = right;
+	this->jumpDirection = Vector3::Cross(right, forward).unitVector();
 }

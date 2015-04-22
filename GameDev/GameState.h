@@ -15,7 +15,6 @@
 #include "World.h"
 #include "MainMenuState.h"
 #include "CameraNew.h"
-#include "ThirdPersonCamera.h"
 #include "GameHUD.h"
 #include "LevelWonState.h"
 #include "LevelLostState.h"
@@ -95,6 +94,9 @@ public:
 	 */
 
 	//void resetScene();
+
+	void LevelLost(CoreEngine& engine);
+	void LevelWon(CoreEngine& engine);
 
 protected:
 

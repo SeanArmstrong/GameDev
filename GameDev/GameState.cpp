@@ -1,7 +1,7 @@
 #include "GameState.h"
 
 GameState::GameState(sf::RenderWindow* w) : State(w){
-	level = new Level1(w, &renderer);
+	level = new Level2(w, &renderer);
 }
 
 
@@ -20,7 +20,13 @@ void GameState::Resume(){}
 
 
 void GameState::Update(CoreEngine& engine){
-	level->Update(engine);
+	level->Update();
+	if (level->isGameLost()){
+		LevelLost(engine);
+	}
+	else if (level->isGameWon()){
+		LevelWon(engine);
+	}
 }
 
 void GameState::Render(){
@@ -33,12 +39,10 @@ void GameState::HandleEvents(CoreEngine& engine, sf::Event event){
 		engine.ChangeState(new MainMenuState(window));
 	}
 }
+void GameState::LevelLost(CoreEngine& engine){
+	engine.ChangeState(new LevelLostState(window));
+}
 
-/*void GameState::resetScene(){
-	delete player;
-	for (unsigned int i = 0; i < worldObjects.size(); ++i){
-		delete worldObjects[i];
-	}
-
-	loadScene();
-}*/
+void GameState::LevelWon(CoreEngine& engine){
+	engine.ChangeState(new LevelWonState(window));
+}

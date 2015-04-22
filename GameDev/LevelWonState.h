@@ -2,7 +2,6 @@
 #include "State.h"
 #include "ResourceManager.h"
 #include "MainMenuState.h"
-#pragma once
 
 /**
  * @class	LevelWonState

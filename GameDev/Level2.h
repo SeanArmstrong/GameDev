@@ -8,13 +8,17 @@ public:
 	virtual ~Level2();
 
 	virtual void Initialise();
+	virtual void GameLogic();
 
-	virtual void GameLogic(CoreEngine& engine);
+protected: 
 
 	virtual void SetView();
 	virtual void LoadResources();
 	virtual void LoadMap();
 	virtual void LoadObjects();
 	virtual void LoadPlayer();
+
+private:
+	
 };
 

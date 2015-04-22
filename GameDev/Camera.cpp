@@ -2,6 +2,7 @@
 
 Camera::Camera(){
 	rotation = 0;
+	up = Vector3(0, 1, 0);
 }
 
 
@@ -20,8 +21,9 @@ Matrix4 Camera::setPlayerCam(const PhysicsObject* player){
 	}
 
 	Matrix4 pos = Matrix4::Translation(bodyPosition);
-	Matrix4 offset = Matrix4::Translation(Vector3(0, 10, 30));
-	Matrix4 rot = Matrix4::Rotation(rotation, Vector3(0, 1, 0));
+	Matrix4 offset = Matrix4::Translation(Vector3(up.x * 10, up.y * 10, 30));
+
+	Matrix4 rot = Matrix4::Rotation(rotation, up);
 
 	Matrix4 cameraPosition = pos;
 	cameraPosition = cameraPosition * rot;
@@ -33,16 +35,13 @@ Matrix4 Camera::setPlayerCam(const PhysicsObject* player){
 
 	// Left
 	playerLeftVector = (cameraPosition.GetPositionVector() - lookingAt).unitVector();
-
 	// Right
 	playerRightVector = (lookingAt - cameraPosition.GetPositionVector()).unitVector();
-
 	// Forward
-	playerForwardVector = Vector3::Cross(playerLeftVector, Vector3(0, 1, 0));
-
+	playerForwardVector = Vector3::Cross(playerLeftVector, up);
 	// Backward
-	playerBackwardVector = Vector3::Cross(playerLeftVector, Vector3(0, -1, 0));
+	playerBackwardVector = Vector3::Cross(playerRightVector, up);
 
-
-	return Matrix4::BuildViewMatrix(cameraPosition.GetPositionVector(), lookingAt);
+	
+	return Matrix4::BuildViewMatrix(cameraPosition.GetPositionVector(), lookingAt, up);
 }

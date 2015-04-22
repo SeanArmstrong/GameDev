@@ -13,36 +13,24 @@ Level2::~Level2()
 }
 
 void Level2::Initialise(){
+	gravityOn = true;
+	levelScore = 3;
+
 	SetView();
 	LoadResources();
 	LoadMap();
 	LoadObjects();
 	LoadPlayer();
 
-	timer = 30.0f;
+	timer = 60.0f;
 }
 
-void Level2::GameLogic(CoreEngine& engine){
+void Level2::GameLogic(){
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
 		GameObject* cube = player->spawnCube();
 		if (cube){
-			cube->addRenderObjectToWorld(*renderer);
-			cube->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-			worldObjects.push_back(cube);
+			addWorldObject(cube);
 		}
-	}
-
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
-	//	world.getPhysicsWorld()->setGravity(btVector3(9.81f, 0, 0));
-	//}
-
-	if (!player->isAlive() || timer <= 0.0f){
-		ResourceManager::Instance().AudioPlaySound("LostGame.wav");
-		engine.ChangeState(new LevelLostState(window));
-	}
-	if (player->getScore() == 3){ // this(scene).score){
-		ResourceManager::Instance().AudioPlaySound("Clapping.wav");
-		engine.ChangeState(new LevelWonState(window));
 	}
 }
 
@@ -74,18 +62,22 @@ void Level2::LoadMap(){
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(invisibleGround);
 
+	GameObject* platform1 = new PlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, 0), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("terrain.jpg"));
+	addWorldObject(platform1);
+
+	GameObject* platform2 = new PlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 10, 0), 0, 0.2f, 10, 10, ResourceManager::Instance().AddTexture("brick.jpg"));
+	addWorldObject(platform2);
+
+	GameObject* platform3 = new PlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 10, 0), 0, 0.2f, 10, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	addWorldObject(platform3);
+
+	GameObject* platform4 = new PlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 20, 0), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("smiley.png"));
+	addWorldObject(platform4);
 }
 
 void Level2::LoadObjects(){
-	GameObject* platform1 = new PlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, 0), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("terrain.jpg"));
-	platform1->addRenderObjectToWorld(*renderer);
-	platform1->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	worldObjects.push_back(platform1);
 
-	GameObject* platform2 = new PlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 10, 0), 0, 0.2f, 10, 10, ResourceManager::Instance().AddTexture("terrain.jpg"));
-	platform2->addRenderObjectToWorld(*renderer);
-	platform2->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	worldObjects.push_back(platform2);
+
 }
 
 void Level2::LoadPlayer(){

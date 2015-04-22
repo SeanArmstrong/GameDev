@@ -25,7 +25,9 @@ public:
 	inline Vector3 getPlayerBackwardVector()	const { return playerBackwardVector; }
 	inline Vector3 getPlayerLeftVector()		const { return playerLeftVector; }
 	inline Vector3 getPlayerRightVector()		const { return playerRightVector; }
+	inline Vector3 getUpVector()				const { return up; }
 
+	inline void setUpVector(const Vector3& up) { this->up = up; }
 	Matrix4 setPlayerCam(const PhysicsObject* player);
 
 private:
@@ -34,7 +36,8 @@ private:
 	Vector3 playerBackwardVector;
 	Vector3 playerLeftVector;
 	Vector3 playerRightVector; 
-
+	Vector3 up;
+	
 	float rotation;
 };
 

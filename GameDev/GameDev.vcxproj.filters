@@ -180,9 +180,6 @@
     <ClCompile Include="PlanePhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="ThirdPersonCamera.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="PlaneGameObject.cpp">
       <Filter>Source Files\Game\Objects</Filter>
     </ClCompile>
@@ -220,10 +217,7 @@
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Level2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AnotherCamera.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Levels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -362,9 +356,6 @@
     <ClInclude Include="PlaneGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="ThirdPersonCamera.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
@@ -399,10 +390,7 @@
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Level2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AnotherCamera.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

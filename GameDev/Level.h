@@ -18,9 +18,12 @@ public:
 	virtual void Initialise() = 0;
 	void Pause();
 	void Resume();
-	virtual void Update(CoreEngine& engine);
-	virtual void GameLogic(CoreEngine& engine) = 0;
+	virtual void Update();
 	virtual void Render();
+
+	virtual void GameLogic() = 0;
+	void GeneralGameLogic();
+	void changeGravity();
 
 	virtual void SetView() = 0;
 	virtual void LoadResources() = 0;
@@ -28,9 +31,19 @@ public:
 	virtual void LoadObjects() = 0;
 	virtual void LoadPlayer() = 0;
 
+	inline bool Level::isGameWon(){
+		return (levelState == WON) ? true : false;
+	}
+	inline bool Level::isGameLost(){
+		return (levelState == LOST) ? true : false;
+	}
+
 protected:
 
 	void removeDeletedObjects();
+	void addWorldObject(GameObject* g);
+	void addEventObject(GameObject* g);
+	void addToWorlds(GameObject* g);
 
 	sf::RenderWindow* window;
 
@@ -50,5 +63,19 @@ protected:
 
 	float timer;
 
+	int levelScore;
+
+	// Gravity
+	bool gravityOn;
+	btVector3 gravityDirections[4];
+	btVector3 upVectorDirections[4];
+	int gravityTracker;
+	const float GRAVITY_RESET_TIME = 0.2f;
+	float timeSinceGravityChanged;
+
+
+private:
+	enum LevelState { PLAYING, WON, LOST };
+	LevelState levelState = PLAYING;
 };
 
