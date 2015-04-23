@@ -225,11 +225,20 @@
     <ClCompile Include="ConvexGameObject.cpp">
       <Filter>Source Files\Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="ConcavePhysicsObject.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="StaticConcavePhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
     </ClCompile>
     <ClCompile Include="ConcaveGameObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolBallGameObject.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolBallPhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolLevel.cpp">
+      <Filter>Source Files\Game\Levels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -410,11 +419,20 @@
     <ClInclude Include="ConvexGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="ConcavePhysicsObject.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="StaticConcavePhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
     </ClInclude>
     <ClInclude Include="ConcaveGameObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolBallGameObject.h">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolLevel.h">
+      <Filter>Header Files\Game\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolBallPhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -30,10 +30,14 @@ void PlaneGameObject::handleCollision(PlayerGameObject& player){
 	CollisionResponse::handleCollision(player, *this);
 }
 void PlaneGameObject::handleCollision(PlaneGameObject& plane){
-	// Plane Plane collision 
+	std::cout << "plane - param plane" << std::endl;
 }
 
 void PlaneGameObject::handleCollision(CoinGameObject& coin){
-	// plane coin collision
+	std::cout << "plane - param coin" << std::endl;
+}
+
+void PlaneGameObject::handleCollision(PoolBallGameObject& poolball){
+	CollisionResponse::handleCollision(*this, poolball);
 }
 

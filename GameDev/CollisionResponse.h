@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "PlayerGameObject.h"
 #include "CoinGameObject.h"
+#include "PoolBallGameObject.h"
 
 /**
  * @class	CollisionResponse
@@ -18,6 +19,8 @@
 class CollisionResponse
 {
 public:
+
+	static void setPlayer(PlayerGameObject* p);
 
 	/**
 	 * @fn	static void CollisionResponse::handleCollision(PlayerGameObject& player, PlaneGameObject& plane);
@@ -74,5 +77,12 @@ public:
 	 */
 
 	static void handleCollision(CoinGameObject& coin, PlayerGameObject& player);
+	static void handleCollision(PoolBallGameObject& b1, PoolBallGameObject& b2);
+	static void handleCollision(PlaneGameObject& plane, PoolBallGameObject& ball);
+	static void handleCollision(PoolBallGameObject& ball, PlaneGameObject& plane);
+
+private:
+
+	static PlayerGameObject* player;
 };
 

@@ -8,6 +8,9 @@ GameState::GameState(sf::RenderWindow* w, const int l) : State(w){
 	case 2:
 		level = new Level2(w, &renderer);
 		break;
+	case 3: 
+		level = new PoolLevel(w, &renderer);
+		break;
 	default:
 		level = new Level1(w, &renderer);
 		break;

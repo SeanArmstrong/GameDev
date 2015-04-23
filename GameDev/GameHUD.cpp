@@ -10,7 +10,7 @@ GameHUD::GameHUD(const int width, const int height){
 
 	timerText.setFont(font);
 	timerText.setCharacterSize(20);
-	timerText.setPosition(sf::Vector2f((float)width - 40.0f, 5.0f));
+	timerText.setPosition(sf::Vector2f((float)width - 60.0f, 5.0f));
 	timerText.setColor(sf::Color::White);
 	timerText.setStyle(sf::Text::Regular);
 }

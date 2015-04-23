@@ -35,7 +35,7 @@ public:
 	 * @param	t		 	The Texture given to the render object
 	 */
 
-	PlayerGameObject(Shader*s, const Vector3& position, const float mass, const float radius, GLuint t);
+	PlayerGameObject(Shader*s, const Vector3& position, const float mass, const float radius, GLuint t, const float movementSpeed = 20.0f);
 	~PlayerGameObject();
 
 	/**
@@ -211,6 +211,8 @@ public:
 
 	GameObject* spawnCube();
 
+	virtual void handleCollision(PoolBallGameObject& poolball);
+
 	void setDirectionVectors(const Vector3& forward,
 		const Vector3& backward,
 		const Vector3& left,
@@ -231,7 +233,7 @@ private:
 	Vector3 left;
 	Vector3 right;
 	Vector3 jumpDirection;
-	float movementSpeed = 20.0f;
+	float movementSpeed;
 	bool jumping;
 	const float JUMPRESETTIME = 1.0f;
 	float timeSinceJumped;

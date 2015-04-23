@@ -11,7 +11,7 @@ MainMenuState::~MainMenuState(){
 void MainMenuState::Initialise(){
 	font.loadFromFile("assets/fonts/arial.ttf");
 	menu[0].setFont(font);
-	menu[0].setColor(sf::Color::Blue);
+	menu[0].setColor(sf::Color::Red);
 	menu[0].setString("Level1");
 	menu[0].setPosition((float) window->getSize().x / 2.0f, (float) window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + 1) * 1);
 
@@ -22,8 +22,13 @@ void MainMenuState::Initialise(){
 
 	menu[2].setFont(font);
 	menu[2].setColor(sf::Color::White);
-	menu[2].setString("Exit");
-	menu[2].setPosition((float)window->getSize().x / 2.0f, (float)window->getSize().y / (float) (MAX_NUMBER_OF_ITEMS + 1) * 3);
+	menu[2].setString("Pool Level");
+	menu[2].setPosition((float)window->getSize().x / 2.0f, (float)window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + 1) * 3);
+
+	menu[3].setFont(font);
+	menu[3].setColor(sf::Color::White);
+	menu[3].setString("Exit");
+	menu[3].setPosition((float)window->getSize().x / 2.0f, (float)window->getSize().y / (float) (MAX_NUMBER_OF_ITEMS + 1) * 4);
 
 	selectedItemIndex = 0;
 }
@@ -43,14 +48,14 @@ void MainMenuState::MoveUp(){
 	menu[selectedItemIndex].setColor(sf::Color::White);
 	selectedItemIndex--;
 	if (selectedItemIndex < 0){
-		selectedItemIndex = 2;
+		selectedItemIndex = MAX_NUMBER_OF_ITEMS - 1;
 	}
 	menu[selectedItemIndex].setColor(sf::Color::Red);
 }
 
 void MainMenuState::MoveDown(){
 	menu[selectedItemIndex].setColor(sf::Color::White);
-	selectedItemIndex = (selectedItemIndex + 1) % 3;
+	selectedItemIndex = (selectedItemIndex + 1) % MAX_NUMBER_OF_ITEMS;
 	menu[selectedItemIndex].setColor(sf::Color::Red);
 }
 
@@ -79,6 +84,9 @@ void MainMenuState::HandleEvents(CoreEngine& engine, sf::Event event){
 				engine.ChangeState(new GameState(window, 2));
 				break;
 			case 2:
+				engine.ChangeState(new GameState(window, 3));
+				break;
+			case 3:
 				engine.Quit();
 				break;
 			}

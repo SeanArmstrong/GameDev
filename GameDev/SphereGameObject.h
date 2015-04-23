@@ -84,5 +84,6 @@ public:
 	 */
 
 	virtual void handleCollision(CoinGameObject& coin);
+	virtual void handleCollision(PoolBallGameObject& poolball);
 };
 

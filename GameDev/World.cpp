@@ -15,6 +15,7 @@ World::World(){
 	//physicsWorld->setDebugDrawer(drawer);
 }
 
+// can remove player
 void World::callbackChecker(PlayerGameObject* player, std::vector<GameObject*> eventObjects){
 	int numManifolds = physicsWorld->getDispatcher()->getNumManifolds();
 	for (int i = 0; i < numManifolds; i++){
@@ -32,30 +33,28 @@ void World::callbackChecker(PlayerGameObject* player, std::vector<GameObject*> e
 				const btVector3& ptB = pt.getPositionWorldOnB();
 				const btVector3& normalOnB = pt.m_normalWorldOnB;
 
-				if (obA->getUserPointer() == player || obB->getUserPointer() == player){
-					// Player is involved
-					if (obA->getUserPointer() == player){
-						//obA is player
-						for (std::vector<GameObject*>::iterator i = eventObjects.begin(); i != eventObjects.end(); ++i) {
-							if (obB->getUserPointer() == (*i)){
-								player->handleCollision((**i));
-							}
-						}
+				bool aIsEventObject = false;
+				bool bIsEventObject = false;
+
+				for (std::vector<GameObject*>::iterator i = eventObjects.begin(); i != eventObjects.end(); ++i) {
+					if (obA->getUserPointer() == (*i)){
+						aIsEventObject = true;
 					}
-					else{
-						//obB is player
-						for (std::vector<GameObject*>::const_iterator i = eventObjects.begin(); i != eventObjects.end(); ++i) {
-							if (obA->getUserPointer() == (*i)){
-								player->handleCollision((**i));
-							}
-						}
+					if (obB->getUserPointer() == (*i)){
+						bIsEventObject = true;
 					}
+				}
+
+				if (aIsEventObject && bIsEventObject){
+					// This will break if event object cannot be handled
+					GameObject* a = static_cast<GameObject*>(obA->getUserPointer());
+					GameObject* b = static_cast<GameObject*>(obB->getUserPointer());
+					a->handleCollision(*b);
 				}
 			}
 		}
 	}
 }
-
 
 World::~World()
 {

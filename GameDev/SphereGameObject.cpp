@@ -16,13 +16,22 @@ SphereGameObject::~SphereGameObject()
 
 
 void SphereGameObject::handleCollision(GameObject& obj){
+	std::cout << "Sphere - param obj" << std::endl;
 }
 
+
 void SphereGameObject::handleCollision(PlayerGameObject& player){
+	std::cout << "Sphere - param player" << std::endl;
 }
 
 void SphereGameObject::handleCollision(PlaneGameObject& plane){
+	std::cout << "Sphere - param plane" << std::endl;
 }
 
 void SphereGameObject::handleCollision(CoinGameObject& coin){
+	std::cout << "Sphere - param coin" << std::endl;
+}
+
+void SphereGameObject::handleCollision(PoolBallGameObject& poolball){
+	std::cout << "Sphere - param poolball" << std::endl;
 }

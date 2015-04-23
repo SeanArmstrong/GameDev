@@ -20,6 +20,7 @@
 #include "LevelLostState.h"
 #include "Level1.h"
 #include "Level2.h"
+#include "PoolLevel.h"
 
 /**
  * @class	GameState

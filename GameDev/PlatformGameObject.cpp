@@ -27,3 +27,7 @@ void PlatformGameObject::handleCollision(PlaneGameObject& plane){
 void PlatformGameObject::handleCollision(CoinGameObject& coin){
 	std::cout << "Platform - param coin" << std::endl;
 }
+
+void PlatformGameObject::handleCollision(PoolBallGameObject& poolball){
+	std::cout << "platform - param poolball" << std::endl;
+}

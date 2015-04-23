@@ -12,5 +12,6 @@ public:
 	virtual void handleCollision(PlayerGameObject& player);
 	virtual void handleCollision(PlaneGameObject& plane);
 	virtual void handleCollision(CoinGameObject& coin);
+	virtual void handleCollision(PoolBallGameObject& poolball);
 };
 

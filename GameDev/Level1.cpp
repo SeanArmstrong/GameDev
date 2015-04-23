@@ -91,6 +91,6 @@ void Level1::LoadObjects(){
 
 void Level1::LoadPlayer(){
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 50, 20), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
-	player->addRenderObjectToWorld(*renderer);
-	player->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+	addEventObject(player);
+	CollisionResponse::setPlayer(player);
 }

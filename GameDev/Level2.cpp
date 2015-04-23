@@ -50,10 +50,12 @@ void Level2::LoadResources(){
 	ResourceManager::Instance().AddTexture("ground.jpg");
 	ResourceManager::Instance().AddTexture("checkboard.jpg");
 	ResourceManager::Instance().AddTexture("coin.jpg");
+	ResourceManager::Instance().AddTexture("pool2.png");
 	ResourceManager::Instance().AddSound("CoinCollection.wav");
 	ResourceManager::Instance().AddSound("LostGame.wav");
 	ResourceManager::Instance().AddSound("Clapping.wav");
 	ResourceManager::Instance().AddMeshFile("funkyshape", 1, "funkyshape.obj");
+	ResourceManager::Instance().AddMeshFile("pooltable", 1, "pooltable.obj");
 }
 
 void Level2::LoadMap(){
@@ -73,20 +75,18 @@ void Level2::LoadMap(){
 	GameObject* platform4 = new PlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 20, 0), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform4);
 
-	//GameObject* special1 = new ConvexGameObject(ResourceManager::Instance().GetShader("Basic"), "funkyshape", Vector3(0, 2, 0), 0, 2, ResourceManager::Instance().AddTexture("brick.jpg"));
-	//addWorldObject(special1);
+	GameObject* special1 = new ConvexGameObject(ResourceManager::Instance().GetShader("Basic"), "funkyshape", Vector3(0, 2, 0), 0, 2, ResourceManager::Instance().AddTexture("brick.jpg"));
+	addWorldObject(special1);
 
-	//GameObject* special2 = new ConcaveGameObject(ResourceManager::Instance().GetShader("Basic"), "funkyshape", Vector3(0, 2, 3), 0, 2, ResourceManager::Instance().AddTexture("brick.jpg"));
+	//GameObject* special2 = new ConcaveGameObject(ResourceManager::Instance().GetShader("Basic"), "pooltable", Vector3(0, 0, 0), 0, 35, ResourceManager::Instance().AddTexture("pool2.png"));
 	//addWorldObject(special2);
 }
 
 void Level2::LoadObjects(){
 
-
 }
 
 void Level2::LoadPlayer(){
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
-	player->addRenderObjectToWorld(*renderer);
-	player->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+	addEventObject(player);
 }

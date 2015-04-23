@@ -11,6 +11,7 @@ class World;
 class PlayerGameObject;
 class PlaneGameObject;
 class CoinGameObject;
+class PoolBallGameObject;
 
 /**
  * @class	GameObject
@@ -204,6 +205,7 @@ public:
 	 */
 
 	virtual void handleCollision(CoinGameObject& coin) = 0;
+	virtual void handleCollision(PoolBallGameObject& poolball) = 0;
 
 protected:
 	RenderObject* ro;

@@ -23,7 +23,7 @@
  * @date	08/03/2015
  */
 
-#define MAX_NUMBER_OF_ITEMS 3
+#define MAX_NUMBER_OF_ITEMS 4
 
 class MainMenuState : public State
 {

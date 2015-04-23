@@ -25,7 +25,11 @@ void CubeGameObject::handleCollision(PlaneGameObject& plane){
 }
 
 void CubeGameObject::handleCollision(CoinGameObject& coin){
+	std::cout << "cube - param coin" << std::endl;
+}
 
+void CubeGameObject::handleCollision(PoolBallGameObject& poolball){
+	std::cout << "cube - param poolball" << std::endl;
 }
 
 

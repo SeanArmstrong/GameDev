@@ -19,7 +19,7 @@ PlayerPhysicsObject::~PlayerPhysicsObject()
 void PlayerPhysicsObject::updateRenderObject(){
 	btTransform trans;
 	body->getMotionState()->getWorldTransform(trans);
-
+	//std::cout << "(" << trans.getOrigin().getX() << ", " << trans.getOrigin().getY() << ", " << trans.getOrigin().getZ() << std::endl;
 	ro->SetModelMatrix(trans);
 	ro->SetModelMatrix(ro->GetModelMatrix() * Matrix4::Scale(Vector3(radius, radius, radius)));
 }

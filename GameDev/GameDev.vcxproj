@@ -85,7 +85,10 @@
     <ClCompile Include="CoinPhysicsObject.cpp" />
     <ClCompile Include="CollisionResponse.cpp" />
     <ClCompile Include="ConcaveGameObject.cpp" />
-    <ClCompile Include="ConcavePhysicsObject.cpp" />
+    <ClCompile Include="PoolBallGameObject.cpp" />
+    <ClCompile Include="PoolBallPhysicsObject.cpp" />
+    <ClCompile Include="PoolLevel.cpp" />
+    <ClCompile Include="StaticConcavePhysicsObject.cpp" />
     <ClCompile Include="CoreEngine.cpp" />
     <ClCompile Include="CubeGameObject.cpp" />
     <ClCompile Include="CubePhysicsObject.cpp" />
@@ -144,7 +147,10 @@
     <ClInclude Include="CollisionResponse.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="ConcaveGameObject.h" />
-    <ClInclude Include="ConcavePhysicsObject.h" />
+    <ClInclude Include="PoolBallGameObject.h" />
+    <ClInclude Include="PoolBallPhysicsObject.h" />
+    <ClInclude Include="PoolLevel.h" />
+    <ClInclude Include="StaticConcavePhysicsObject.h" />
     <ClInclude Include="CoreEngine.h" />
     <ClInclude Include="CubeGameObject.h" />
     <ClInclude Include="CubePhysicsObject.h" />

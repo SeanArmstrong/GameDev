@@ -1,11 +1,12 @@
 #include "PlayerGameObject.h"
 
-PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const float mass, const float radius, GLuint t)
+PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const float mass, const float radius, GLuint t, const float movementSpeed)
 {
 	this->ro = new RenderObject(ResourceManager::Instance().GetMesh("sphere"), s, t);
 	this->ro->SetModelMatrix(Matrix4::Translation(position) * Matrix4::Scale(Vector3(radius, radius, radius)));
 	this->po = new PlayerPhysicsObject(ro, position, mass, radius);
 	this->po->getBody()->setUserPointer((void*)this);
+	this->movementSpeed = movementSpeed;
 }
 
 
@@ -86,7 +87,7 @@ void PlayerGameObject::handleCollision(GameObject& obj){
 	obj.handleCollision(*this);
 }
 void PlayerGameObject::handleCollision(PlayerGameObject& player){
-	// Player Player collision 
+	std::cout << "player - param player" << std::endl;
 }
 
 void PlayerGameObject::handleCollision(PlaneGameObject& plane){
@@ -95,6 +96,10 @@ void PlayerGameObject::handleCollision(PlaneGameObject& plane){
 
 void PlayerGameObject::handleCollision(CoinGameObject& coin){
 	CollisionResponse::handleCollision(*this, coin);
+}
+
+void PlayerGameObject::handleCollision(PoolBallGameObject& poolball){
+	std::cout << "player - param poolball" << std::endl;
 }
 
 GameObject* PlayerGameObject::spawnCube(){

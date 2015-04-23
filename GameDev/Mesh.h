@@ -62,6 +62,14 @@ public:
 		return vertices;
 	}
 
+	unsigned int* getIndices() const {
+		return indices;
+	}
+
+	int getNumberOfIndices() const {
+		return numIndices;
+	}
+
 	int getNumberOfVertices() const {
 		return numVertices;
 	}
