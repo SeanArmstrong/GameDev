@@ -12,6 +12,9 @@ SFMLRenderer::~SFMLRenderer(void){
 }
 
 void SFMLRenderer::RenderScene(){
+	if (skybox){
+		RenderSkybox(*skybox->getRenderObject());
+	}
 	for (vector<RenderObject*>::iterator i = renderObjects.begin(); i != renderObjects.end(); ++i) {
 		Render(*(*i));
 	}

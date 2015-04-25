@@ -44,6 +44,7 @@ void Level1::LoadResources(){
 	ResourceManager::Instance().AddShader("Basic", "basicvert.glsl", "textureFrag.glsl");
 	ResourceManager::Instance().AddShader("BasicRepeating", "basicvert.glsl", "textureRepeatFrag.glsl");
 	ResourceManager::Instance().AddShader("Lighting", "NormalsVert.glsl", "PhongFrag.glsl");
+	ResourceManager::Instance().AddShader("skybox", "SkyboxVert.glsl", "SkyboxFrag.glsl");
 	ResourceManager::Instance().AddMeshFile("cube", 1, "cube.obj");
 	ResourceManager::Instance().AddMeshFile("sphere", 1, "sphere.obj");
 	ResourceManager::Instance().AddMeshFile("coin", 1, "coin3.obj");
@@ -55,9 +56,12 @@ void Level1::LoadResources(){
 	ResourceManager::Instance().AddSound("CoinCollection.wav");
 	ResourceManager::Instance().AddSound("LostGame.wav");
 	ResourceManager::Instance().AddSound("Clapping.wav");
+	ResourceManager::Instance().AddSkybox("rustskybox", "rusted_west.jpg", "rusted_east.jpg", "rusted_up.jpg", "rusted_down.jpg", "rusted_south.jpg", "rusted_north.jpg");
 }
 
 void Level1::LoadMap(){
+	this->renderer->setSkybox(new Skybox("rustskybox"));
+
 	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, 40);
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(invisibleGround);

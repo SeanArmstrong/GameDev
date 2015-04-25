@@ -134,6 +134,7 @@
     <ClCompile Include="SpherePhysicsObject.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="WaterGameObject.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +207,7 @@
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
+    <ClInclude Include="WaterGameObject.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>

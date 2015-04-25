@@ -3,9 +3,7 @@
 Level::Level(sf::RenderWindow* w, SFMLRenderer* r) : hud(w->getSize().x, w->getSize().y){
 	this->window = w;
 	this->renderer = r;
-	setUpGravity();
-	ResourceManager::Instance().AddShader("skybox", "SkyboxVert.glsl", "SkyboxFrag.glsl");
-	sb.Render();
+	setupGravity();
 }
 
 
@@ -41,7 +39,6 @@ void Level::Update(){
 	}
 	
 	renderer->SetViewMatrix(cam->setCam(player->getPhysicsObject()));
-	sb.setViewMatrix(renderer->getViewMatrix());
 	renderer->UpdateScene(GameTimer::getDelta());
 
 	player->setDirectionVectors(cam->getPlayerForwardVector(),
@@ -97,7 +94,6 @@ void Level::rotateGravityLeft(){
 }
 
 void Level::Render(){
-	sb.Render();
 	renderer->RenderScene();
 	hud.Draw(window);
 	//world.getPhysicsWorld()->debugDrawWorld();
@@ -133,7 +129,7 @@ void Level::addToWorlds(GameObject* g){
 	g->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 }
 
-void Level::setUpGravity(){
+void Level::setupGravity(){
 	gravityDirections[0] = btVector3(0, -9.81f, 0);
 	gravityDirections[1] = btVector3(9.81f, 0, 0);
 	gravityDirections[2] = btVector3(0, 9.81f, 0);

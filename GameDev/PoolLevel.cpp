@@ -48,6 +48,7 @@ void PoolLevel::LoadResources(){
 	ResourceManager::Instance().AddShader("Basic", "basicvert.glsl", "textureFrag.glsl");
 	ResourceManager::Instance().AddShader("BasicRepeating", "basicvert.glsl", "textureRepeatFrag.glsl");
 	ResourceManager::Instance().AddShader("Lighting", "NormalsVert.glsl", "PhongFrag.glsl");
+	ResourceManager::Instance().AddShader("skybox", "SkyboxVert.glsl", "SkyboxFrag.glsl");
 	ResourceManager::Instance().AddMeshFile("cube", 1, "cube.obj");
 	ResourceManager::Instance().AddMeshFile("sphere", 1, "sphere.obj");
 	ResourceManager::Instance().AddMeshFile("coin", 1, "coin3.obj");
@@ -66,9 +67,12 @@ void PoolLevel::LoadResources(){
 	ResourceManager::Instance().AddSound("Clapping.wav");
 	ResourceManager::Instance().AddMeshFile("funkyshape", 1, "funkyshape.obj");
 	ResourceManager::Instance().AddMeshFile("pooltable", 1, "pooltable.obj");
+	ResourceManager::Instance().AddSkybox("rustskybox", "rusted_west.jpg", "rusted_east.jpg", "rusted_up.jpg", "rusted_down.jpg", "rusted_south.jpg", "rusted_north.jpg");
 }
 
 void PoolLevel::LoadMap(){
+	this->renderer->setSkybox(new Skybox("rustskybox"));
+
 	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -15, NULL, 0, PlaneGameObject::Reset);
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(invisibleGround);

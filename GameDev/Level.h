@@ -84,6 +84,6 @@ protected:
 private:
 	enum LevelState { PLAYING, WON, LOST };
 	LevelState levelState = PLAYING;
-	void setUpGravity();
+	void setupGravity();
 };
 

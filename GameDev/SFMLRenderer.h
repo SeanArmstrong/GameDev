@@ -2,6 +2,7 @@
 #include "RenderObject.h"
 #include "Matrix3.h"
 #include <algorithm>
+#include "Skybox.h"
 
 
 struct Light {
@@ -69,9 +70,9 @@ public:
 		return viewMatrix;
 	}
 
-	//void addSkybox(const Skybox& skybox){
-	//	this->skybox = skybox;
-	//}
+	void setSkybox(Skybox* skybox){
+		this->skybox = skybox;
+	}
 
 protected:
 	void ApplyShaderLight(GLuint program);
@@ -90,7 +91,7 @@ private:
 	static int		width;
 	static int		height;
 
-	//Skybox skybox;
+	Skybox* skybox;
 
 };
 
