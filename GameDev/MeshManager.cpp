@@ -52,8 +52,7 @@ Mesh* MeshManager::AddMeshFromMethod(const std::string meshName, int method){
 			mesh = Mesh::GenerateQuad();
 		}
 		else if (method == 3){
-			// Needs Vectors
-			//mesh = Mesh::GenerateLine();
+			mesh = Mesh::GenerateQuad2();
 		}
 	}
 	return mesh;

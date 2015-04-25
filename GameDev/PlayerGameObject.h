@@ -218,6 +218,8 @@ public:
 		const Vector3& left,
 		const Vector3& right);
 
+	void resetPlayerPosition();
+
 
 private:
 
@@ -237,6 +239,7 @@ private:
 	bool jumping;
 	const float JUMPRESETTIME = 1.0f;
 	float timeSinceJumped;
+	Vector3 startingPosition;
 
 	/* Weapon options */
 	const float SHOOT_DELAY = 2.0f;

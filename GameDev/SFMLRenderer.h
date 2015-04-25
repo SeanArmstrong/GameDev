@@ -62,8 +62,16 @@ public:
 	}
 
 	void			SetViewMatrix(Matrix4 m) {
-		viewMatrix = m;
+ 		viewMatrix = m;
 	}
+
+	Matrix4 getViewMatrix(){
+		return viewMatrix;
+	}
+
+	//void addSkybox(const Skybox& skybox){
+	//	this->skybox = skybox;
+	//}
 
 protected:
 	void ApplyShaderLight(GLuint program);
@@ -81,6 +89,8 @@ private:
 
 	static int		width;
 	static int		height;
+
+	//Skybox skybox;
 
 };
 

@@ -1,14 +1,12 @@
 #include "CollisionResponse.h"
 
-PlayerGameObject* CollisionResponse::player;
-
-void CollisionResponse::setPlayer(PlayerGameObject* p){
-	player = p;
-}
-
 void CollisionResponse::handleCollision(PlayerGameObject& p, PlaneGameObject& plane){
-	if (plane.isDeadly()){
+	PlaneGameObject::PlayerContactAction action = plane.getPlayerAction();
+	if (action == PlaneGameObject::PlayerContactAction::Deadly){
 		p.setAlive(false);
+	}
+	else if (action == PlaneGameObject::PlayerContactAction::Reset){
+		p.resetPlayerPosition();
 	}
 }
 
@@ -28,23 +26,37 @@ void CollisionResponse::handleCollision(CoinGameObject& coin, PlayerGameObject& 
 }
 
 void CollisionResponse::handleCollision(PoolBallGameObject& b1, PoolBallGameObject& b2){
-	ResourceManager::Instance().AudioPlaySound("BallClick.wav");
+	//ResourceManager::Instance().AudioPlaySound("BallClick.wav");
+
+	bool b1HasPlayer = b1.hasLastHitPlayer();
+	bool b2HasPlayer = b2.hasLastHitPlayer();
+	if (b1HasPlayer && b2HasPlayer){
+
+	}
+	else if (b1HasPlayer && !b2HasPlayer){
+		b2.setLastHitPlayer(b1.getLastHitPlayer());
+	}
+	else if (!b1HasPlayer && b2HasPlayer){
+		b1.setLastHitPlayer(b2.getLastHitPlayer());
+	}
 }
 
 void CollisionResponse::handleCollision(PlaneGameObject& plane, PoolBallGameObject& ball){
-	/*if (ball.getType == PoolBallGameObject::Type::Yellow){
-
+	if (ball.hasLastHitPlayer()){
+		ball.getLastHitPlayer()->incrementScore();
 	}
-	else if (ball.getType == PoolBallGameObject::Type::Red){
-
-	}
-	else { //black
-
-	}*/
-	player->incrementScore();
 	ball.setExistsInWorld(false);
 }
 
 void CollisionResponse::handleCollision(PoolBallGameObject& ball, PlaneGameObject& plane){
 	handleCollision(plane, ball);
+}
+
+
+void CollisionResponse::handleCollision(PlayerGameObject& player, PoolBallGameObject& ball){
+	ball.setLastHitPlayer(&player);
+}
+
+void CollisionResponse::handleCollision(PoolBallGameObject& ball, PlayerGameObject& player){
+	handleCollision(player, ball);
 }

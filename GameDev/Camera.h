@@ -28,16 +28,15 @@ public:
 	inline Vector3 getUpVector()				const { return up; }
 
 	inline void setUpVector(const Vector3& up) { this->up = up; }
-	Matrix4 setPlayerCam(const PhysicsObject* player);
+	virtual Matrix4 setCam(const PhysicsObject* player) = 0;
+	Matrix4 setAboveCam(const PhysicsObject* player);
 
-private:
+protected:
 
 	Vector3 playerForwardVector;
 	Vector3 playerBackwardVector;
 	Vector3 playerLeftVector;
 	Vector3 playerRightVector; 
 	Vector3 up;
-	
-	float rotation;
 };
 

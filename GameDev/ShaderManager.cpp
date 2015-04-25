@@ -30,10 +30,10 @@ Shader* ShaderManager::AddShader(const std::string shaderName, const std::string
 	Shader* shader = GetShader(shaderName);
 
 	if (shader == NULL){
-		const string PATH = "assets/Shaders/";
+ 		const string PATH = "assets/Shaders/";
 
 		// TODO: Allow for geo, tcs and tes
-		Shader* shader = new Shader(PATH + vertex, PATH + fragment);
+		shader = new Shader(PATH + vertex, PATH + fragment);
 		shaders.insert(make_pair(shaderName, shader));
 	}
 	return shader;

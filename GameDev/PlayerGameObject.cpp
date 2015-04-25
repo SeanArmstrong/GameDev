@@ -7,6 +7,7 @@ PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const floa
 	this->po = new PlayerPhysicsObject(ro, position, mass, radius);
 	this->po->getBody()->setUserPointer((void*)this);
 	this->movementSpeed = movementSpeed;
+	this->startingPosition = position;
 }
 
 
@@ -99,7 +100,7 @@ void PlayerGameObject::handleCollision(CoinGameObject& coin){
 }
 
 void PlayerGameObject::handleCollision(PoolBallGameObject& poolball){
-	std::cout << "player - param poolball" << std::endl;
+	CollisionResponse::handleCollision(*this, poolball);
 }
 
 GameObject* PlayerGameObject::spawnCube(){
@@ -118,4 +119,10 @@ void PlayerGameObject::setDirectionVectors(const Vector3& forward, const Vector3
 	this->left = left;
 	this->right = right;
 	this->jumpDirection = Vector3::Cross(right, forward).unitVector();
+}
+
+void PlayerGameObject::resetPlayerPosition(){
+	setPosition(startingPosition);
+	po->getBody()->setAngularVelocity(btVector3(0, 0, 0));
+	po->getBody()->setLinearVelocity(btVector3(0, 0, 0));
 }

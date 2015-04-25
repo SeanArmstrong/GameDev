@@ -17,16 +17,6 @@ void RenderObject::Intialize(Mesh*m, Shader*s, GLuint t) {
 	shader = s;
 	tex = t;
 	parent = NULL;
-	//glGenTextures(1, &brickTex);
-	/*cubemap = SOIL_load_OGL_cubemap(
-		"assets/Textures/brick.jpg",
-		"assets/Textures/brick.jpg",
-		"assets/Textures/brick.png",
-		"assets/Textures/brick.jpg",
-		"assets/Textures/brick.png",
-		"assets/Textures/brick.jpg",
-		SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);*/
-
 }
 
 
@@ -73,7 +63,7 @@ void RenderObject::Draw() const {
 }
 
 void RenderObject::DrawSkybox() const{
-	if (mesh) {
+	/*if (mesh) {
 		GLuint program = GetShader()->GetShaderProgram();
 
 		glUseProgram(program);
@@ -87,5 +77,27 @@ void RenderObject::DrawSkybox() const{
 		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 
 		mesh->Draw();
+	}*/
+	if (mesh) {
+		glDepthMask(GL_FALSE);
+		GLuint program = GetShader()->GetShaderProgram();
+		glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
+
+		glUseProgram(program);
+
+		glEnable(GL_TEXTURE_2D);
+
+		glUniform1i(glGetUniformLocation(program, "tex"), 0);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, tex);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+		mesh->Draw();
+		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);		glDepthMask(GL_TRUE);
+
 	}
 }

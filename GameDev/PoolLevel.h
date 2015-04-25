@@ -2,6 +2,7 @@
 #include "Level.h"
 #include "SphereGameObject.h"
 #include "PoolBallGameObject.h"
+#include "AerialCamera.h"
 
 class PoolLevel : public Level
 {
@@ -19,5 +20,12 @@ protected:
 	virtual void LoadMap();
 	virtual void LoadObjects();
 	virtual void LoadPlayer();
+
+private:
+
+	Camera* cameras[2];
+	int cameraTracker;
+	float timeSinceCameraChanged;
+	float CAMERA_RESET_TIME = 1.0f;
 };
 

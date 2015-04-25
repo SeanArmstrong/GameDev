@@ -4,7 +4,8 @@ Level::Level(sf::RenderWindow* w, SFMLRenderer* r) : hud(w->getSize().x, w->getS
 	this->window = w;
 	this->renderer = r;
 	setUpGravity();
-	//sb.Render();
+	ResourceManager::Instance().AddShader("skybox", "SkyboxVert.glsl", "SkyboxFrag.glsl");
+	sb.Render();
 }
 
 
@@ -39,22 +40,28 @@ void Level::Update(){
 		(**obj).update();
 	}
 	
-	renderer->SetViewMatrix(cam.setPlayerCam(player->getPhysicsObject()));
+	renderer->SetViewMatrix(cam->setCam(player->getPhysicsObject()));
+	sb.setViewMatrix(renderer->getViewMatrix());
 	renderer->UpdateScene(GameTimer::getDelta());
 
-	player->setDirectionVectors(cam.getPlayerForwardVector(),
-								cam.getPlayerBackwardVector(),
-								cam.getPlayerLeftVector(),
-								cam.getPlayerRightVector());
+	player->setDirectionVectors(cam->getPlayerForwardVector(),
+								cam->getPlayerBackwardVector(),
+								cam->getPlayerLeftVector(),
+								cam->getPlayerRightVector());
 
 	hud.Update(*player, timer);
 }
 
 void Level::GeneralGameLogic(){
 	timeSinceGravityChanged += GameTimer::getDelta();
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
 		if (gravityOn){
-			changeGravity();
+			rotateGravityRight();
+		}
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
+		if (gravityOn){
+			rotateGravityLeft();
 		}
 	}
 
@@ -68,17 +75,29 @@ void Level::GeneralGameLogic(){
 	}
 }
 
-void Level::changeGravity(){
+void Level::rotateGravityRight(){
 	if (timeSinceGravityChanged > GRAVITY_RESET_TIME){
 		timeSinceGravityChanged = 0;
 		gravityTracker = (gravityTracker + 1) % 4;
-		cam.setUpVector(upVectorDirections[gravityTracker]);
+		cam->setUpVector(upVectorDirections[gravityTracker]);
+		world.getPhysicsWorld()->setGravity(gravityDirections[gravityTracker]);
+	}
+}
+
+void Level::rotateGravityLeft(){
+	if (timeSinceGravityChanged > GRAVITY_RESET_TIME){
+		timeSinceGravityChanged = 0;
+		gravityTracker--;
+		if (gravityTracker < 0){
+			gravityTracker = 3;
+		}
+		cam->setUpVector(upVectorDirections[gravityTracker]);
 		world.getPhysicsWorld()->setGravity(gravityDirections[gravityTracker]);
 	}
 }
 
 void Level::Render(){
-	//sb.Render();
+	sb.Render();
 	renderer->RenderScene();
 	hud.Draw(window);
 	//world.getPhysicsWorld()->debugDrawWorld();

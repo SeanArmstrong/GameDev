@@ -2,9 +2,19 @@
 
 
 Skybox::Skybox(){
-	this->ro = new RenderObject(ResourceManager::Instance().AddMeshFile("cube", 1, "cube.obj"),
-		ResourceManager::Instance().AddShader("Basic", "basicvert.glsl", "textureFrag.glsl"),
-		ResourceManager::Instance().AddTexture("brick.jpg"));
+	//ResourceManager::Instance().AddTexture("cubemap2.png");
+	GLint cubemap = SOIL_load_OGL_cubemap(
+		"assets/Textures/Skybox/rusted_west.jpg",
+		"assets/Textures/Skybox/rusted_east.jpg",
+		"assets/Textures/Skybox/rusted_up.jpg",
+		"assets/Textures/Skybox/rusted_down.jpg",
+		"assets/Textures/Skybox/rusted_south.jpg",
+		"assets/Textures/Skybox/rusted_north.jpg",
+		SOIL_LOAD_RGB, SOIL_CREATE_NEW_ID, 0);
+
+	this->ro = new RenderObject(ResourceManager::Instance().AddMeshFromMethod("quad", 2),
+		ResourceManager::Instance().AddShader("skybox", "SkyboxVert.glsl", "SkyboxFrag.glsl"),
+		cubemap);
 
 }
 
@@ -18,7 +28,5 @@ RenderObject* Skybox::getRenderObject(){
 }
 
 void Skybox::Render(){
-	glDepthMask(0);
 	r.RenderSkybox(*ro);
-	glDepthMask(GL_TRUE);
 }

@@ -77,6 +77,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AerialCamera.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BulletDebugDraw.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -85,6 +86,9 @@
     <ClCompile Include="CoinPhysicsObject.cpp" />
     <ClCompile Include="CollisionResponse.cpp" />
     <ClCompile Include="ConcaveGameObject.cpp" />
+    <ClCompile Include="MovingPlatformGameObject.cpp" />
+    <ClCompile Include="MovingPlatformPhysicsObject.cpp" />
+    <ClCompile Include="PlayerFollowCamera.cpp" />
     <ClCompile Include="PoolBallGameObject.cpp" />
     <ClCompile Include="PoolBallPhysicsObject.cpp" />
     <ClCompile Include="PoolLevel.cpp" />
@@ -138,6 +142,7 @@
     <None Include="cube.asciimesh" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AerialCamera.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BulletDebugDraw.h" />
     <ClInclude Include="Camera.h" />
@@ -147,6 +152,9 @@
     <ClInclude Include="CollisionResponse.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="ConcaveGameObject.h" />
+    <ClInclude Include="MovingPlatformGameObject.h" />
+    <ClInclude Include="MovingPlatformPhysicsObject.h" />
+    <ClInclude Include="PlayerFollowCamera.h" />
     <ClInclude Include="PoolBallGameObject.h" />
     <ClInclude Include="PoolBallPhysicsObject.h" />
     <ClInclude Include="PoolLevel.h" />

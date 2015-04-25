@@ -11,7 +11,7 @@ PoolLevel::~PoolLevel(){
 
 void PoolLevel::Initialise(){
 	gravityOn = false;
-	levelScore = 300000;
+	levelScore = 15;
 
 	SetView();
 	LoadResources();
@@ -21,10 +21,21 @@ void PoolLevel::Initialise(){
 
 	timer = 300.0f;
 	world.getPhysicsWorld()->setGravity(btVector3(0, -30.0f, 0));
+
+	cameraTracker = 0;
+	cameras[0] = new PlayerFollowCamera(-90);
+	cameras[1] = new AerialCamera();
+	cam = cameras[cameraTracker];
 }
 
 void PoolLevel::GameLogic(){
-
+	timeSinceCameraChanged += GameTimer::getDelta();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C)){
+		if (timeSinceCameraChanged > CAMERA_RESET_TIME){
+				cameraTracker = ((cameraTracker + 1) % 2);
+				cam = cameras[cameraTracker];
+		}
+	}
 }
 
 void PoolLevel::SetView(){
@@ -58,7 +69,7 @@ void PoolLevel::LoadResources(){
 }
 
 void PoolLevel::LoadMap(){
-	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -15);
+	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -15, NULL, 0, PlaneGameObject::Reset);
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(invisibleGround);
 
@@ -135,5 +146,4 @@ void PoolLevel::LoadObjects(){
 void PoolLevel::LoadPlayer(){
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-33.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 200.0f);
 	addEventObject(player);
-	CollisionResponse::setPlayer(player);
 }

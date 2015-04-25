@@ -1,7 +1,7 @@
 #include "PlaneGameObject.h"
 
 
-PlaneGameObject::PlaneGameObject(Vector3& normal, const float mass, const float distance, Shader*s, GLuint t)
+PlaneGameObject::PlaneGameObject(Vector3& normal, const float mass, const float distance, Shader*s, GLuint t, PlayerContactAction tca)
 {
 	if (s){
 		this->ro = new RenderObject(
@@ -11,6 +11,7 @@ PlaneGameObject::PlaneGameObject(Vector3& normal, const float mass, const float 
 	}
 	this->po = new PlanePhysicsObject(NULL, normal, mass, distance);
 	this->po->getBody()->setUserPointer((void*)this);
+	this->playerAction = tca;
 }
 
 
@@ -19,7 +20,7 @@ PlaneGameObject::~PlaneGameObject()
 }
 
 bool PlaneGameObject::isDeadly(){
-	return deadly;
+	return (this->playerAction == Deadly);
 }
 
 

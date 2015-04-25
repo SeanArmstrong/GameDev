@@ -13,6 +13,10 @@ public:
 	void removeFromGame();
 
 	inline Type getType(){ return type;	}
+	inline PlayerGameObject* getLastHitPlayer(){ return lastHitPlayer; }
+	inline bool hasLastHitPlayer(){ return hasPlayer; }
+
+	void setLastHitPlayer(PlayerGameObject* player);
 
 	virtual void handleCollision(GameObject& obj);
 	virtual void handleCollision(PlayerGameObject& player);
@@ -23,6 +27,8 @@ public:
 private:
 
 	Type type;
+	PlayerGameObject* lastHitPlayer;
+	bool hasPlayer = false;
 
 };
 

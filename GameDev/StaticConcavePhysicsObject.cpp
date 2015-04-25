@@ -30,6 +30,7 @@ StaticConcavePhysicsObject::StaticConcavePhysicsObject(RenderObject* renderObjec
 	body = new btRigidBody(fallRigidBodyCI);
 	body->setCollisionFlags(btCollisionObject::CF_STATIC_OBJECT);
 	body->setRestitution(1.0f);
+	body->setFriction(0.75f);
 
 }
 

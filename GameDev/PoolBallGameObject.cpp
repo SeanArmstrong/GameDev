@@ -8,6 +8,7 @@ PoolBallGameObject::PoolBallGameObject(Shader*s, const Vector3& position, const 
 	this->po = new PoolBallPhysicsObject(ro, position, mass, radius);
 	this->po->getBody()->setUserPointer((void*)this);
 	this->type = type;
+	this->hasPlayer = false;
 }
 
 
@@ -20,7 +21,7 @@ void PoolBallGameObject::handleCollision(GameObject& obj){
 }
 
 void PoolBallGameObject::handleCollision(PlayerGameObject& player){
-	std::cout << "PoolBall - param player" << std::endl;
+	CollisionResponse::handleCollision(*this, player);
 }
 
 void PoolBallGameObject::handleCollision(PlaneGameObject& plane){
@@ -33,4 +34,9 @@ void PoolBallGameObject::handleCollision(CoinGameObject& coin){
 
 void PoolBallGameObject::handleCollision(PoolBallGameObject& poolball){
 	CollisionResponse::handleCollision(*this, poolball);
+}
+
+void PoolBallGameObject::setLastHitPlayer(PlayerGameObject* player){
+	this->lastHitPlayer = player; 
+	hasPlayer = true;
 }

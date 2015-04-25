@@ -7,7 +7,7 @@
 class PlaneGameObject :public GameObject
 {
 public:
-
+	enum PlayerContactAction { Nothing, Deadly, Reset };
 	/**
 	 * @fn	PlaneGameObject::PlaneGameObject(Vector3& normal, const float mass, const float distance, Shader*s = NULL, GLuint t = 0);
 	 *
@@ -23,7 +23,7 @@ public:
 	 * @param	t			  	Plane Texture for render object
 	 */
 
-	PlaneGameObject(Vector3& normal, const float mass, const float distance, Shader*s = NULL, GLuint t = 0);
+	PlaneGameObject(Vector3& normal, const float mass, const float distance, Shader*s = NULL, GLuint t = 0, PlayerContactAction tca = Deadly);
 	virtual ~PlaneGameObject();
 
 	/**
@@ -93,8 +93,10 @@ public:
 
 	virtual void handleCollision(PoolBallGameObject& poolball);
 
+	inline PlayerContactAction getPlayerAction(){ return playerAction; }
+
 private:
 
-	bool deadly = true;
+	PlayerContactAction playerAction;
 };
 

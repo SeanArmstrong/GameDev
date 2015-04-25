@@ -10,10 +10,10 @@ public:
 	virtual ~PlatformGameObject();
 
 
-	void handleCollision(GameObject& obj);
-	void handleCollision(PlayerGameObject& player);
-	void handleCollision(PlaneGameObject& plane);
-	void handleCollision(CoinGameObject& coin);
+	virtual void handleCollision(GameObject& obj);
+	virtual void handleCollision(PlayerGameObject& player);
+	virtual void handleCollision(PlaneGameObject& plane);
+	virtual void handleCollision(CoinGameObject& coin);
 	virtual void handleCollision(PoolBallGameObject& poolball);
 };
 

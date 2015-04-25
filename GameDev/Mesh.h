@@ -51,6 +51,7 @@ public:
 	//Generates a single triangle, with RGB colours
 	static Mesh*	GenerateTriangle();
 	static Mesh*	GenerateQuad();
+	static Mesh*	GenerateQuad2();
 	static Mesh*	GenerateLine(const Vector3 &from, const Vector3 &to, const Vector3 c0, const Vector3 c1);
 	static Mesh*	LoadMeshFile(const string &filename);
 	static Mesh*	LoadMeshObj(const string &filename);

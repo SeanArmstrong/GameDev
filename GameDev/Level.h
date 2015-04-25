@@ -4,6 +4,7 @@
 #include "Singleton.h"
 #include "ResourceManager.h"
 #include "Camera.h"
+#include "PlayerFollowCamera.h"
 #include "btBulletDynamicsCommon.h"
 #include "World.h"
 #include "CameraNew.h"
@@ -12,6 +13,7 @@
 #include "PlatformGameObject.h"
 #include "ConvexGameObject.h"
 #include "ConcaveGameObject.h"
+#include "MovingPlatformGameObject.h"
 
 class Level {
 public:
@@ -26,7 +28,6 @@ public:
 
 	virtual void GameLogic() = 0;
 	void GeneralGameLogic();
-	void changeGravity();
 
 	virtual void SetView() = 0;
 	virtual void LoadResources() = 0;
@@ -48,10 +49,13 @@ protected:
 	void addEventObject(GameObject* g);
 	void addToWorlds(GameObject* g);
 
+	void rotateGravityRight();
+	void rotateGravityLeft();
+
 	sf::RenderWindow* window;
 
 	World world;
-	Camera cam;
+	Camera* cam;
 	GameHUD hud;
 	SFMLRenderer* renderer;
 	Skybox sb;

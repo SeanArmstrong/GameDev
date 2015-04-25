@@ -80,9 +80,11 @@ public:
 	static void handleCollision(PoolBallGameObject& b1, PoolBallGameObject& b2);
 	static void handleCollision(PlaneGameObject& plane, PoolBallGameObject& ball);
 	static void handleCollision(PoolBallGameObject& ball, PlaneGameObject& plane);
+	static void handleCollision(PlayerGameObject& player, PoolBallGameObject& ball);
+	static void handleCollision(PoolBallGameObject& ball, PlayerGameObject& player);
+
 
 private:
 
-	static PlayerGameObject* player;
 };
 
