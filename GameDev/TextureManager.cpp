@@ -33,3 +33,24 @@ unsigned int TextureManager::AddTexture(const std::string fileName){
 	}
 	return texture;
 }
+
+unsigned int TextureManager::AddSkybox(const std::string name, const std::string west, const std::string east,
+	const std::string up, const std::string down, const std::string south, const std::string north){
+
+	unsigned int texture = GetTexture(name);
+
+	if (texture == NULL){
+		const std::string PATH = "assets/Textures/Skybox/";
+		texture = SOIL_load_OGL_cubemap(
+			(PATH + west).c_str(),
+			(PATH + east).c_str(),
+			(PATH + up).c_str(),
+			(PATH + down).c_str(),
+			(PATH + south).c_str(),
+			(PATH + north).c_str(),
+			SOIL_LOAD_RGB, SOIL_CREATE_NEW_ID, 0);;
+
+		textures.insert(make_pair(name, texture));
+	}
+	return texture;
+}

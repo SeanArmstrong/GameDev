@@ -50,6 +50,8 @@ public:
 	 */
 
 	unsigned int AddTexture(const std::string filename);
+	unsigned int AddSkybox(const std::string name, const std::string west, const std::string east,
+		const std::string up, const std::string down, const std::string south, const std::string north);
 
 protected:
 

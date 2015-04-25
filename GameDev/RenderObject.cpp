@@ -97,7 +97,8 @@ void RenderObject::DrawSkybox() const{
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 		mesh->Draw();
-		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);		glDepthMask(GL_TRUE);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+		glDepthMask(GL_TRUE);
 
 	}
 }
