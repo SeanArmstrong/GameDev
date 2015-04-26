@@ -3,7 +3,9 @@
 
 PlanePhysicsObject::PlanePhysicsObject(RenderObject* renderObject, Vector3& normal, const float mass, const float distance) : PhysicsObject(renderObject, normal, mass){
 	// gives normal and ditance
+	this->distance = distance;
 	normal.Normalise();
+	this->normal = normal;
 	shape = new btStaticPlaneShape(btVector3(normal.x, normal.y, normal.z), distance);
 
 	btTransform startTransform;
@@ -24,7 +26,13 @@ PlanePhysicsObject::~PlanePhysicsObject()
 void PlanePhysicsObject::updateRenderObject(){
 	btTransform trans;
 	body->getMotionState()->getWorldTransform(trans);
-
+	
 	ro->SetModelMatrix(trans);
-	ro->SetModelMatrix(ro->GetModelMatrix());
+
+	if (normal == Vector3(0, 1, 0)){
+		ro->SetModelMatrix(ro->GetModelMatrix() *
+			Matrix4::Scale(Vector3(normal.x - 1 * -10000, 1, normal.z - 1 * -10000)) * 
+			Matrix4::Translation(normal * distance) *
+			Matrix4::Rotation(90, Vector3(1, 0, 0)));
+	}
 }

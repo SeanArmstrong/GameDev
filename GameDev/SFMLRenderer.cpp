@@ -54,7 +54,7 @@ void SFMLRenderer::RenderSkybox(const RenderObject& o){
 
 void SFMLRenderer::UpdateScene(float msec) {
 	for (vector<RenderObject*>::iterator i = renderObjects.begin(); i != renderObjects.end(); ++i) {
-		(*i)->Update(msec);
+			(*i)->Update(msec);
 	}
 }
 
@@ -78,7 +78,8 @@ void SFMLRenderer::ApplyShaderLight(GLuint program){
 	Vector3 camPos = rotation * -invCamPos;
 
 	glUniform3f(glGetUniformLocation(program, "cameraPos"), camPos.x, camPos.y, camPos.z);
-	glUniform3f(glGetUniformLocation(program, "lightColour"), currentLight.colour.x, currentLight.colour.y, currentLight.colour.z);
+	glUniform4f(glGetUniformLocation(program, "lightColour4"), currentLight.colour.x, currentLight.colour.y, currentLight.colour.z, 1.0f);
+	glUniform3f(glGetUniformLocation(program, "lightColour3"), currentLight.colour.x, currentLight.colour.y, currentLight.colour.z);
 	glUniform3f(glGetUniformLocation(program, "lightPos"), currentLight.position.x, currentLight.position.y, currentLight.position.z);
 	glUniform1f(glGetUniformLocation(program, "lightRadius"), currentLight.radius);
 }

@@ -1,10 +1,10 @@
 # version 330 core
 // Lighting
-uniform sampler2D tex;
+uniform sampler2D tex0;
 
 uniform vec3 cameraPos;
 
-uniform vec3 lightColour;
+uniform vec3 lightColour3;
 uniform vec3 lightPos;
 uniform float lightRadius;
 
@@ -29,9 +29,9 @@ void main ( void ) {
 	float rFactor = max(0.0, dot(halfDir, IN.normal));
 	float sFactor = pow(rFactor, 50.0);
 
-	vec4 texCol = texture(tex, IN.texCoord);
-	vec3 ambient = texCol.rgb * lightColour * 0.1;
-	vec3 diffuse = texCol.rgb * lightColour * lambert * atten;
-	vec3 specular = lightColour * sFactor * atten;
+	vec4 texCol = texture(tex0, IN.texCoord);
+	vec3 ambient = texCol.rgb * lightColour3 * 0.1;
+	vec3 diffuse = texCol.rgb * lightColour3 * lambert * atten;
+	vec3 specular = lightColour3 * sFactor * atten;
 	gl_FragColor = vec4(ambient + diffuse + specular , 1.0);
 }

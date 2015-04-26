@@ -34,7 +34,7 @@ void Level2::GameLogic(){
 }
 
 void Level2::SetView(){
-	renderer->SetShaderLight(Vector3(0, 2000.0f, 0), Vector3(1, 1, 1), 10000.0f);
+	renderer->SetShaderLight(Vector3(0, 200.0f, 0), Vector3(1, 1, 1), 1000.0f);
 	renderer->SetProjectionMatrix(Matrix4::Perspective(1, 2000.0f, 1.33f, 45.0f));
 }
 
@@ -51,6 +51,7 @@ void Level2::LoadResources(){
 	ResourceManager::Instance().AddTexture("terrain.jpg");
 	ResourceManager::Instance().AddTexture("ground.jpg");
 	ResourceManager::Instance().AddTexture("checkboard.jpg");
+	ResourceManager::Instance().AddTexture("water.jpg");
 	ResourceManager::Instance().AddTexture("coin.jpg");
 	ResourceManager::Instance().AddTexture("pool2.png");
 	ResourceManager::Instance().AddTexture("smiley.png");
@@ -60,28 +61,17 @@ void Level2::LoadResources(){
 	ResourceManager::Instance().AddMeshFile("funkyshape", 1, "funkyshape.obj");
 	ResourceManager::Instance().AddMeshFile("pooltable", 1, "pooltable.obj");
 	ResourceManager::Instance().AddMeshFile("platform1", 1, "platform1.obj");
+	ResourceManager::Instance().AddMeshFromMethod("quad", 2);
 	ResourceManager::Instance().AddSkybox("rustskybox", "rusted_west.jpg", "rusted_east.jpg", "rusted_up.jpg", "rusted_down.jpg", "rusted_south.jpg", "rusted_north.jpg");
+	ResourceManager::Instance().AddShader("haze", "PerPixelVert.glsl", "reflectFrag.glsl");
 }
 
 void Level2::LoadMap(){
 	this->renderer->setSkybox(new Skybox("rustskybox"));
 
-	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -30);
-	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(invisibleGround);
-
-	/*invisibleGround = new PlaneGameObject(Vector3(0, -1, 0), 0, -30);
-	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(invisibleGround);
-
-	invisibleGround = new PlaneGameObject(Vector3(1, 0, 0), 0, -30);
-	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(invisibleGround);
-
-	invisibleGround = new PlaneGameObject(Vector3(-1, 0, 0), 0, -30);
-	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(invisibleGround);*/
-
+	GameObject* plane = new HazeGameObject(Vector3(0, 1, 0), 0, -50, ResourceManager::Instance().GetShader("haze"), 
+								ResourceManager::Instance().AddTexture("terrain.jpg"));
+	addEventObject(plane);
 	
 	GameObject* platform;
 
@@ -207,6 +197,6 @@ void Level2::LoadObjects(){
 }
 
 void Level2::LoadPlayer(){
-	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 30, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
+	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
 	addEventObject(player);
 }

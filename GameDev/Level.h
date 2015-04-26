@@ -14,6 +14,7 @@
 #include "ConvexGameObject.h"
 #include "ConcaveGameObject.h"
 #include "MovingPlatformGameObject.h"
+#include "HazeGameObject.h"
 
 class Level {
 public:

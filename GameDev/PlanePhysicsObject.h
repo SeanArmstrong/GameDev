@@ -41,5 +41,10 @@ public:
 	 */
 
 	virtual void updateRenderObject();
+
+private:
+
+	float distance;
+	Vector3 normal;
 };
 

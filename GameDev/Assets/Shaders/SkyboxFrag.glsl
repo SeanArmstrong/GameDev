@@ -1,6 +1,6 @@
 # version 150 core
 
-uniform samplerCube tex;
+uniform samplerCube cubeTex;
 uniform vec3 cameraPos;
 
 in Vertex {
@@ -10,6 +10,6 @@ in Vertex {
  out vec4 gl_FragColor;
 
 void main ( void ) {
-	gl_FragColor = texture(tex, normalize(IN.normal));
+	gl_FragColor = texture(cubeTex, normalize(IN.normal));
 	//gl_FragColor = vec4(IN.normal, 1.0);
 }

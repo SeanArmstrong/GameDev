@@ -4,7 +4,10 @@
 RenderObject::RenderObject(void)	{
 	mesh	= NULL;
 	shader	= NULL;
-	tex		= NULL;
+	tex0	= NULL;
+	tex1	= NULL;
+	tex2	= NULL;
+	cubemap = NULL;
 	parent  = NULL;
 }
 
@@ -15,17 +18,14 @@ RenderObject::RenderObject(Mesh*m, Shader*s, GLuint t) {
 void RenderObject::Intialize(Mesh*m, Shader*s, GLuint t) {
 	mesh = m;
 	shader = s;
-	tex = t;
+	tex0 = t;
 	parent = NULL;
 }
 
-
-
-
-
-RenderObject::~RenderObject(void)
-{
-	glDeleteTextures(1, &tex);
+RenderObject::~RenderObject(void){
+	glDeleteTextures(1, &tex0);
+	glDeleteTextures(1, &tex1);
+	glDeleteTextures(1, &tex2);
 }
 
 
@@ -45,39 +45,47 @@ void RenderObject::Update(float msec) {
 
 void RenderObject::Draw() const {
 	if(mesh) {
-		/* Textures */
 		GLuint program = GetShader()->GetShaderProgram();
 
 		glUseProgram(program);
 
 		glEnable(GL_TEXTURE_2D);
 
-		glUniform1i(glGetUniformLocation(program, "tex"), 0);
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, tex);
+		glBindTexture(GL_TEXTURE_2D, tex0);
+		glUniform1i(glGetUniformLocation(program, "tex0"), 0);
+
+		if (tex1){
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, tex1);
+			glUniform1i(glGetUniformLocation(program, "tex1"), 1);
+		}
+
+		if (tex2){
+			glActiveTexture(GL_TEXTURE2);
+			glBindTexture(GL_TEXTURE_2D, tex1);
+			glUniform1i(glGetUniformLocation(program, "tex2"), 2);
+		}
+
+		if (cubemap){
+			glActiveTexture(GL_TEXTURE3);
+			glBindTexture(GL_TEXTURE_CUBE_MAP, cubemap);
+			glUniform1i(glGetUniformLocation(program, "cubeTex"), 3);
+		}
+
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 		mesh->Draw();
+
+		//glBindTexture(GL_TEXTURE0, 0);
+		//glBindTexture(GL_TEXTURE1, 0);
+		//glBindTexture(GL_TEXTURE2, 0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 	}
 }
 
 void RenderObject::DrawSkybox() const{
-	/*if (mesh) {
-		GLuint program = GetShader()->GetShaderProgram();
-
-		glUseProgram(program);
-
-		glBindTexture(GL_TEXTURE_CUBE_MAP, cubemap);
-		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
-
-		mesh->Draw();
-	}*/
 	if (mesh) {
 		glDepthMask(GL_FALSE);
 		GLuint program = GetShader()->GetShaderProgram();
@@ -87,9 +95,9 @@ void RenderObject::DrawSkybox() const{
 
 		glEnable(GL_TEXTURE_2D);
 
-		glUniform1i(glGetUniformLocation(program, "tex"), 0);
+		glUniform1i(glGetUniformLocation(program, "cubeTex"), 0);
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_CUBE_MAP, tex);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, tex0);
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);

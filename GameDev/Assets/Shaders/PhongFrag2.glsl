@@ -10,7 +10,7 @@ struct PointLight
 	vec3 position;
 }
 
-uniform sampler2D tex;
+uniform sampler2D tex0;
 
 uniform vec3 cameraPos;
 
@@ -48,7 +48,7 @@ void main ( void ) {
 	float rFactor = max(0.0, dot(halfDir, IN.normal));
 	float sFactor = pow(rFactor, 50.0);
 
-	vec4 texCol = texture(tex, IN.texCoord);
+	vec4 texCol = texture(tex0, IN.texCoord);
 	vec3 ambient = texCol.rgb * lightColour * 0.1;
 	vec3 diffuse = texCol.rgb * lightColour * lambert * atten;
 	vec3 specular = lightColour * sFactor * atten;

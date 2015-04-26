@@ -1,6 +1,6 @@
 #version 150 core
 
-uniform sampler2D tex;
+uniform sampler2D tex0;
 
 uniform float scaleFactor;
 
@@ -12,5 +12,5 @@ in Vertex {
 out vec4 gl_FragColor;
 
 void main(void){
-	gl_FragColor = texture(tex, IN.texCoord);
+	gl_FragColor = texture(tex0, IN.texCoord);
 }

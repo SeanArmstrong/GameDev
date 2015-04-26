@@ -258,7 +258,7 @@
     <ClCompile Include="MovingPlatformPhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="WaterGameObject.cpp">
+    <ClCompile Include="HazeGameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -467,7 +467,7 @@
     <ClInclude Include="AerialCamera.h">
       <Filter>Header Files\Graphics\Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="WaterGameObject.h">
+    <ClInclude Include="HazeGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

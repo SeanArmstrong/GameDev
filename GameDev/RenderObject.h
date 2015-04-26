@@ -19,8 +19,13 @@ public:
 	Shader* GetShader()		const		{return shader; }
 	void	SetShader(Shader*s)			{shader = s;}
 
-	GLuint	GetTexture()		const	{ return tex; }
-	void	SetTexture(GLuint tex)		{ this->tex = tex; }
+	GLuint	GetTexture0()		const	{ return tex0; }
+	GLuint	GetTexture1()		const	{ return tex1; }
+	GLuint	GetTexture2()		const	{ return tex2; }
+	void	SetTexture0(GLuint tex)		{ this->tex0 = tex; }
+	void	SetTexture1(GLuint tex)		{ this->tex1 = tex; }
+	void	SetTexture2(GLuint tex)		{ this->tex2 = tex; }
+	void	SetCubeMap(GLuint tex)		{ this->cubemap = tex; }
 
 	void	SetModelMatrix(Matrix4 mat) {
 		modelMatrix = mat;
@@ -51,10 +56,11 @@ public:
 protected:
 	Mesh*	mesh;
 	Shader*	shader;
-	unsigned int cubemap;
+	GLuint cubemap;
 
-	GLuint tex;
-
+	GLuint tex0;
+	GLuint tex1;
+	GLuint tex2;
 
 	Matrix4 modelMatrix;
 	Matrix4 worldTransform;
