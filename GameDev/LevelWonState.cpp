@@ -9,7 +9,7 @@ LevelWonState::LevelWonState(sf::RenderWindow* w) : State(w)
 
 LevelWonState::~LevelWonState()
 {
-	delete title;
+	//delete title;
 }
 
 void LevelWonState::Initialise(){
@@ -48,6 +48,7 @@ void LevelWonState::Render(){
 
 void LevelWonState::HandleEvents(CoreEngine& engine, sf::Event event){
 	if (event.type == sf::Event::KeyPressed){
+		ResourceManager::ResetInstance();
 		engine.ChangeState(new MainMenuState(window));
 	}
 }

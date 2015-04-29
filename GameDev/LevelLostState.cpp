@@ -7,10 +7,7 @@ LevelLostState::LevelLostState(sf::RenderWindow* w) : State(w)
 }
 
 
-LevelLostState::~LevelLostState()
-{
-	delete title;
-}
+LevelLostState::~LevelLostState(){}
 
 void LevelLostState::Initialise(){
 	ResourceManager::Instance().AddMeshFile("cube", 1, "cube.obj");
@@ -48,6 +45,7 @@ void LevelLostState::Render(){
 
 void LevelLostState::HandleEvents(CoreEngine& engine, sf::Event event){
 	if (event.type == sf::Event::KeyPressed){
+		ResourceManager::ResetInstance();
 		engine.ChangeState(new MainMenuState(window));
 	}
 }

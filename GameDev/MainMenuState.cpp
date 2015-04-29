@@ -76,6 +76,7 @@ void MainMenuState::HandleEvents(CoreEngine& engine, sf::Event event){
 			MoveDown();
 		}
 		else if (event.key.code == sf::Keyboard::Return){
+			ResourceManager::ResetInstance();
 			switch (selectedItemIndex){
 			case 0:
 				engine.ChangeState(new GameState(window, 1));

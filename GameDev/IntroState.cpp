@@ -4,10 +4,7 @@ IntroState::IntroState(sf::RenderWindow* w) : State(w){
 	Initialise();
 }
 
-IntroState::~IntroState(){
-	// Renderer Will delete title
-	//delete title;
-}
+IntroState::~IntroState(){} // Title deleted by renderer
 
 void IntroState::Initialise(){
 	ResourceManager::Instance().AddMeshFile("cube", 1, "cube.obj");
@@ -45,6 +42,7 @@ void IntroState::Render(){
 
 void IntroState::HandleEvents(CoreEngine& engine, sf::Event event){
 	if (event.type == sf::Event::KeyPressed && event.key.code != sf::Keyboard::Return){
+		ResourceManager::ResetInstance();
 		engine.ChangeState(new MainMenuState(window));
 	}
 
