@@ -8,6 +8,18 @@ AudioManager::AudioManager()
 
 AudioManager::~AudioManager()
 {
+	for (std::map<std::string, sf::Music*>::iterator i = music.begin(); i != music.end(); ++i){
+		delete i->second;
+	}
+
+	for (std::map<std::string, sf::Sound*>::iterator i = sounds.begin(); i != sounds.end(); ++i){
+		delete i->second;
+	}
+
+	std::vector<sf::SoundBuffer*> buffs;
+	for (std::vector<sf::SoundBuffer*>::iterator i = buffs.begin(); i != buffs.end(); ++i){
+		delete (*i);
+	}
 }
 
 sf::Sound* AudioManager::GetSound(const std::string filename){

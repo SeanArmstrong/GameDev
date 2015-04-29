@@ -5,7 +5,8 @@ IntroState::IntroState(sf::RenderWindow* w) : State(w){
 }
 
 IntroState::~IntroState(){
-	delete title;
+	// Renderer Will delete title
+	//delete title;
 }
 
 void IntroState::Initialise(){

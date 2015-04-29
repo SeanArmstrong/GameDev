@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
 GameObject::~GameObject(){
-	delete ro;
+	// Render Object Deleted by SFML Renderer
 	delete po;
 }
 

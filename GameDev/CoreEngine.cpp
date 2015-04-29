@@ -19,6 +19,8 @@ void CoreEngine::run(){
 		states.push_back(new IntroState(&window));
 		gameLoop();
 	}
+	ResourceManager::ResetInstance();
+	Cleanup();
 }
 
 void CoreEngine::Initialise(){
@@ -62,9 +64,6 @@ void CoreEngine::gameLoop(){
 			unprocessedTime -= frameTime;
 			GameTimer::setDelta(frameTime);
 
-
-			// End of timer stuff
-			// Start of update/render
 			processInput();
 
 			if (polygons){
@@ -84,12 +83,12 @@ void CoreEngine::gameLoop(){
 				debugInfo.Draw(window);
 			}
 
-
 			window.display();
 			frames++;
 		}
 	}
 }
+
 void CoreEngine::processInput(){
 	sf::Event event;
 	while (window.pollEvent(event)){
@@ -112,7 +111,6 @@ void CoreEngine::processInput(){
 
 void CoreEngine::Cleanup(){
 	while (!states.empty()) {
-		//states.back()->Cleanup();
 		delete states.back();
 		states.pop_back();
 	}
@@ -137,16 +135,12 @@ sf::RenderWindow* CoreEngine::getWindow(){
 
 
 // State Stuff
-
-
 void CoreEngine::ChangeState(State* state){
 	if (!states.empty()) {
-		//states.back()->Cleanup();
+		delete states.back();
 		states.pop_back();
 	}
-
 	states.push_back(state);
-	//states.back()->Initialise();
 }
 
 void CoreEngine::PushState(State* state){
@@ -160,7 +154,6 @@ void CoreEngine::PushState(State* state){
 
 void CoreEngine::PopState(){
 	if (!states.empty()) {
-		//states.back()->Cleanup();
 		states.pop_back();
 	}
 

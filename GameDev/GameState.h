@@ -39,7 +39,7 @@ class GameState : public State
 {
 public:
 	GameState(sf::RenderWindow* w, const int level);
-	virtual  ~GameState();
+	virtual ~GameState();
 
 	virtual void Initialise();
 

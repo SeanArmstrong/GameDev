@@ -49,6 +49,7 @@ void GameState::Render(){
 
 void GameState::HandleEvents(CoreEngine& engine, sf::Event event){
 	if (event.key.code == sf::Keyboard::Escape){
+		ResourceManager::ResetInstance();
 		engine.ChangeState(new MainMenuState(window));
 	}
 }

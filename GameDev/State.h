@@ -130,6 +130,8 @@ public:
 	void ChangeState(CoreEngine* engine, State* state);
 	bool isPaused(){ return paused; }
 
+	virtual ~State(){}
+
 protected: 
 	sf::RenderWindow* window;
 	SFMLRenderer renderer; // Should this be here?

@@ -81,10 +81,10 @@ protected:
 	const float GRAVITY_RESET_TIME = 1.0f;
 	float timeSinceGravityChanged;
 
-
 private:
 	enum LevelState { PLAYING, WON, LOST };
 	LevelState levelState = PLAYING;
 	void setupGravity();
+
 };
 

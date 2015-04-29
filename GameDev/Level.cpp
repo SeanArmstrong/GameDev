@@ -8,13 +8,15 @@ Level::Level(sf::RenderWindow* w, SFMLRenderer* r) : hud(w->getSize().x, w->getS
 
 
 Level::~Level(){
-	delete player;
 	for (unsigned int i = 0; i < worldObjects.size(); ++i){
+		world.getPhysicsWorld()->removeCollisionObject(worldObjects[i]->getPhysicsObject()->getBody());
 		delete worldObjects[i];
 	}
-	for (unsigned int i = 0; i < worldObjects.size(); ++i){
+	for (unsigned int i = 0; i < eventObjects.size(); ++i){
+		world.getPhysicsWorld()->removeCollisionObject(eventObjects[i]->getPhysicsObject()->getBody());
 		delete eventObjects[i];
 	}
+	delete cam;
 }
 
 void Level::Update(){

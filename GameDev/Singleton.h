@@ -32,13 +32,9 @@ public:
 
 protected:
 
-	virtual ~Singleton(){
-		if (instance != NULL){
-			delete instance;
-		}
-	}
+	virtual ~Singleton(){}
 
-	inline explicit Singleton(){};
+	inline explicit Singleton(){}
 
 private:
 	static T* CreateInstance(){

@@ -113,6 +113,7 @@ protected:
 		Singleton<TextureManager>::Instance();
 		Singleton<ShaderManager>::Instance();
 		Singleton<AudioManager>::Instance();
+		Singleton<MeshManager>::Instance();
 	}
 
 	/**
@@ -128,6 +129,7 @@ protected:
 		Singleton<TextureManager>::ResetInstance();
 		Singleton<ShaderManager>::ResetInstance();
 		Singleton<AudioManager>::ResetInstance();
+		Singleton<MeshManager>::ResetInstance();
 	}
 
 private:

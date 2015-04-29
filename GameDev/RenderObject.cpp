@@ -20,6 +20,8 @@ void RenderObject::Intialize(Mesh*m, Shader*s, GLuint t) {
 	shader = s;
 	tex0 = t;
 	parent = NULL;
+	tex1 = NULL;
+	tex2 = NULL;
 }
 
 RenderObject::~RenderObject(void){
@@ -53,7 +55,7 @@ void RenderObject::Draw() const {
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, tex0);
-		glUniform1i(glGetUniformLocation(program, "tex0"), 0);
+ 		glUniform1i(glGetUniformLocation(program, "tex0"), 0);
 
 		if (tex1){
 			glActiveTexture(GL_TEXTURE1);
