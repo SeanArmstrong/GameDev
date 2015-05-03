@@ -9,8 +9,8 @@ in  vec2 texCoord;
 in  vec4 colour;
 
 out Vertex	{
-	vec2 texCoord;
 	vec4 colour;
+	vec2 texCoord;
 } OUT;
 
 void main(void)	{

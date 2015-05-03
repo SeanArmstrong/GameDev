@@ -258,8 +258,11 @@
     <ClCompile Include="MovingPlatformPhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="MultiplayerPoolLevel.cpp">
+      <Filter>Source Files\Game\Levels</Filter>
+    </ClCompile>
     <ClCompile Include="HazeGameObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -468,7 +471,10 @@
       <Filter>Header Files\Graphics\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="HazeGameObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiplayerPoolLevel.h">
+      <Filter>Header Files\Game\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

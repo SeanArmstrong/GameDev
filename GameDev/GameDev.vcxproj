@@ -88,6 +88,7 @@
     <ClCompile Include="ConcaveGameObject.cpp" />
     <ClCompile Include="MovingPlatformGameObject.cpp" />
     <ClCompile Include="MovingPlatformPhysicsObject.cpp" />
+    <ClCompile Include="MultiplayerPoolLevel.cpp" />
     <ClCompile Include="PlayerFollowCamera.cpp" />
     <ClCompile Include="PoolBallGameObject.cpp" />
     <ClCompile Include="PoolBallPhysicsObject.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="ConcaveGameObject.h" />
     <ClInclude Include="MovingPlatformGameObject.h" />
     <ClInclude Include="MovingPlatformPhysicsObject.h" />
+    <ClInclude Include="MultiplayerPoolLevel.h" />
     <ClInclude Include="PlayerFollowCamera.h" />
     <ClInclude Include="PoolBallGameObject.h" />
     <ClInclude Include="PoolBallPhysicsObject.h" />

@@ -5,6 +5,7 @@
 #include "PlaneGameObject.h"
 #include "CollisionResponse.h"
 #include "CubeGameObject.h"
+#include "InputManager.h"
 
 /**
  * @class	PlayerGameObject
@@ -222,6 +223,7 @@ public:
 
 
 private:
+	int controlSet;
 
 	/* Life Variables */
 	bool alive = true;

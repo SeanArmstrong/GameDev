@@ -8,6 +8,7 @@ PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const floa
 	this->po->getBody()->setUserPointer((void*)this);
 	this->movementSpeed = movementSpeed;
 	this->startingPosition = position;
+	this->controlSet = InputManager::Instance().getControlSet();
 }
 
 
@@ -48,21 +49,19 @@ void PlayerGameObject::incrementScore(){
 }
 
 void PlayerGameObject::update(){
-	Vector3 angularVelocity = po->getBody()->getAngularVelocity();
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+	if (InputManager::Instance().MovePlayerForward(this->controlSet)){
 		po->getBody()->applyTorque(btVector3(forward.x, forward.y, forward.z) * movementSpeed);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
+	if (InputManager::Instance().MovePlayerLeft(this->controlSet)){
 		po->getBody()->applyTorque(btVector3(left.x, left.y, left.z) * movementSpeed);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+	if (InputManager::Instance().MovePlayerBackward(this->controlSet)){
 		po->getBody()->applyTorque(btVector3(backward.x, backward.y, backward.z) * movementSpeed);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+	if (InputManager::Instance().MovePlayerRight(this->controlSet)){
 		po->getBody()->applyTorque(btVector3(right.x, right.y, right.z) * movementSpeed);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+	if (InputManager::Instance().JumpPlayer(this->controlSet)){
 		if (!jumping){
 			std::cout << "Jump";
 			po->getBody()->applyImpulse(btVector3(jumpDirection.x * 15, jumpDirection.y * 15, 0), btVector3(0, 0, 0));
