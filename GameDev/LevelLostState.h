@@ -18,7 +18,7 @@
 class LevelLostState : public State
 {
 public:
-	LevelLostState(sf::RenderWindow* w);
+	LevelLostState(sf::RenderWindow* w, const std::string message);
 	~LevelLostState();
 
 	virtual void Initialise();
@@ -33,5 +33,9 @@ public:
 private:
 
 	RenderObject* title;
+
+	std::string messageString;
+	sf::Text messageText;
+	sf::Font font;
 };
 

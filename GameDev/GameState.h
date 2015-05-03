@@ -18,9 +18,11 @@
 #include "GameHUD.h"
 #include "LevelWonState.h"
 #include "LevelLostState.h"
+#include "EndGameState.h"
 #include "Level1.h"
 #include "Level2.h"
 #include "PoolLevel.h"
+#include "MultiplayerPoolLevel.h"
 
 /**
  * @class	GameState
@@ -96,8 +98,10 @@ public:
 
 	//void resetScene();
 
-	void LevelLost(CoreEngine& engine);
-	void LevelWon(CoreEngine& engine);
+	void LevelLost(CoreEngine& engine, std::string message);
+	void LevelWon(CoreEngine& engine, std::string message);
+	void LevelFinished(CoreEngine& engine, std::string message);
+	void QuitLevel(CoreEngine& engine);
 
 protected:
 

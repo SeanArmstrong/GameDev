@@ -150,4 +150,5 @@ void PoolLevel::LoadObjects(){
 void PoolLevel::LoadPlayer(){
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-33.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 200.0f);
 	addEventObject(player);
+	players.push_back(player);
 }

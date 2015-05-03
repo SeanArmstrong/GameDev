@@ -23,7 +23,8 @@
  * @date	08/03/2015
  */
 
-#define MAX_NUMBER_OF_ITEMS 4
+#define MAX_NUMBER_OF_ITEMS 5
+#define NON_SELECTABLE_ITEMS 2
 
 class MainMenuState : public State
 {
@@ -133,5 +134,6 @@ private:
 	int selectedItemIndex;
 	sf::Font font;
 	sf::Text menu[MAX_NUMBER_OF_ITEMS];
+	sf::Text nonSelectMenu[NON_SELECTABLE_ITEMS];
 
 };

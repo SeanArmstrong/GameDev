@@ -1,8 +1,9 @@
 #include "LevelWonState.h"
 
 
-LevelWonState::LevelWonState(sf::RenderWindow* w) : State(w)
+LevelWonState::LevelWonState(sf::RenderWindow* w, const std::string message) : State(w)
 {
+	this->messageString = message;
 	Initialise();
 }
 
@@ -28,6 +29,15 @@ void LevelWonState::Initialise(){
 	view.ToIdentity();
 	renderer.SetViewMatrix(view);
 	renderer.AddRenderObject(*title);
+
+	font.loadFromFile("assets/fonts/arial.ttf");
+
+	messageText.setFont(font);
+	messageText.setCharacterSize(20);
+	messageText.setPosition(sf::Vector2f(500, 500));
+	messageText.setColor(sf::Color::White);
+	messageText.setStyle(sf::Text::Regular);
+	messageText.setString(messageString);
 }
 
 void LevelWonState::Pause(){
@@ -44,6 +54,9 @@ void LevelWonState::Update(CoreEngine& engine){
 
 void LevelWonState::Render(){
 	renderer.RenderScene();
+	window->pushGLStates();
+	window->draw(messageText);
+	window->popGLStates();
 }
 
 void LevelWonState::HandleEvents(CoreEngine& engine, sf::Event event){

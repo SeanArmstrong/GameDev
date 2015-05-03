@@ -82,6 +82,12 @@
     <Filter Include="Header Files\Graphics\Cameras">
       <UniqueIdentifier>{4c203ed7-9e9a-430e-b2ab-39a70e985db0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\HUDs">
+      <UniqueIdentifier>{bc9c8d3c-4731-4238-875d-d2538a6dca04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\HUDs">
+      <UniqueIdentifier>{6efed06b-5282-4e41-aa3d-2b01b9d8cc21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Quaternion.cpp">
@@ -192,9 +198,6 @@
     <ClCompile Include="DebugHUD.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="GameHUD.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="LevelWonState.cpp">
       <Filter>Source Files\Game\States</Filter>
     </ClCompile>
@@ -249,9 +252,6 @@
     <ClCompile Include="PlayerFollowCamera.cpp">
       <Filter>Source Files\Graphics\Cameras</Filter>
     </ClCompile>
-    <ClCompile Include="AerialCamera.cpp">
-      <Filter>Source Files\Graphics\Cameras</Filter>
-    </ClCompile>
     <ClCompile Include="MovingPlatformGameObject.cpp">
       <Filter>Source Files\Game\Objects</Filter>
     </ClCompile>
@@ -263,6 +263,21 @@
     </ClCompile>
     <ClCompile Include="HazeGameObject.cpp">
       <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="AerialCamera.cpp">
+      <Filter>Source Files\Graphics\Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="GameHUD.cpp">
+      <Filter>Source Files\Game\HUDs</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGameState.cpp">
+      <Filter>Source Files\Game\States</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiPlayerGameHUD.cpp">
+      <Filter>Source Files\Game\HUDs</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseHUD.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -398,17 +413,11 @@
     <ClInclude Include="PlaneGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="CollisionResponse.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="DebugHUD.h">
       <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="GameHUD.h">
-      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="LevelWonState.h">
       <Filter>Header Files\Game\States</Filter>
@@ -467,14 +476,26 @@
     <ClInclude Include="MovingPlatformPhysicsObject.h">
       <Filter>Header Files\Physics\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="AerialCamera.h">
-      <Filter>Header Files\Graphics\Cameras</Filter>
-    </ClInclude>
     <ClInclude Include="HazeGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
     </ClInclude>
     <ClInclude Include="MultiplayerPoolLevel.h">
       <Filter>Header Files\Game\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="AerialCamera.h">
+      <Filter>Header Files\Graphics\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="GameHUD.h">
+      <Filter>Header Files\Game\HUDs</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameState.h">
+      <Filter>Header Files\Game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiPlayerGameHUD.h">
+      <Filter>Header Files\Game\HUDs</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseHUD.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

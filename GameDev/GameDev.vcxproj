@@ -86,9 +86,12 @@
     <ClCompile Include="CoinPhysicsObject.cpp" />
     <ClCompile Include="CollisionResponse.cpp" />
     <ClCompile Include="ConcaveGameObject.cpp" />
+    <ClCompile Include="EndGameState.cpp" />
     <ClCompile Include="MovingPlatformGameObject.cpp" />
     <ClCompile Include="MovingPlatformPhysicsObject.cpp" />
+    <ClCompile Include="MultiPlayerGameHUD.cpp" />
     <ClCompile Include="MultiplayerPoolLevel.cpp" />
+    <ClCompile Include="PauseHUD.cpp" />
     <ClCompile Include="PlayerFollowCamera.cpp" />
     <ClCompile Include="PoolBallGameObject.cpp" />
     <ClCompile Include="PoolBallPhysicsObject.cpp" />
@@ -154,9 +157,12 @@
     <ClInclude Include="CollisionResponse.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="ConcaveGameObject.h" />
+    <ClInclude Include="EndGameState.h" />
     <ClInclude Include="MovingPlatformGameObject.h" />
     <ClInclude Include="MovingPlatformPhysicsObject.h" />
+    <ClInclude Include="MultiPlayerGameHUD.h" />
     <ClInclude Include="MultiplayerPoolLevel.h" />
+    <ClInclude Include="PauseHUD.h" />
     <ClInclude Include="PlayerFollowCamera.h" />
     <ClInclude Include="PoolBallGameObject.h" />
     <ClInclude Include="PoolBallPhysicsObject.h" />
@@ -193,7 +199,6 @@
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="RenderUtils.h" />
     <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="SettingState.h" />
     <ClInclude Include="SFMLRenderer.h" />
     <ClInclude Include="Shader.h" />

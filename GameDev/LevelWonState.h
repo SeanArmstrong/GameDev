@@ -18,7 +18,7 @@
 class LevelWonState : public State
 {
 public:
-	LevelWonState(sf::RenderWindow* w);
+	LevelWonState(sf::RenderWindow* w, const std::string message);
 	~LevelWonState();
 
 	virtual void Initialise();
@@ -33,5 +33,9 @@ public:
 private:
 
 	RenderObject* title;
+
+	std::string messageString;
+	sf::Text messageText;
+	sf::Font font;
 };
 

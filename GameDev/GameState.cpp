@@ -11,6 +11,9 @@ GameState::GameState(sf::RenderWindow* w, const int l) : State(w){
 	case 3: 
 		level = new PoolLevel(w, &renderer);
 		break;
+	case 4:
+		level = new MultiplayerPoolLevel(w, &renderer);
+		break;
 	default:
 		level = new Level1(w, &renderer);
 		break;
@@ -34,11 +37,18 @@ void GameState::Resume(){}
 
 void GameState::Update(CoreEngine& engine){
 	level->Update();
+
 	if (level->isGameLost()){
-		LevelLost(engine);
+		LevelLost(engine, level->getEndOfLevelMessage());
 	}
 	else if (level->isGameWon()){
-		LevelWon(engine);
+		LevelWon(engine, level->getEndOfLevelMessage());
+	}
+	else if (level->isGameFinished()){
+		LevelFinished(engine, level->getEndOfLevelMessage());
+	}
+	else if (level->isGameQuitting()){
+		QuitLevel(engine);
 	}
 }
 
@@ -48,15 +58,32 @@ void GameState::Render(){
 
 
 void GameState::HandleEvents(CoreEngine& engine, sf::Event event){
-	if (event.key.code == sf::Keyboard::Escape){
-		ResourceManager::ResetInstance();
-		engine.ChangeState(new MainMenuState(window));
+	if (event.key.code == sf::Keyboard::Return){
+		if (level->isGamePaused()){
+			std::cout << "Resume" << std::endl;
+			level->Resume();
+		}
 	}
+	if (event.key.code == sf::Keyboard::Escape){
+		std::cout << "Pause" << std::endl;
+		level->Pause();
+	}
+
 }
-void GameState::LevelLost(CoreEngine& engine){
-	engine.ChangeState(new LevelLostState(window));
+void GameState::LevelLost(CoreEngine& engine, std::string message){
+	engine.ChangeState(new LevelLostState(window, message));
 }
 
-void GameState::LevelWon(CoreEngine& engine){
-	engine.ChangeState(new LevelWonState(window));
+void GameState::LevelWon(CoreEngine& engine, std::string message){
+	engine.ChangeState(new LevelWonState(window, message));
+}
+
+void GameState::LevelFinished(CoreEngine& engine, std::string message){
+	engine.ChangeState(new EndGameState(window, message));
+}
+
+void GameState::QuitLevel(CoreEngine& engine){
+	InputManager::ResetInstance();
+	ResourceManager::ResetInstance();
+	engine.ChangeState(new MainMenuState(window));
 }

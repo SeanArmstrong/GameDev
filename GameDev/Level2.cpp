@@ -199,4 +199,5 @@ void Level2::LoadObjects(){
 void Level2::LoadPlayer(){
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
 	addEventObject(player);
+	players.push_back(player);
 }

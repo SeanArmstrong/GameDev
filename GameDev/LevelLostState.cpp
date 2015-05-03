@@ -1,8 +1,9 @@
 #include "LevelLostState.h"
 
 
-LevelLostState::LevelLostState(sf::RenderWindow* w) : State(w)
+LevelLostState::LevelLostState(sf::RenderWindow* w, const std::string message) : State(w)
 {
+	this->messageString = message;
 	Initialise();
 }
 
@@ -25,6 +26,15 @@ void LevelLostState::Initialise(){
 	view.ToIdentity();
 	renderer.SetViewMatrix(view);
 	renderer.AddRenderObject(*title);
+
+	font.loadFromFile("assets/fonts/arial.ttf");
+
+	messageText.setFont(font);
+	messageText.setCharacterSize(20);
+	messageText.setPosition(sf::Vector2f(500, 500));
+	messageText.setColor(sf::Color::White);
+	messageText.setStyle(sf::Text::Regular);
+	messageText.setString(messageString);
 }
 
 void LevelLostState::Pause(){
@@ -41,6 +51,9 @@ void LevelLostState::Update(CoreEngine& engine){
 
 void LevelLostState::Render(){
 	renderer.RenderScene();
+	window->pushGLStates();
+	window->draw(messageText);
+	window->popGLStates();
 }
 
 void LevelLostState::HandleEvents(CoreEngine& engine, sf::Event event){

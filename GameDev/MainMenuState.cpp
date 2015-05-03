@@ -10,25 +10,41 @@ MainMenuState::~MainMenuState(){
 
 void MainMenuState::Initialise(){
 	font.loadFromFile("assets/fonts/arial.ttf");
+
+	nonSelectMenu[0].setFont(font);
+	nonSelectMenu[0].setColor(sf::Color::Blue);
+	nonSelectMenu[0].setString("Single Player");
+	nonSelectMenu[0].setPosition((float)window->getSize().x / 2.0f - 50, (float)window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + NON_SELECTABLE_ITEMS + 1) * 1);
+
 	menu[0].setFont(font);
 	menu[0].setColor(sf::Color::Red);
 	menu[0].setString("Level1");
-	menu[0].setPosition((float) window->getSize().x / 2.0f, (float) window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + 1) * 1);
+	menu[0].setPosition((float)window->getSize().x / 2.0f - 50, (float)window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + NON_SELECTABLE_ITEMS + 1) * 2);
 
 	menu[1].setFont(font);
 	menu[1].setColor(sf::Color::White);
 	menu[1].setString("Level2");
-	menu[1].setPosition((float)window->getSize().x / 2.0f, (float)window->getSize().y / (float) (MAX_NUMBER_OF_ITEMS + 1) * 2);
+	menu[1].setPosition((float)window->getSize().x / 2.0f - 50, (float)window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + NON_SELECTABLE_ITEMS + 1) * 3);
 
 	menu[2].setFont(font);
 	menu[2].setColor(sf::Color::White);
 	menu[2].setString("Pool Level");
-	menu[2].setPosition((float)window->getSize().x / 2.0f, (float)window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + 1) * 3);
+	menu[2].setPosition((float)window->getSize().x / 2.0f - 50, (float)window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + NON_SELECTABLE_ITEMS + 1) * 4);
+
+	nonSelectMenu[1].setFont(font);
+	nonSelectMenu[1].setColor(sf::Color::Blue);
+	nonSelectMenu[1].setString("Multiplayer");
+	nonSelectMenu[1].setPosition((float)window->getSize().x / 2.0f - 50, (float)window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + NON_SELECTABLE_ITEMS + 1) * 5);
 
 	menu[3].setFont(font);
 	menu[3].setColor(sf::Color::White);
-	menu[3].setString("Exit");
-	menu[3].setPosition((float)window->getSize().x / 2.0f, (float)window->getSize().y / (float) (MAX_NUMBER_OF_ITEMS + 1) * 4);
+	menu[3].setString("2 Player Pool");
+	menu[3].setPosition((float)window->getSize().x / 2.0f - 50, (float)window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + NON_SELECTABLE_ITEMS + 1) * 6);
+
+	menu[4].setFont(font);
+	menu[4].setColor(sf::Color::White);
+	menu[4].setString("Exit");
+	menu[4].setPosition((float)window->getSize().x / 2.0f - 50, (float)window->getSize().y / (float)(MAX_NUMBER_OF_ITEMS + NON_SELECTABLE_ITEMS + 1) * 7);
 
 	selectedItemIndex = 0;
 }
@@ -64,6 +80,9 @@ void MainMenuState::Render(){
 	for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++){
 		window->draw(menu[i]);
 	}
+	for (int i = 0; i < NON_SELECTABLE_ITEMS; i++){
+		window->draw(nonSelectMenu[i]);
+	}
 	window->popGLStates();
 }
 
@@ -88,8 +107,10 @@ void MainMenuState::HandleEvents(CoreEngine& engine, sf::Event event){
 				engine.ChangeState(new GameState(window, 3));
 				break;
 			case 3:
-				engine.Quit();
+				engine.ChangeState(new GameState(window, 4));
 				break;
+			default: 
+				engine.Quit();
 			}
 		}
 	}

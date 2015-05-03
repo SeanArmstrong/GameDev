@@ -15,6 +15,8 @@
 #include "ConcaveGameObject.h"
 #include "MovingPlatformGameObject.h"
 #include "HazeGameObject.h"
+#include "MultiPlayerGameHUD.h"
+#include "PauseHUD.h"
 
 class Level {
 public:
@@ -23,6 +25,8 @@ public:
 
 	virtual void Initialise() = 0;
 	void Pause();
+	void PauseUpdate();
+	void PauseRender();
 	void Resume();
 	virtual void Update();
 	virtual void Render();
@@ -42,6 +46,17 @@ public:
 	inline bool Level::isGameLost(){
 		return (levelState == LOST) ? true : false;
 	}
+	inline bool Level::isGameFinished(){
+		return (levelState == FINISHED) ? true : false;
+	}
+	inline bool Level::isGamePaused(){
+		return (levelState == PAUSED) ? true : false;
+	}
+	inline bool Level::isGameQuitting(){
+		return (levelState == QUITTING) ? true : false;
+	}
+	
+	std::string getEndOfLevelMessage();
 
 protected:
 
@@ -57,7 +72,7 @@ protected:
 
 	World world;
 	Camera* cam;
-	GameHUD hud;
+	MultiPlayerGameHUD hud;
 	SFMLRenderer* renderer;
 	Skybox sb;
 
@@ -65,6 +80,7 @@ protected:
 	std::vector<GameObject*> eventObjects;
 
 	PlayerGameObject* player;
+	std::vector<PlayerGameObject*> players;
 
 	bool mouseHeld;
 	bool endLevel = false;
@@ -81,10 +97,14 @@ protected:
 	const float GRAVITY_RESET_TIME = 1.0f;
 	float timeSinceGravityChanged;
 
-private:
-	enum LevelState { PLAYING, WON, LOST };
+	// Game State
+	enum LevelState { PLAYING, WON, LOST, FINISHED, PAUSED, QUITTING };
 	LevelState levelState = PLAYING;
-	void setupGravity();
+	std::string endOfGameMessage;
 
+private:
+
+	PauseHUD pauseMenu;
+	void setupGravity();
 };
 

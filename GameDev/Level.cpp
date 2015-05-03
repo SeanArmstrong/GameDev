@@ -1,11 +1,11 @@
 #include "Level.h"
 
-Level::Level(sf::RenderWindow* w, SFMLRenderer* r) : hud(w->getSize().x, w->getSize().y){
+Level::Level(sf::RenderWindow* w, SFMLRenderer* r) : hud(w->getSize().x, w->getSize().y), 
+				pauseMenu(w->getSize().x, w->getSize().y){
 	this->window = w;
 	this->renderer = r;
 	setupGravity();
 }
-
 
 Level::~Level(){
 	for (unsigned int i = 0; i < worldObjects.size(); ++i){
@@ -20,35 +20,38 @@ Level::~Level(){
 }
 
 void Level::Update(){
-	world.getPhysicsWorld()->stepSimulation(GameTimer::getDelta());
-	world.callbackChecker(player, eventObjects);
-	removeDeletedObjects();
-
-	player->update();
-
-	timer = timer - GameTimer::getDelta();
-
-	GeneralGameLogic();
-	GameLogic();
-
-	std::vector<GameObject*>::iterator obj;
-	for (obj = worldObjects.begin(); obj < worldObjects.end(); ++obj) {
-		(**obj).update();
+	if (levelState == PAUSED){
+		pauseMenu.Update();
 	}
+	else{
+		world.getPhysicsWorld()->stepSimulation(GameTimer::getDelta());
+		world.callbackChecker(player, eventObjects);
+		removeDeletedObjects();
 
-	for (obj = eventObjects.begin(); obj < eventObjects.end(); ++obj) {
-		(**obj).update();
+		timer = timer - GameTimer::getDelta();
+
+		GeneralGameLogic();
+		GameLogic();
+
+		std::vector<GameObject*>::iterator obj;
+		for (obj = worldObjects.begin(); obj < worldObjects.end(); ++obj) {
+			(**obj).update();
+		}
+
+		for (obj = eventObjects.begin(); obj < eventObjects.end(); ++obj) {
+			(**obj).update();
+		}
+
+		renderer->SetViewMatrix(cam->setCam(player->getPhysicsObject()));
+		renderer->UpdateScene(GameTimer::getDelta());
+
+		player->setDirectionVectors(cam->getPlayerForwardVector(),
+			cam->getPlayerBackwardVector(),
+			cam->getPlayerLeftVector(),
+			cam->getPlayerRightVector());
+
+		hud.Update(players, timer);
 	}
-	
-	renderer->SetViewMatrix(cam->setCam(player->getPhysicsObject()));
-	renderer->UpdateScene(GameTimer::getDelta());
-
-	player->setDirectionVectors(cam->getPlayerForwardVector(),
-								cam->getPlayerBackwardVector(),
-								cam->getPlayerLeftVector(),
-								cam->getPlayerRightVector());
-
-	hud.Update(*player, timer);
 }
 
 void Level::GeneralGameLogic(){
@@ -64,12 +67,19 @@ void Level::GeneralGameLogic(){
 		}
 	}
 
-	if (!player->isAlive() || timer <= 0.0f){
+	if (!player->isAlive()){
 		ResourceManager::Instance().AudioPlaySound("LostGame.wav");
+		endOfGameMessage = "Player Died";
+		levelState = LOST;
+	}
+	if (timer <= 0.0f){
+		ResourceManager::Instance().AudioPlaySound("LostGame.wav");
+		endOfGameMessage = "Out of Time!";
 		levelState = LOST;
 	}
 	if (player->getScore() == levelScore){
 		ResourceManager::Instance().AudioPlaySound("Clapping.wav");
+		endOfGameMessage = "Score Limit Reached (Y)";
 		levelState = WON;
 	}
 }
@@ -99,6 +109,9 @@ void Level::Render(){
 	renderer->RenderScene();
 	hud.Draw(window);
 	//world.getPhysicsWorld()->debugDrawWorld();
+	if (levelState == PAUSED){
+		pauseMenu.Draw(window);
+	}
 }
 
 void Level::removeDeletedObjects(){
@@ -141,4 +154,21 @@ void Level::setupGravity(){
 	upVectorDirections[2] = btVector3(0, -1, 0);
 	upVectorDirections[3] = btVector3(1, 0, 0);
 	gravityTracker = 0;
+}
+
+std::string Level::getEndOfLevelMessage(){
+	return endOfGameMessage;
+}
+
+void Level::Pause(){
+	levelState = PAUSED;
+}
+
+void Level::Resume(){
+	if (pauseMenu.GetElementIndex() == 0){
+		levelState = PLAYING;
+	}
+	else{
+		levelState = QUITTING;
+	}
 }
