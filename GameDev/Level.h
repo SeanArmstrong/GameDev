@@ -28,11 +28,14 @@ public:
 	void PauseUpdate();
 	void PauseRender();
 	void Resume();
-	virtual void Update();
-	virtual void Render();
+	void Update();
+	void Render();
+
+	virtual void UpdateLevel() = 0;
+	virtual void RenderLevel() = 0;
 
 	virtual void GameLogic() = 0;
-	void GeneralGameLogic();
+	virtual void GeneralGameLogic() = 0;
 
 	virtual void SetView() = 0;
 	virtual void LoadResources() = 0;
@@ -41,19 +44,19 @@ public:
 	virtual void LoadPlayer() = 0;
 
 	inline bool Level::isGameWon(){
-		return (levelState == WON) ? true : false;
+		return (levelState == WON);
 	}
 	inline bool Level::isGameLost(){
-		return (levelState == LOST) ? true : false;
+		return (levelState == LOST);
 	}
 	inline bool Level::isGameFinished(){
-		return (levelState == FINISHED) ? true : false;
+		return (levelState == FINISHED);
 	}
 	inline bool Level::isGamePaused(){
-		return (levelState == PAUSED) ? true : false;
+		return (levelState == PAUSED);
 	}
 	inline bool Level::isGameQuitting(){
-		return (levelState == QUITTING) ? true : false;
+		return (levelState == QUITTING);
 	}
 	
 	std::string getEndOfLevelMessage();
@@ -72,7 +75,6 @@ protected:
 
 	World world;
 	Camera* cam;
-	MultiPlayerGameHUD hud;
 	SFMLRenderer* renderer;
 	Skybox sb;
 
@@ -102,9 +104,9 @@ protected:
 	LevelState levelState = PLAYING;
 	std::string endOfGameMessage;
 
-private:
-
 	PauseHUD pauseMenu;
 	void setupGravity();
+
+private:
 };
 

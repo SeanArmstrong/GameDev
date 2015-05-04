@@ -1,7 +1,7 @@
 #pragma once
-#include "Level.h"
+#include "SinglePlayerLevel.h"
 
-class Level2 : public Level
+class Level2 : public SinglePlayerLevel
 {
 public:
 	Level2(sf::RenderWindow* w, SFMLRenderer* r);

@@ -1,7 +1,7 @@
 #include "PoolLevel.h"
 
 
-PoolLevel::PoolLevel(sf::RenderWindow* w, SFMLRenderer* r) : Level(w, r) {
+PoolLevel::PoolLevel(sf::RenderWindow* w, SFMLRenderer* r) : SinglePlayerLevel(w, r) {
 	Initialise();
 }
 
@@ -73,7 +73,7 @@ void PoolLevel::LoadResources(){
 void PoolLevel::LoadMap(){
 	this->renderer->setSkybox(new Skybox("rustskybox"));
 
-	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -15, NULL, 0, PlaneGameObject::Reset);
+	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -15, NULL, 0, PlaneGameObject::Deadly);
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(invisibleGround);
 
@@ -148,7 +148,7 @@ void PoolLevel::LoadObjects(){
 }
 
 void PoolLevel::LoadPlayer(){
-	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-33.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 200.0f);
+	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-33.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 3, 100.0f);
 	addEventObject(player);
 	players.push_back(player);
 }

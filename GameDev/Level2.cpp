@@ -1,7 +1,7 @@
 #include "Level2.h"
 
 
-Level2::Level2(sf::RenderWindow* w, SFMLRenderer* r) : Level(w, r) {
+Level2::Level2(sf::RenderWindow* w, SFMLRenderer* r) : SinglePlayerLevel(w, r) {
 	Initialise();
 }
 
@@ -197,7 +197,7 @@ void Level2::LoadObjects(){
 }
 
 void Level2::LoadPlayer(){
-	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
+	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 3);
 	addEventObject(player);
 	players.push_back(player);
 }

@@ -88,6 +88,18 @@
     <Filter Include="Header Files\Game\HUDs">
       <UniqueIdentifier>{6efed06b-5282-4e41-aa3d-2b01b9d8cc21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Levels\Single Player">
+      <UniqueIdentifier>{e28cad42-834c-4d0f-97c7-3b2e4ae8f598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Levels\Multi Player">
+      <UniqueIdentifier>{2abc1540-429d-45a7-87ad-0ac7dbe30ab3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Levels\Single Player">
+      <UniqueIdentifier>{67bb8ce8-458c-45d1-a975-84b0b53fe0d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Levels\Multi Player">
+      <UniqueIdentifier>{ada89849-5839-437f-851d-9a41d91dd1cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Quaternion.cpp">
@@ -210,20 +222,11 @@
     <ClCompile Include="PlatformPhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files\Game\Levels</Filter>
-    </ClCompile>
     <ClCompile Include="PlatformGameObject.cpp">
       <Filter>Source Files\Game\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Level1.cpp">
-      <Filter>Source Files\Game\Levels</Filter>
-    </ClCompile>
     <ClCompile Include="Skybox.cpp">
       <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Level2.cpp">
-      <Filter>Source Files\Game\Levels</Filter>
     </ClCompile>
     <ClCompile Include="ConvexPhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
@@ -243,9 +246,6 @@
     <ClCompile Include="PoolBallPhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="PoolLevel.cpp">
-      <Filter>Source Files\Game\Levels</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Graphics\Cameras</Filter>
     </ClCompile>
@@ -257,9 +257,6 @@
     </ClCompile>
     <ClCompile Include="MovingPlatformPhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="MultiplayerPoolLevel.cpp">
-      <Filter>Source Files\Game\Levels</Filter>
     </ClCompile>
     <ClCompile Include="HazeGameObject.cpp">
       <Filter>Source Files\Game\Objects</Filter>
@@ -277,7 +274,28 @@
       <Filter>Source Files\Game\HUDs</Filter>
     </ClCompile>
     <ClCompile Include="PauseHUD.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\HUDs</Filter>
+    </ClCompile>
+    <ClCompile Include="SinglePlayerLevel.cpp">
+      <Filter>Source Files\Game\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiPlayerLevel.cpp">
+      <Filter>Source Files\Game\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Level1.cpp">
+      <Filter>Source Files\Game\Levels\Single Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Level2.cpp">
+      <Filter>Source Files\Game\Levels\Single Player</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiplayerPoolLevel.cpp">
+      <Filter>Source Files\Game\Levels\Multi Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolLevel.cpp">
+      <Filter>Source Files\Game\Levels\Single Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Game\Levels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -431,17 +449,8 @@
     <ClInclude Include="PlatformGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Header Files\Game\Levels</Filter>
-    </ClInclude>
-    <ClInclude Include="Level1.h">
-      <Filter>Header Files\Game\Levels</Filter>
-    </ClInclude>
     <ClInclude Include="Skybox.h">
       <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Level2.h">
-      <Filter>Header Files\Game\Levels</Filter>
     </ClInclude>
     <ClInclude Include="ConvexPhysicsObject.h">
       <Filter>Header Files\Physics\Objects</Filter>
@@ -457,9 +466,6 @@
     </ClInclude>
     <ClInclude Include="PoolBallGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="PoolLevel.h">
-      <Filter>Header Files\Game\Levels</Filter>
     </ClInclude>
     <ClInclude Include="PoolBallPhysicsObject.h">
       <Filter>Header Files\Physics\Objects</Filter>
@@ -479,9 +485,6 @@
     <ClInclude Include="HazeGameObject.h">
       <Filter>Header Files\Game\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="MultiplayerPoolLevel.h">
-      <Filter>Header Files\Game\Levels</Filter>
-    </ClInclude>
     <ClInclude Include="AerialCamera.h">
       <Filter>Header Files\Graphics\Cameras</Filter>
     </ClInclude>
@@ -495,7 +498,28 @@
       <Filter>Header Files\Game\HUDs</Filter>
     </ClInclude>
     <ClInclude Include="PauseHUD.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game\HUDs</Filter>
+    </ClInclude>
+    <ClInclude Include="SinglePlayerLevel.h">
+      <Filter>Header Files\Game\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiPlayerLevel.h">
+      <Filter>Header Files\Game\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Level1.h">
+      <Filter>Header Files\Game\Levels\Single Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Level2.h">
+      <Filter>Header Files\Game\Levels\Single Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolLevel.h">
+      <Filter>Header Files\Game\Levels\Single Player</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiplayerPoolLevel.h">
+      <Filter>Header Files\Game\Levels\Multi Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files\Game\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

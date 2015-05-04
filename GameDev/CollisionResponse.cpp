@@ -3,10 +3,19 @@
 void CollisionResponse::handleCollision(PlayerGameObject& p, PlaneGameObject& plane){
 	PlaneGameObject::PlayerContactAction action = plane.getPlayerAction();
 	if (action == PlaneGameObject::PlayerContactAction::Deadly){
-		p.setAlive(false);
+		// This collides twice before the reset therefore lives had to be doubled for
+		// each player. TODO!
+		p.resetPlayerPosition();
+		p.looseALife();
+		if (p.getPlayerLives() == 0){
+			p.setAlive(false);
+		}
 	}
 	else if (action == PlaneGameObject::PlayerContactAction::Reset){
 		p.resetPlayerPosition();
+	}
+	else if (action == PlaneGameObject::PlayerContactAction::Checkpoint){
+		// Update reset position
 	}
 }
 

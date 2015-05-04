@@ -36,7 +36,7 @@ public:
 	 * @param	t		 	The Texture given to the render object
 	 */
 
-	PlayerGameObject(Shader*s, const Vector3& position, const float mass, const float radius, GLuint t, const float movementSpeed = 20.0f);
+	PlayerGameObject(Shader*s, const Vector3& position, const float mass, const float radius, GLuint t, const unsigned int lives = 1, const float movementSpeed = 20.0f);
 	~PlayerGameObject();
 
 	/**
@@ -221,12 +221,16 @@ public:
 
 	void resetPlayerPosition();
 
+	void setPlayerLives(const int lives);
+	void looseALife();
+	int getPlayerLives() const;
 
 private:
 	int controlSet;
 
 	/* Life Variables */
 	bool alive = true;
+	unsigned int lives;
 
 	/* Progress Variable */
 	int score = 0;

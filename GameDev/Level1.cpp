@@ -1,7 +1,7 @@
 #include "Level1.h"
 
 
-Level1::Level1(sf::RenderWindow* w, SFMLRenderer* r) : Level(w, r){
+Level1::Level1(sf::RenderWindow* w, SFMLRenderer* r) : SinglePlayerLevel(w, r){
 	Initialise();
 }
 

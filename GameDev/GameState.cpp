@@ -58,18 +58,20 @@ void GameState::Render(){
 
 
 void GameState::HandleEvents(CoreEngine& engine, sf::Event event){
-	if (event.key.code == sf::Keyboard::Return){
-		if (level->isGamePaused()){
-			std::cout << "Resume" << std::endl;
-			level->Resume();
+	if (event.type == sf::Event::KeyReleased){
+		if (event.key.code == sf::Keyboard::Return){
+			if (level->isGamePaused()){
+				std::cout << "Resume" << std::endl;
+				level->Resume();
+			}
+		}
+		if (event.key.code == sf::Keyboard::Escape){
+			std::cout << "Pause" << std::endl;
+			level->Pause();
 		}
 	}
-	if (event.key.code == sf::Keyboard::Escape){
-		std::cout << "Pause" << std::endl;
-		level->Pause();
-	}
-
 }
+
 void GameState::LevelLost(CoreEngine& engine, std::string message){
 	engine.ChangeState(new LevelLostState(window, message));
 }

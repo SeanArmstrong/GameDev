@@ -1,8 +1,8 @@
 #pragma once
-#include "Level.h"
+#include "MultiPlayerLevel.h"
 #include "AerialCamera.h"
 
-class MultiplayerPoolLevel : public Level
+class MultiplayerPoolLevel : public MultiPlayerLevel
 {
 public:
 	MultiplayerPoolLevel(sf::RenderWindow* w, SFMLRenderer* r);

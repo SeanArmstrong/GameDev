@@ -1,10 +1,10 @@
 #pragma once
-#include "Level.h"
+#include "SinglePlayerLevel.h"
 #include "SphereGameObject.h"
 #include "PoolBallGameObject.h"
 #include "AerialCamera.h"
 
-class PoolLevel : public Level
+class PoolLevel : public SinglePlayerLevel
 {
 public:
 	PoolLevel(sf::RenderWindow* w, SFMLRenderer* r);

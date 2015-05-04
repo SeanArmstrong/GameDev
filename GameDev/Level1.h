@@ -1,7 +1,7 @@
 #pragma once
-#include "Level.h"
+#include "SinglePlayerLevel.h"
 
-class Level1 : public Level {
+class Level1 : public SinglePlayerLevel {
 public:
 
 	/*

@@ -1,7 +1,7 @@
 #include "MultiplayerPoolLevel.h"
 
 
-MultiplayerPoolLevel::MultiplayerPoolLevel(sf::RenderWindow* w, SFMLRenderer* r) : Level(w, r){
+MultiplayerPoolLevel::MultiplayerPoolLevel(sf::RenderWindow* w, SFMLRenderer* r) : MultiPlayerLevel(w, r){
 	Initialise();
 }
 
@@ -81,7 +81,7 @@ void MultiplayerPoolLevel::LoadResources(){
 void MultiplayerPoolLevel::LoadMap(){
 	this->renderer->setSkybox(new Skybox("rustskybox"));
 
-	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -15, NULL, 0, PlaneGameObject::Reset);
+	GameObject* invisibleGround = new PlaneGameObject(Vector3(0, 1, 0), 0, -15, NULL, 0, PlaneGameObject::Deadly);
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(invisibleGround);
 
@@ -154,9 +154,9 @@ void MultiplayerPoolLevel::LoadObjects(){
 }
 
 void MultiplayerPoolLevel::LoadPlayer(){
-	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-33.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 200.0f);
+	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-33.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 1, 100.0f);
 	addEventObject(player);
-	player2 = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-40.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 200.0f);
+	player2 = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-40.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 1, 100.0f);
 	addEventObject(player2);
 	players.push_back(player);
 	players.push_back(player2);

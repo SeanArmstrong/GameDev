@@ -1,6 +1,6 @@
 #include "PlayerGameObject.h"
 
-PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const float mass, const float radius, GLuint t, const float movementSpeed)
+PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const float mass, const float radius, GLuint t, const unsigned int lives, const float movementSpeed)
 {
 	this->ro = new RenderObject(ResourceManager::Instance().GetMesh("sphere"), s, t);
 	this->ro->SetModelMatrix(Matrix4::Translation(position) * Matrix4::Scale(Vector3(radius, radius, radius)));
@@ -9,6 +9,7 @@ PlayerGameObject::PlayerGameObject(Shader*s, const Vector3& position, const floa
 	this->movementSpeed = movementSpeed;
 	this->startingPosition = position;
 	this->controlSet = InputManager::Instance().getControlSet();
+	this->lives = lives * 2;
 }
 
 
@@ -124,4 +125,16 @@ void PlayerGameObject::resetPlayerPosition(){
 	setPosition(startingPosition);
 	po->getBody()->setAngularVelocity(btVector3(0, 0, 0));
 	po->getBody()->setLinearVelocity(btVector3(0, 0, 0));
+}
+
+void PlayerGameObject::setPlayerLives(const int lives){
+	this->lives = lives * 2;
+}
+
+void PlayerGameObject::looseALife(){
+	lives--;
+}
+
+int PlayerGameObject::getPlayerLives() const{
+	return lives/2;
 }

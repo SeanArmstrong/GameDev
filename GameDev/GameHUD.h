@@ -77,8 +77,10 @@ private:
 
 	std::string scoreInfo;
 	std::string timerInfo;
+	std::string livesInfo;
 	sf::Text scoreText;
 	sf::Text timerText;
+	sf::Text lifeText;
 	sf::Font font;
 };
 
