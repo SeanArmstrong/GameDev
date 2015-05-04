@@ -6,7 +6,7 @@
 #include "IntroState.h"
 
 CoreEngine::CoreEngine(const int width, const int height, const float framerate) :
-			screenHeight(height), screenWidth(width), framerate(framerate) {
+			screenHeight(height), screenWidth(width), framerate(framerate), controlInfo(width, height) {
 }
 
 CoreEngine::~CoreEngine(){
@@ -17,6 +17,7 @@ void CoreEngine::run(){
 	if (!running){
 		Initialise();
 		states.push_back(new IntroState(&window));
+		controlInfo.SetControlText(states.back()->getControlText());
 		gameLoop();
 	}
 	ResourceManager::ResetInstance();
@@ -82,6 +83,9 @@ void CoreEngine::gameLoop(){
 				debugInfo.Update((frames / frameCounter) * 1000);
 				debugInfo.Draw(window);
 			}
+			if (showControls){
+				controlInfo.Draw(&window);
+			}
 
 			window.display();
 			frames++;
@@ -100,6 +104,9 @@ void CoreEngine::processInput(){
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2)){
 			polygons = !polygons;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3)){
+			showControls = !showControls;
 		}
 		else if (event.type == sf::Event::Resized){
 			glViewport(0, 0, event.size.width, event.size.height);
@@ -141,6 +148,7 @@ void CoreEngine::ChangeState(State* state){
 		states.pop_back();
 	}
 	states.push_back(state);
+	setChangeStateInfo();
 }
 
 void CoreEngine::PushState(State* state){
@@ -150,6 +158,7 @@ void CoreEngine::PushState(State* state){
 
 	states.push_back(state);
 	states.back()->Initialise();
+	setChangeStateInfo();
 }
 
 void CoreEngine::PopState(){
@@ -160,4 +169,10 @@ void CoreEngine::PopState(){
 	if (!states.empty()) {
 		states.back()->Resume();
 	}
+	setChangeStateInfo();
+}
+
+void CoreEngine::setChangeStateInfo(){
+	showDebugInfo = false;
+	controlInfo.SetControlText(states.back()->getControlText());
 }

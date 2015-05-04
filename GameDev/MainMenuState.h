@@ -125,8 +125,13 @@ public:
 
 	virtual void Render();
 
+	virtual std::string getControlText() const;
+
+
 	void MoveUp();
 	void MoveDown();
+
+
 
 protected:
 

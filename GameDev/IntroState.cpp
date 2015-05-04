@@ -41,9 +41,12 @@ void IntroState::Render(){
 }
 
 void IntroState::HandleEvents(CoreEngine& engine, sf::Event event){
-	if (event.type == sf::Event::KeyPressed && event.key.code != sf::Keyboard::Return){
+	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space){
 		ResourceManager::ResetInstance();
 		engine.ChangeState(new MainMenuState(window));
 	}
+}
 
+std::string IntroState::getControlText() const{
+	return "Press Space Bar To Continue";
 }

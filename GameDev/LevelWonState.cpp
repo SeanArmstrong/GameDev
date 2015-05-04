@@ -60,8 +60,12 @@ void LevelWonState::Render(){
 }
 
 void LevelWonState::HandleEvents(CoreEngine& engine, sf::Event event){
-	if (event.type == sf::Event::KeyPressed){
+	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space){
 		ResourceManager::ResetInstance();
 		engine.ChangeState(new MainMenuState(window));
 	}
+}
+
+std::string LevelWonState::getControlText() const{
+	return "Press Space Bar To Continue";
 }

@@ -11,6 +11,7 @@
 #include "GameTimer.h"
 #include "RenderUtils.h"
 #include "DebugHUD.h"
+#include "ControlHUD.h"
 
 class State;
 
@@ -216,6 +217,8 @@ private:
 
 	void processInput();
 
+	void setChangeStateInfo();
+
 	sf::RenderWindow window;
 	std::vector<State*> states;
 
@@ -226,8 +229,10 @@ private:
 	bool running;
 	bool polygons;
 	bool showDebugInfo;
+	bool showControls = true;
 
 	DebugHUD debugInfo;
+	ControlHUD controlInfo;
 	
 };
 

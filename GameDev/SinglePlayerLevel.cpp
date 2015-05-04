@@ -74,3 +74,7 @@ void SinglePlayerLevel::GeneralGameLogic(){
 		levelState = WON;
 	}
 }
+
+std::string SinglePlayerLevel::getControlText() const{
+	return "Forward - W\nLeft - A\nBackward - S\nRight - D\nJump - Space\nBox Spawn - Space\nCamera - Left/Right Arrows";
+}

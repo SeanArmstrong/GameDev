@@ -16,6 +16,7 @@ public:
 	virtual void HandleEvents(CoreEngine& engine, sf::Event event);
 	virtual void Update(CoreEngine& engine);
 	virtual void Render();
+	virtual std::string getControlText() const;
 
 private:
 

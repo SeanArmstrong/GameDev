@@ -297,6 +297,9 @@
     <ClCompile Include="Level.cpp">
       <Filter>Source Files\Game\Levels</Filter>
     </ClCompile>
+    <ClCompile Include="ControlHUD.cpp">
+      <Filter>Source Files\Game\HUDs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cube.asciimesh" />
@@ -520,6 +523,9 @@
     </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Header Files\Game\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlHUD.h">
+      <Filter>Header Files\Game\HUDs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

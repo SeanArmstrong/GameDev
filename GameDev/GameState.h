@@ -97,6 +97,7 @@ public:
 	 */
 
 	//void resetScene();
+	virtual std::string getControlText() const;
 
 	void LevelLost(CoreEngine& engine, std::string message);
 	void LevelWon(CoreEngine& engine, std::string message);

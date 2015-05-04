@@ -90,3 +90,7 @@ bool MultiPlayerLevel::allPlayersDead(){
 	}
 	return true;
 }
+
+std::string MultiPlayerLevel::getControlText() const {
+	return "Player1 WASD\nPlayer2 Arrow Keys";
+}

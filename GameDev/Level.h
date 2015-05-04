@@ -60,6 +60,7 @@ public:
 	}
 	
 	std::string getEndOfLevelMessage();
+	virtual std::string getControlText() const = 0;
 
 protected:
 

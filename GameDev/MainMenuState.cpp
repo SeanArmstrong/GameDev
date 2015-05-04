@@ -115,3 +115,7 @@ void MainMenuState::HandleEvents(CoreEngine& engine, sf::Event event){
 		}
 	}
 }
+
+std::string MainMenuState::getControlText() const{
+	return "Move Up - Arrow Up\nMove Down - Arrow Down\nSelect - Enter";
+}

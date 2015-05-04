@@ -130,6 +130,8 @@ public:
 	void ChangeState(CoreEngine* engine, State* state);
 	bool isPaused(){ return paused; }
 
+	virtual std::string getControlText() const = 0;
+
 	virtual ~State(){}
 
 protected: 

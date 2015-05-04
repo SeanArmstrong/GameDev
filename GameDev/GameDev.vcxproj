@@ -86,6 +86,7 @@
     <ClCompile Include="CoinPhysicsObject.cpp" />
     <ClCompile Include="CollisionResponse.cpp" />
     <ClCompile Include="ConcaveGameObject.cpp" />
+    <ClCompile Include="ControlHUD.cpp" />
     <ClCompile Include="EndGameState.cpp" />
     <ClCompile Include="MovingPlatformGameObject.cpp" />
     <ClCompile Include="MovingPlatformPhysicsObject.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="CollisionResponse.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="ConcaveGameObject.h" />
+    <ClInclude Include="ControlHUD.h" />
     <ClInclude Include="EndGameState.h" />
     <ClInclude Include="MovingPlatformGameObject.h" />
     <ClInclude Include="MovingPlatformPhysicsObject.h" />
