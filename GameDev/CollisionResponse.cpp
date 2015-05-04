@@ -69,3 +69,22 @@ void CollisionResponse::handleCollision(PlayerGameObject& player, PoolBallGameOb
 void CollisionResponse::handleCollision(PoolBallGameObject& ball, PlayerGameObject& player){
 	handleCollision(player, ball);
 }
+void CollisionResponse::handleCollision(PlayerGameObject& player, CheckpointGameObject& checkpoint){
+	if (!checkpoint.isActivated()){
+		btTransform trans;
+		checkpoint.getPhysicsObject()->getBody()->getMotionState()->getWorldTransform(trans);
+		player.updateStartingPosition(trans.getOrigin());
+		ResourceManager::Instance().AudioPlaySound("Checkpoint.wav");
+		checkpoint.setActivated(true);
+	}
+}
+void CollisionResponse::handleCollision(CheckpointGameObject& checkpoint, PlayerGameObject& player){
+	handleCollision(player, checkpoint);
+}
+
+void CollisionResponse::handleCollision(PlayerGameObject& player, EndGameGameObject& endGame){
+	// stuff
+}
+void CollisionResponse::handleCollision(EndGameGameObject& endGame, PlayerGameObject& player){
+	handleCollision(player, endGame);
+}

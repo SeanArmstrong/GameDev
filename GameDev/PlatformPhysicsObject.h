@@ -2,17 +2,13 @@
 #include "PhysicsObject.h"
 class PlatformPhysicsObject : public PhysicsObject {
 public:
-	// TODO Change widht height depth to vector3 
-	PlatformPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass,
-							const float width, const float height, const float depth);
+	PlatformPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const Vector3& lengthHeightDepth, bool canCollide = true);
 	virtual ~PlatformPhysicsObject();
 
 	virtual void updateRenderObject();
 
 protected:
 
-	float width;
-	float height;
-	float depth;
+	Vector3 lengthHeightDepth;
 };
 

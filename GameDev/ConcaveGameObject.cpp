@@ -13,20 +13,3 @@ ConcaveGameObject::ConcaveGameObject(Shader*s, std::string meshName, Vector3& po
 ConcaveGameObject::~ConcaveGameObject()
 {
 }
-
-void ConcaveGameObject::handleCollision(GameObject& obj){
-	std::cout << "concave - param obj" << std::endl;
-}
-void ConcaveGameObject::handleCollision(PlayerGameObject& player){
-	std::cout << "concave - param player" << std::endl;
-}
-void ConcaveGameObject::handleCollision(PlaneGameObject& plane){
-	std::cout << "concave - param plane" << std::endl;
-}
-void ConcaveGameObject::handleCollision(CoinGameObject& coin){
-	std::cout << "concave - param coin" << std::endl;
-}
-
-void ConcaveGameObject::handleCollision(PoolBallGameObject& poolball){
-	std::cout << "concave - param poolball" << std::endl;
-}

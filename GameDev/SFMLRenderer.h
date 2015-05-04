@@ -3,6 +3,7 @@
 #include "Matrix3.h"
 #include <algorithm>
 #include "Skybox.h"
+#include "GameTimer.h"
 
 
 struct Light {
@@ -29,7 +30,6 @@ public:
 	~SFMLRenderer(void);
 
 	virtual void RenderScene();
-
 
 	virtual void Render(const RenderObject &o);
 

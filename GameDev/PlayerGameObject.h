@@ -213,6 +213,8 @@ public:
 	GameObject* spawnCube();
 
 	virtual void handleCollision(PoolBallGameObject& poolball);
+	virtual void handleCollision(CheckpointGameObject& checkpoint);
+	virtual void handleCollision(EndGameGameObject& endGame);
 
 	void setDirectionVectors(const Vector3& forward,
 		const Vector3& backward,
@@ -224,6 +226,9 @@ public:
 	void setPlayerLives(const int lives);
 	void looseALife();
 	int getPlayerLives() const;
+	void updateStartingPosition(const Vector3& newPosition);
+	void setEndGoalReached(const bool option);
+	inline bool hasReachedEndGoal() { return endGoalReached; }
 
 private:
 	int controlSet;
@@ -234,6 +239,7 @@ private:
 
 	/* Progress Variable */
 	int score = 0;
+	bool endGoalReached = false;
 
 	/* Movement variables */
 	Vector3 forward;

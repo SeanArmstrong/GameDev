@@ -5,6 +5,7 @@
 #include "PlayerGameObject.h"
 #include "CoinGameObject.h"
 #include "PoolBallGameObject.h"
+#include "CheckpointGameObject.h"
 
 /**
  * @class	CollisionResponse
@@ -82,6 +83,10 @@ public:
 	static void handleCollision(PoolBallGameObject& ball, PlaneGameObject& plane);
 	static void handleCollision(PlayerGameObject& player, PoolBallGameObject& ball);
 	static void handleCollision(PoolBallGameObject& ball, PlayerGameObject& player);
+	static void handleCollision(CheckpointGameObject& checkpoint, PlayerGameObject& player);
+	static void handleCollision(PlayerGameObject& player, CheckpointGameObject& checkpoint);
+	static void handleCollision(EndGameGameObject& endGame, PlayerGameObject& player);
+	static void handleCollision(PlayerGameObject& player, EndGameGameObject& endGame);
 
 
 private:

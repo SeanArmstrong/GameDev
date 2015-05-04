@@ -73,6 +73,11 @@ void SinglePlayerLevel::GeneralGameLogic(){
 		endOfGameMessage = "Score Limit Reached (Y)";
 		levelState = WON;
 	}
+	if (player->hasReachedEndGoal()){
+		ResourceManager::Instance().AudioPlaySound("Clapping.wav");
+		endOfGameMessage = "You've Reached the goal";
+		levelState = WON;
+	}
 }
 
 std::string SinglePlayerLevel::getControlText() const{

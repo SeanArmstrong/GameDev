@@ -76,7 +76,7 @@ public:
 	 * @param [in,out]	plane	The plane.
 	 */
 
-	virtual void handleCollision(PlaneGameObject& plane);
+	virtual void handleCollision(PlaneGameObject& plane){}
 
 	/**
 	 * @fn	virtual void PlaneGameObject::handleCollision(CoinGameObject& coin);
@@ -89,9 +89,11 @@ public:
 	 * @param [in,out]	coin	The coin.
 	 */
 
-	virtual void handleCollision(CoinGameObject& coin);
+	virtual void handleCollision(CoinGameObject& coin){}
 
 	virtual void handleCollision(PoolBallGameObject& poolball);
+	virtual void handleCollision(CheckpointGameObject& checkpoint){}
+	virtual void handleCollision(EndGameGameObject& endGame){}
 
 	inline PlayerContactAction getPlayerAction(){ return playerAction; }
 

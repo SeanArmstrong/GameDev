@@ -114,3 +114,7 @@ void Level::Resume(){
 		levelState = QUITTING;
 	}
 }
+
+PauseHUD Level::getPauseHUD() const{
+	return pauseMenu;
+}

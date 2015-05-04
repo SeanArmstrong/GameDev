@@ -17,6 +17,7 @@
 #include "HazeGameObject.h"
 #include "MultiPlayerGameHUD.h"
 #include "PauseHUD.h"
+#include "PerimeterEnemyGameObject.h"
 
 class Level {
 public:
@@ -61,6 +62,8 @@ public:
 	
 	std::string getEndOfLevelMessage();
 	virtual std::string getControlText() const = 0;
+
+	PauseHUD Level::getPauseHUD() const;
 
 protected:
 

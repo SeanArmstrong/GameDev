@@ -55,9 +55,11 @@ void Level2::LoadResources(){
 	ResourceManager::Instance().AddTexture("coin.jpg");
 	ResourceManager::Instance().AddTexture("pool2.png");
 	ResourceManager::Instance().AddTexture("smiley.png");
+	ResourceManager::Instance().AddTexture("checkpoint.png");
 	ResourceManager::Instance().AddSound("CoinCollection.wav");
 	ResourceManager::Instance().AddSound("LostGame.wav");
 	ResourceManager::Instance().AddSound("Clapping.wav");
+	ResourceManager::Instance().AddSound("Checkpoint.wav");
 	ResourceManager::Instance().AddMeshFile("funkyshape", 1, "funkyshape.obj");
 	ResourceManager::Instance().AddMeshFile("pooltable", 1, "pooltable.obj");
 	ResourceManager::Instance().AddMeshFile("platform1", 1, "platform1.obj");
@@ -74,130 +76,154 @@ void Level2::LoadMap(){
 	addEventObject(plane);
 	
 	GameObject* platform;
+	GameObject* checkpoint;
 
 	// Start Bottom
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, 0), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("terrain.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, 0), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("terrain.jpg"));
 	addWorldObject(platform);
 	// Start Right
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(10, 10, 0), 0, 0.2f, 10, 10, ResourceManager::Instance().AddTexture("brick.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(10, 10, 0), 0, Vector3(0.2f, 10, 10), ResourceManager::Instance().AddTexture("brick.jpg"));
 	addWorldObject(platform);
 	// Start Left
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(-10, 10, 0), 0, 0.2f, 10, 10, ResourceManager::Instance().AddTexture("brick.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(-10, 10, 0), 0, Vector3(0.2f, 10, 10), ResourceManager::Instance().AddTexture("brick.jpg"));
 	addWorldObject(platform);
 	// Start Top
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, 0), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("brick.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, 0), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("brick.jpg"));
 	addWorldObject(platform);
 
 	// Plats to hide moving
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(7, 10, -10), 0, 3, 10, 0.2f, ResourceManager::Instance().AddTexture("brick.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(7, 10, -10), 0, Vector3(3, 10, 0.2f), ResourceManager::Instance().AddTexture("brick.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(-7, 10, -10), 0, 3, 10, 0.2f, ResourceManager::Instance().AddTexture("brick.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(-7, 10, -10), 0, Vector3(3, 10, 0.2f), ResourceManager::Instance().AddTexture("brick.jpg"));
 	addWorldObject(platform);
 
 	// Level 0
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, -20), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("terrain.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, -20), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("terrain.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, -40), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("terrain.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, -40), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("terrain.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, -60), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("terrain.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, -60), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("terrain.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, -80), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("terrain.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("terrain.jpg"));
 	addWorldObject(platform);
 
 	// Level 1
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -20), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -20), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -40), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -40), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -60), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -60), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -80), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
+	// Level 1 Checkpoint
+	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 26, -83), 0, Vector3(10, 5, 0.1f));
+	checkpoint->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+	eventObjects.push_back(checkpoint);
 
 	// Level 2
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -20), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, 0), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -40), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -20), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -60), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -40), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -80), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -60), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
+	addWorldObject(platform);
+	// Level 2 Checkpoint
+	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 41, 3), 0, Vector3(10, 10, 0.1f));
+	checkpoint->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+	eventObjects.push_back(checkpoint);
 
 	// Level3
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -20), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, 0), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -40), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -20), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -60), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -40), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -80), 0, 10, 0.2f, 10, ResourceManager::Instance().AddTexture("ground.jpg"));
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -60), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
+	addWorldObject(platform);
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
 
 	// Level 0 - Moving Platform
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 9, -20), 0, 0.2f, 9, 10, Vector3(1, 0, 0), 20, 12.25f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 9, -20), 0, Vector3(0.2f, 9, 10), Vector3(1, 0, 0), 20, 12.25f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 9, -50), 0, 0.2f, 9, 10, Vector3(-1, 0, 0), 20, 12.25f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 9, -50), 0, Vector3(0.2f, 9, 10), Vector3(-1, 0, 0), 20, 12.25f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
 
 	// Level 1 - slides
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 21, -30), 0, 10, 1.0f, 0.2f, Vector3(0, 0, 1), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 21, -30), 0, Vector3(10, 1.0f, 0.2f), Vector3(0, 0, 1), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 21, -50), 0, 10, 1.0f, 0.2f, Vector3(0, 0, 1), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 21, -50), 0, Vector3(10, 1.0f, 0.2f), Vector3(0, 0, 1), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 21, -70), 0, 10, 1.0f, 0.2f, Vector3(0, 0, 1), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 21, -70), 0, Vector3(10, 1.0f, 0.2f), Vector3(0, 0, 1), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 21, -90), 0, 10, 1.0f, 0.2f, Vector3(0, 0, 1), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 21, -90), 0, Vector3(10, 1.0f, 0.2f), Vector3(0, 0, 1), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
 
 	// Lift 1 
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -100), 0, 10, 0.2f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -100), 0, Vector3(10, 0.2f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 2, -100), 0, 0.2f, 2.0f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 2, -100), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 2, -100), 0, 0.2f, 2.0f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 2, -100), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 2, -110), 0, 10, 2.0f, 0.2f, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 2, -110), 0, Vector3(10, 2.0f, 0.2f), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
 
 	// Lift 2
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 20, 20), 0, 10, 0.2f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 20, 20), 0, Vector3(10, 0.2f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 22, 20), 0, 0.2f, 2.0f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 22, 20), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 22, 20), 0, 0.2f, 2.0f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 22, 20), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 22, 30), 0, 10, 2.0f, 0.2f, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 22, 30), 0, Vector3(10.0f, 2.0f, 0.2f), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
 
 	// Lift 3
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 40, -100), 0, 10, 0.2f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 40, -100), 0, Vector3(10, 0.2f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 42, -100), 0, 0.2f, 2.0f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 42, -100), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 42, -100), 0, 0.2f, 2.0f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 42, -100), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 42, -110), 0, 10, 2.0f, 0.2f, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 42, -110), 0, Vector3(10, 2.0f, 0.2f), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
 
 	// Lift 4
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 60, 20), 0, 10, 0.2f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 60, 20), 0, Vector3(10, 0.2f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 62, 20), 0, 0.2f, 2.0f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 62, 20), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 62, 20), 0, 0.2f, 2.0f, 10, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 62, 20), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 62, 30), 0, 10, 2.0f, 0.2f, Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 62, 30), 0, Vector3(10, 2.0f, 0.2f), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
 
 }
 
 void Level2::LoadObjects(){
-
+	GameObject* PerimeterEnemy = new PerimeterEnemyGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(-8, 41, -5), Vector3(1, 0, 0), 1, 16, 10, 20, ResourceManager::Instance().AddTexture("fire.png"));
+	addWorldObject(PerimeterEnemy);
+	PerimeterEnemy = new PerimeterEnemyGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(8, 41, -18), Vector3(-1, 0, 0), 1, 16, 10, 20, ResourceManager::Instance().AddTexture("fire.png"));
+	addWorldObject(PerimeterEnemy);
+	PerimeterEnemy = new PerimeterEnemyGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(-8, 41, -31), Vector3(1, 0, 0), 1, 16, 10, 20, ResourceManager::Instance().AddTexture("fire.png"));
+	addWorldObject(PerimeterEnemy);
+	PerimeterEnemy = new PerimeterEnemyGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(8, 41, -49), Vector3(-1, 0, 0), 1, 16, 10, 20, ResourceManager::Instance().AddTexture("fire.png"));
+	addWorldObject(PerimeterEnemy);
+	PerimeterEnemy = new PerimeterEnemyGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(-8, 42, -64), Vector3(1, 0, 0), 2, 16, 15, 20, ResourceManager::Instance().AddTexture("fire.png"));
+	addWorldObject(PerimeterEnemy);
+	PerimeterEnemy = new PerimeterEnemyGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(8, 42, -76), Vector3(-1, 0, 0), 2, 16, 15, 20, ResourceManager::Instance().AddTexture("fire.png"));
+	addWorldObject(PerimeterEnemy);
 }
 
 void Level2::LoadPlayer(){
-	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 3);
+	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 45, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 3);
 	addEventObject(player);
 	players.push_back(player);
 }

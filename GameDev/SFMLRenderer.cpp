@@ -70,6 +70,7 @@ void SFMLRenderer::UpdateShaderMatrices(GLuint program)	{
 	glUniformMatrix4fv(glGetUniformLocation(program, "viewMatrix"), 1, false, (float*)&viewMatrix);
 	glUniformMatrix4fv(glGetUniformLocation(program, "projMatrix"), 1, false, (float*)&projMatrix);
 	glUniformMatrix4fv(glGetUniformLocation(program, "textureMatrix"), 1, false, (float*)&textureMatrix);
+	glUniform1f(glGetUniformLocation(program, "time"), GameTimer::getTime() * 0.0001f);
 }
 
 void SFMLRenderer::ApplyShaderLight(GLuint program){

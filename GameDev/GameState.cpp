@@ -59,8 +59,8 @@ void GameState::Render(){
 
 void GameState::HandleEvents(CoreEngine& engine, sf::Event event){
 	if (event.type == sf::Event::KeyReleased){
-		if (event.key.code == sf::Keyboard::Return){
-			if (level->isGamePaused()){
+		if (level->isGamePaused()){
+			if (event.key.code == sf::Keyboard::Return){
 				std::cout << "Resume" << std::endl;
 				level->Resume();
 			}

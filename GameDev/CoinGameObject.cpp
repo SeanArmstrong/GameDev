@@ -19,10 +19,6 @@ void CoinGameObject::removeFromGame(){
 	delete ro;
 }
 
-void CoinGameObject::update(){
-	po->updateRenderObject();
-}
-
 void CoinGameObject::handleCollision(GameObject& obj){
 	std::cout << "coin - param gameobject" << std::endl;
 	obj.handleCollision(*this);
@@ -30,14 +26,4 @@ void CoinGameObject::handleCollision(GameObject& obj){
 void CoinGameObject::handleCollision(PlayerGameObject& player){
 	CollisionResponse::handleCollision(player, *this);
 }
-void CoinGameObject::handleCollision(PlaneGameObject& plane){
-	std::cout << "coin - param plane" << std::endl;
-}
 
-void CoinGameObject::handleCollision(CoinGameObject& coin){
-	std::cout << "coin - param coin" << std::endl;
-}
-
-void CoinGameObject::handleCollision(PoolBallGameObject& poolball){
-	std::cout << "coin - param poolball" << std::endl;
-}

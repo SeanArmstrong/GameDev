@@ -5,9 +5,8 @@
 class MovingPlatformPhysicsObject : public PlatformPhysicsObject
 {
 public:
-	MovingPlatformPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass,
-		const float width, const float height, const float depth, const Vector3& direction, 
-		const float distance, const float speed);
+	MovingPlatformPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const Vector3& lengthHeightDepth, 
+		const Vector3& direction, const float distance, const float speed);
 	~MovingPlatformPhysicsObject();
 
 	virtual void updateRenderObject();

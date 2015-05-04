@@ -100,6 +100,12 @@
     <Filter Include="Source Files\Game\Levels\Multi Player">
       <UniqueIdentifier>{ada89849-5839-437f-851d-9a41d91dd1cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Objects\Interaction">
+      <UniqueIdentifier>{f3548cf4-8dc4-4fe0-b096-c8535a58e0e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Objects\Interaction">
+      <UniqueIdentifier>{0b753e5e-2276-4c7e-96cf-f3d089ee3258}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Quaternion.cpp">
@@ -188,9 +194,6 @@
     </ClCompile>
     <ClCompile Include="CoinPhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="CoinGameObject.cpp">
-      <Filter>Source Files\Game\Objects</Filter>
     </ClCompile>
     <ClCompile Include="CameraNew.cpp">
       <Filter>Source Files\Core</Filter>
@@ -299,6 +302,24 @@
     </ClCompile>
     <ClCompile Include="ControlHUD.cpp">
       <Filter>Source Files\Game\HUDs</Filter>
+    </ClCompile>
+    <ClCompile Include="PerimeterEnemyGameObject.cpp">
+      <Filter>Source Files\Game\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PerimeterEnemyPhysicsObject.cpp">
+      <Filter>Source Files\Physics\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckpointGameObject.cpp">
+      <Filter>Source Files\Game\Objects\Interaction</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinGameObject.cpp">
+      <Filter>Source Files\Game\Objects\Interaction</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGameGameObject.cpp">
+      <Filter>Source Files\Game\Objects\Interaction</Filter>
+    </ClCompile>
+    <ClCompile Include="OneUpGameObject.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,9 +437,6 @@
     <ClInclude Include="InputManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="CoinGameObject.h">
-      <Filter>Header Files\Game\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="CoinPhysicsObject.h">
       <Filter>Header Files\Physics\Objects</Filter>
     </ClInclude>
@@ -526,6 +544,24 @@
     </ClInclude>
     <ClInclude Include="ControlHUD.h">
       <Filter>Header Files\Game\HUDs</Filter>
+    </ClInclude>
+    <ClInclude Include="PerimeterEnemyGameObject.h">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PerimeterEnemyPhysicsObject.h">
+      <Filter>Header Files\Physics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckpointGameObject.h">
+      <Filter>Header Files\Game\Objects\Interaction</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinGameObject.h">
+      <Filter>Header Files\Game\Objects\Interaction</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameGameObject.h">
+      <Filter>Header Files\Game\Objects\Interaction</Filter>
+    </ClInclude>
+    <ClInclude Include="OneUpGameObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

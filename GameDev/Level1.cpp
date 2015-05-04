@@ -51,11 +51,13 @@ void Level1::LoadResources(){
 	ResourceManager::Instance().AddTexture("brick.jpg");
 	ResourceManager::Instance().AddTexture("terrain.jpg");
 	ResourceManager::Instance().AddTexture("ground.jpg");
+	ResourceManager::Instance().AddTexture("fire.png");
 	ResourceManager::Instance().AddTexture("checkboard.jpg");
 	ResourceManager::Instance().AddTexture("coin.jpg");
 	ResourceManager::Instance().AddSound("CoinCollection.wav");
 	ResourceManager::Instance().AddSound("LostGame.wav");
 	ResourceManager::Instance().AddSound("Clapping.wav");
+	ResourceManager::Instance().AddSound("Checkpoint.wav");
 	ResourceManager::Instance().AddSkybox("rustskybox", "rusted_west.jpg", "rusted_east.jpg", "rusted_up.jpg", "rusted_down.jpg", "rusted_south.jpg", "rusted_north.jpg");
 }
 
@@ -81,6 +83,9 @@ void Level1::LoadMap(){
 	GameObject* cube5 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -295), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg"));
 	addWorldObject(cube5);
 
+	//GameObject* checkpoint = new CheckpointGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 55, 0), 0, Vector3(3, 3, 0.02f), ResourceManager::Instance().AddTexture("checkpoint.png"), true);
+	//addEventObject(checkpoint);
+
 }
 
 void Level1::LoadObjects(){
@@ -95,7 +100,7 @@ void Level1::LoadObjects(){
 }
 
 void Level1::LoadPlayer(){
-	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 50, 20), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"));
+	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 50, 20), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 3);
 	addEventObject(player);
 	players.push_back(player);
 }

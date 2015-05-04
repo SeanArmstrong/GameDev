@@ -13,23 +13,3 @@ CubeGameObject::~CubeGameObject()
 {
 }
 
-void CubeGameObject::handleCollision(GameObject& obj){
-	std::cout << "Cube - param gameobject " << std::endl;
-	obj.handleCollision(*this);
-}
-void CubeGameObject::handleCollision(PlayerGameObject& player){
-	std::cout << "Cube - param player " << std::endl;
-}
-void CubeGameObject::handleCollision(PlaneGameObject& plane){
-	std::cout << "Cube - param plane " << std::endl;
-}
-
-void CubeGameObject::handleCollision(CoinGameObject& coin){
-	std::cout << "cube - param coin" << std::endl;
-}
-
-void CubeGameObject::handleCollision(PoolBallGameObject& poolball){
-	std::cout << "cube - param poolball" << std::endl;
-}
-
-

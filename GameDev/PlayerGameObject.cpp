@@ -102,6 +102,14 @@ void PlayerGameObject::handleCollision(CoinGameObject& coin){
 void PlayerGameObject::handleCollision(PoolBallGameObject& poolball){
 	CollisionResponse::handleCollision(*this, poolball);
 }
+void PlayerGameObject::handleCollision(CheckpointGameObject& checkpoint){
+	CollisionResponse::handleCollision(*this, checkpoint);
+}
+
+void PlayerGameObject::handleCollision(EndGameGameObject& endGame){
+	CollisionResponse::handleCollision(*this, endGame);
+}
+
 
 GameObject* PlayerGameObject::spawnCube(){
 	if (timeSinceShot > SHOOT_DELAY){
@@ -137,4 +145,12 @@ void PlayerGameObject::looseALife(){
 
 int PlayerGameObject::getPlayerLives() const{
 	return lives/2;
+}
+
+void PlayerGameObject::updateStartingPosition(const Vector3& newPosition){
+	this->startingPosition = newPosition;
+}
+
+void PlayerGameObject::setEndGoalReached(const bool option){
+	this->endGoalReached = option;
 }

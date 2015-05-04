@@ -47,18 +47,6 @@ public:
 	void removeFromGame();
 
 	/**
-	 * @fn	virtual void CoinGameObject::update();
-	 *
-	 * @brief	Updates this coin. which updates the renderobject
-	 * 			relative to the physical object transform
-	 *
-	 * @author	Sean Armstrong
-	 * @date	05/03/2015
-	 */
-
-	virtual void update();
-
-	/**
 	 * @fn	virtual void CoinGameObject::handleCollision(GameObject& obj);
 	 *
 	 * @brief	Handles the collision described by obj.
@@ -83,33 +71,11 @@ public:
 	 */
 
 	virtual void handleCollision(PlayerGameObject& player);
-
-	/**
-	 * @fn	virtual void CoinGameObject::handleCollision(PlaneGameObject& plane);
-	 *
-	 * @brief	Handles the collision between coin and plane
-	 *
-	 * @author	Sean Armstrong
-	 * @date	05/03/2015
-	 *
-	 * @param [in,out]	plane	The plane.
-	 */
-
-	virtual void handleCollision(PlaneGameObject& plane);
-
-	/**
-	 * @fn	virtual void CoinGameObject::handleCollision(CoinGameObject& coin);
-	 *
-	 * @brief	Handles the collision between 2 coins
-	 *
-	 * @author	Sean Armstrong
-	 * @date	05/03/2015
-	 *
-	 * @param [in,out]	coin	The coin.
-	 */
-
-	virtual void handleCollision(CoinGameObject& coin);
-	virtual void handleCollision(PoolBallGameObject& poolball);
+	virtual void handleCollision(PlaneGameObject& plane){}
+	virtual void handleCollision(CoinGameObject& coin){}
+	virtual void handleCollision(PoolBallGameObject& poolball){}
+	virtual void handleCollision(CheckpointGameObject& checkpoint){}
+	virtual void handleCollision(EndGameGameObject& endGame){}
 
 };
 

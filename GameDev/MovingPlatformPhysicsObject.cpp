@@ -2,8 +2,8 @@
 
 
 MovingPlatformPhysicsObject::MovingPlatformPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass,
-	const float width, const float height, const float depth, const Vector3& direction, const float distance, const float speed) 
-		: PlatformPhysicsObject(renderObject, pos, mass, width, height, depth){
+	const Vector3& lengthHeightDepth, const Vector3& direction, const float distance, const float speed)
+	: PlatformPhysicsObject(renderObject, pos, mass, lengthHeightDepth){
 
 	this->direction = direction;
 	this->distance = distance;
@@ -35,5 +35,5 @@ void MovingPlatformPhysicsObject::updateRenderObject(){
 	}
 
 	ro->SetModelMatrix(trans);
-	ro->SetModelMatrix(ro->GetModelMatrix() * Matrix4::Scale(Vector3(width, height, depth)));
+	ro->SetModelMatrix(ro->GetModelMatrix() * Matrix4::Scale(lengthHeightDepth));
 }

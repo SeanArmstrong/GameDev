@@ -12,6 +12,8 @@ class PlayerGameObject;
 class PlaneGameObject;
 class CoinGameObject;
 class PoolBallGameObject;
+class CheckpointGameObject;
+class EndGameGameObject;
 
 /**
  * @class	GameObject
@@ -206,6 +208,8 @@ public:
 
 	virtual void handleCollision(CoinGameObject& coin) = 0;
 	virtual void handleCollision(PoolBallGameObject& poolball) = 0;
+	virtual void handleCollision(CheckpointGameObject& checkpoint) = 0;
+	virtual void handleCollision(EndGameGameObject& endGame) = 0;
 
 protected:
 	RenderObject* ro;

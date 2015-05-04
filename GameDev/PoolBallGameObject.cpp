@@ -28,10 +28,6 @@ void PoolBallGameObject::handleCollision(PlaneGameObject& plane){
 	CollisionResponse::handleCollision(*this, plane);
 }
 
-void PoolBallGameObject::handleCollision(CoinGameObject& coin){
-	std::cout << "PoolBall - param coin" << std::endl;
-}
-
 void PoolBallGameObject::handleCollision(PoolBallGameObject& poolball){
 	CollisionResponse::handleCollision(*this, poolball);
 }

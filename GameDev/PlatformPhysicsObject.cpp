@@ -1,12 +1,10 @@
 #include "PlatformPhysicsObject.h"
 
 
-PlatformPhysicsObject::PlatformPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const float width, const float height, const float depth) : 
+PlatformPhysicsObject::PlatformPhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const Vector3& lengthHeightDepth, bool canCollide) :
 				PhysicsObject(renderObject, pos, mass) {
-	this->width = width;
-	this->height = height;
-	this->depth = depth;
-	shape = new btBoxShape(btVector3(width, height, depth));
+	this->lengthHeightDepth = lengthHeightDepth;
+	shape = new btBoxShape(btVector3(lengthHeightDepth.x, lengthHeightDepth.y, lengthHeightDepth.z));
 
 	btTransform startTransform;
 	startTransform.setIdentity();
@@ -17,8 +15,13 @@ PlatformPhysicsObject::PlatformPhysicsObject(RenderObject* renderObject, const V
 	shape->calculateLocalInertia(mass, fallInertia);
 	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, shape, fallInertia);
 	body = new btRigidBody(fallRigidBodyCI);
-	body->setRestitution(0.5f);
-	body->setFriction(1.0f);
+	if (canCollide){
+		body->setRestitution(0.5f);
+		body->setFriction(1.0f);
+	}
+	else{
+		body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+	}
 }
 
 
@@ -31,5 +34,5 @@ void PlatformPhysicsObject::updateRenderObject(){
 	body->getMotionState()->getWorldTransform(trans);
 
 	ro->SetModelMatrix(trans);
-	ro->SetModelMatrix(ro->GetModelMatrix() * Matrix4::Scale(Vector3(width, height, depth)));
+	ro->SetModelMatrix(ro->GetModelMatrix() * Matrix4::Scale(lengthHeightDepth));
 }

@@ -44,7 +44,7 @@ public:
 	 * @param [in,out]	obj	The object.
 	 */
 
-	virtual void handleCollision(GameObject& obj);
+	virtual void handleCollision(GameObject& obj){}
 
 	/**
 	 * @fn	virtual void SphereGameObject::handleCollision(PlayerGameObject& player);
@@ -57,7 +57,7 @@ public:
 	 * @param [in,out]	player	The player.
 	 */
 
-	virtual void handleCollision(PlayerGameObject& player);
+	virtual void handleCollision(PlayerGameObject& player){}
 
 	/**
 	 * @fn	virtual void SphereGameObject::handleCollision(PlaneGameObject& plane);
@@ -70,7 +70,7 @@ public:
 	 * @param [in,out]	plane	The plane.
 	 */
 
-	virtual void handleCollision(PlaneGameObject& plane);
+	virtual void handleCollision(PlaneGameObject& plane){}
 
 	/**
 	 * @fn	virtual void SphereGameObject::handleCollision(CoinGameObject& coin);
@@ -83,7 +83,9 @@ public:
 	 * @param [in,out]	coin	The coin.
 	 */
 
-	virtual void handleCollision(CoinGameObject& coin);
-	virtual void handleCollision(PoolBallGameObject& poolball);
+	virtual void handleCollision(CoinGameObject& coin){}
+	virtual void handleCollision(PoolBallGameObject& poolball){}
+	virtual void handleCollision(CheckpointGameObject& checkpoint){}
+	virtual void handleCollision(EndGameGameObject& endGame){}
 };
 

@@ -13,21 +13,3 @@ ConvexGameObject::ConvexGameObject(Shader*s, std::string meshName, Vector3& posi
 ConvexGameObject::~ConvexGameObject()
 {
 }
-
-void ConvexGameObject::handleCollision(GameObject& obj){
-	std::cout << "convex - param obj" << std::endl;
-}
-void ConvexGameObject::handleCollision(PlayerGameObject& player){
-	std::cout << "convex - param player" << std::endl;
-}
-void ConvexGameObject::handleCollision(PlaneGameObject& plane){
-	std::cout << "convex - param plane" << std::endl;
-}
-void ConvexGameObject::handleCollision(CoinGameObject& coin){
-	std::cout << "convex - param coin" << std::endl;
-}
-
-void ConvexGameObject::handleCollision(PoolBallGameObject& poolball){
-	std::cout << "convex - param poolball" << std::endl;
-}
-

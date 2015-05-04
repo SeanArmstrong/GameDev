@@ -45,18 +45,15 @@ void PauseHUD::Update(){
 }
 
 void PauseHUD::MoveUp(){
-	menu[selectedItemIndex].setColor(sf::Color::White);
-	selectedItemIndex--;
-	if (selectedItemIndex < 0){
-		selectedItemIndex = PAUSED_MENU_ITEMS - 1;
-	}
-	menu[selectedItemIndex].setColor(sf::Color::Red);
+	menu[1].setColor(sf::Color::White);
+	selectedItemIndex = 0;
+	menu[0].setColor(sf::Color::Red);
 }
 
 void PauseHUD::MoveDown(){
-	menu[selectedItemIndex].setColor(sf::Color::White);
-	selectedItemIndex = (selectedItemIndex + 1) % PAUSED_MENU_ITEMS;
-	menu[selectedItemIndex].setColor(sf::Color::Red);
+	menu[0].setColor(sf::Color::White);
+	selectedItemIndex = 1;
+	menu[1].setColor(sf::Color::Red);
 }
 
 void PauseHUD::Draw(sf::RenderWindow* window){
