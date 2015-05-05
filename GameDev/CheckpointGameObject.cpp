@@ -1,7 +1,7 @@
 #include "CheckpointGameObject.h"
 
 
-CheckpointGameObject::CheckpointGameObject(Shader*s, const Vector3& position, const float mass, const Vector3& lengthHeightDepth, GLuint t, const bool hasRenderObject)
+CheckpointGameObject::CheckpointGameObject(Shader*s, const Vector3& position, const float mass, const Vector3& lengthHeightDepth, const int numberOfLives, GLuint t, const bool hasRenderObject)
 {
 	this->activated = false;
 	if (hasRenderObject){
@@ -13,6 +13,7 @@ CheckpointGameObject::CheckpointGameObject(Shader*s, const Vector3& position, co
 		this->po = new PlatformPhysicsObject(NULL, position, mass, lengthHeightDepth, false);
 	}
 	this->po->getBody()->setUserPointer((void*)this);
+	this->numberOfLives = numberOfLives;
 }
 
 
@@ -33,4 +34,8 @@ void CheckpointGameObject::handleCollision(GameObject& obj){
 }
 void CheckpointGameObject::handleCollision(PlayerGameObject& player){
 	CollisionResponse::handleCollision(*this, player);
+}
+
+int CheckpointGameObject::getNumberOfLives(){
+	return numberOfLives;
 }

@@ -6,7 +6,7 @@
 class CheckpointGameObject : public GameObject
 {
 public:
-	CheckpointGameObject(Shader*s, const Vector3& position, const float mass, const Vector3& lengthHeightDepth, GLuint t = 0, const bool hasRenderObject = false);
+	CheckpointGameObject(Shader*s, const Vector3& position, const float mass, const Vector3& lengthHeightDepth, const int numberOfLives = 0, GLuint t = 0, const bool hasRenderObject = false);
 	virtual ~CheckpointGameObject();
 
 	virtual void handleCollision(GameObject& obj);
@@ -19,9 +19,11 @@ public:
 
 	bool isActivated();
 	void setActivated(bool option);
+	int getNumberOfLives();
 
 private:
 
 	bool activated;
+	int numberOfLives;
 };
 

@@ -22,6 +22,7 @@ void Level2::Initialise(){
 
 	timer = 300.0f;
 	cam = new PlayerFollowCamera();
+	setObjectiveHUDText();
 }
 
 void Level2::GameLogic(){
@@ -117,7 +118,7 @@ void Level2::LoadMap(){
 	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
 	// Level 1 Checkpoint
-	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 26, -83), 0, Vector3(10, 5, 0.1f));
+	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 26, -83), 0, Vector3(10, 5, 0.1f), 1);
 	checkpoint->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(checkpoint);
 
@@ -133,21 +134,29 @@ void Level2::LoadMap(){
 	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
 	// Level 2 Checkpoint
-	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 41, 3), 0, Vector3(10, 10, 0.1f));
+	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 41, 3), 0, Vector3(10, 10, 0.1f), 1);
 	checkpoint->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(checkpoint);
 
 	// Level3
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, 0), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
-	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -20), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
-	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -40), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
-	addWorldObject(platform);
-	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -60), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
-	addWorldObject(platform);
 	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
 	addWorldObject(platform);
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -60), 0, Vector3(10, 0.2f, 10), Vector3(0, 0, 1), 20, 5.0f, ResourceManager::Instance().AddTexture("ground.jpg"));
+	addWorldObject(platform);
+
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(-25, 60, -20), 0, Vector3(5, 0.2f, 10), Vector3(1, 0, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("ground.jpg"));
+	addWorldObject(platform);
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(25, 60, -20), 0, Vector3(5, 0.2f, 10), Vector3(-1, 0, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("ground.jpg"));
+	addWorldObject(platform);
+
+	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, 20), 0, Vector3(10, 0.2f, 10), Vector3(0, 0, -1), 20, 5.0f, ResourceManager::Instance().AddTexture("ground.jpg"));
+	addWorldObject(platform);
+
+	platform = new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, 40), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("ground.jpg"));
+	addWorldObject(platform);
+	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 66, -83), 0, Vector3(10, 5, 0.1f), 1);
+	checkpoint->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+	eventObjects.push_back(checkpoint);
 
 	// Level 0 - Moving Platform
 	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 9, -20), 0, Vector3(0.2f, 9, 10), Vector3(1, 0, 0), 20, 12.25f, ResourceManager::Instance().AddTexture("smiley.png"));
@@ -195,16 +204,9 @@ void Level2::LoadMap(){
 	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 42, -110), 0, Vector3(10, 2.0f, 0.2f), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
 	addWorldObject(platform);
 
-	// Lift 4
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 60, 20), 0, Vector3(10, 0.2f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
-	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(10, 62, 20), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
-	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 62, 20), 0, Vector3(0.2f, 2.0f, 10), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
-	addWorldObject(platform);
-	platform = new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 62, 30), 0, Vector3(10, 2.0f, 0.2f), Vector3(0, 1, 0), 20, 5.0f, ResourceManager::Instance().AddTexture("smiley.png"));
-	addWorldObject(platform);
-
+	GameObject* endGoal = new EndGameGameObject(NULL, Vector3(0, 66, 40), 0, Vector3(10, 5, 0.1f));
+	endGoal->addPhysicsObjectToWorld(*world.getPhysicsWorld());
+	eventObjects.push_back(endGoal);
 }
 
 void Level2::LoadObjects(){
@@ -223,7 +225,11 @@ void Level2::LoadObjects(){
 }
 
 void Level2::LoadPlayer(){
-	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 45, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 3);
+	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 10, 0), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 3);
 	addEventObject(player);
 	players.push_back(player);
+}
+
+void Level2::setObjectiveHUDText(){
+	objectiveHUD.SetControlText("Level 2: Get to the Top Floor!");
 }

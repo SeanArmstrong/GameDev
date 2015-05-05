@@ -1,12 +1,12 @@
 #include "ControlHUD.h"
 
 
-ControlHUD::ControlHUD(const int width, const int height){
+ControlHUD::ControlHUD(const int width, const int height, const int xPos, const int yPos){
 	font.loadFromFile("assets/fonts/arial.ttf");
 
 	controlText.setFont(font);
 	controlText.setCharacterSize(15);
-	controlText.setPosition(sf::Vector2f(5.0f, 35.0f));
+	controlText.setPosition(sf::Vector2f(xPos, yPos));
 	controlText.setColor(sf::Color::White);
 	controlText.setStyle(sf::Text::Regular);
 }

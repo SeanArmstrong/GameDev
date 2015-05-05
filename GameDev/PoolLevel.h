@@ -21,6 +21,8 @@ protected:
 	virtual void LoadObjects();
 	virtual void LoadPlayer();
 
+	virtual void setObjectiveHUDText();
+
 private:
 
 	Camera* cameras[2];

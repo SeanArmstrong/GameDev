@@ -19,5 +19,6 @@ public:
 	virtual void LoadMap();
 	virtual void LoadObjects();
 	virtual void LoadPlayer();
+	virtual void setObjectiveHUDText();
 };
 

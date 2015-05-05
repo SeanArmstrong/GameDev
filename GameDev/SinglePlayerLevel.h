@@ -1,5 +1,7 @@
 #pragma once
 #include "Level.h"
+#include "EndGameGameObject.h"
+
 class SinglePlayerLevel : public Level
 {
 public:
@@ -21,6 +23,7 @@ public:
 
 protected:
 
+	virtual void setObjectiveHUDText() = 0;
 	GameHUD hud;
 
 private:

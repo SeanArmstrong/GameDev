@@ -75,6 +75,7 @@ void CollisionResponse::handleCollision(PlayerGameObject& player, CheckpointGame
 		checkpoint.getPhysicsObject()->getBody()->getMotionState()->getWorldTransform(trans);
 		player.updateStartingPosition(trans.getOrigin());
 		ResourceManager::Instance().AudioPlaySound("Checkpoint.wav");
+		player.setPlayerLives(player.getPlayerLives() + checkpoint.getNumberOfLives());
 		checkpoint.setActivated(true);
 	}
 }
@@ -83,7 +84,7 @@ void CollisionResponse::handleCollision(CheckpointGameObject& checkpoint, Player
 }
 
 void CollisionResponse::handleCollision(PlayerGameObject& player, EndGameGameObject& endGame){
-	// stuff
+	player.setEndGoalReached(true);
 }
 void CollisionResponse::handleCollision(EndGameGameObject& endGame, PlayerGameObject& player){
 	handleCollision(player, endGame);

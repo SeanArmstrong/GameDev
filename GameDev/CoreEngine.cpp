@@ -6,7 +6,7 @@
 #include "IntroState.h"
 
 CoreEngine::CoreEngine(const int width, const int height, const float framerate) :
-			screenHeight(height), screenWidth(width), framerate(framerate), controlInfo(width, height) {
+			screenHeight(height), screenWidth(width), framerate(framerate), controlInfo(width, height, 5.0f, 35.0f) {
 }
 
 CoreEngine::~CoreEngine(){

@@ -62,6 +62,7 @@ public:
 	
 	std::string getEndOfLevelMessage();
 	virtual std::string getControlText() const = 0;
+	virtual void setObjectiveHUDText() = 0;
 
 	PauseHUD Level::getPauseHUD() const;
 
@@ -109,6 +110,7 @@ protected:
 	std::string endOfGameMessage;
 
 	PauseHUD pauseMenu;
+	ControlHUD objectiveHUD;
 	void setupGravity();
 
 private:

@@ -18,8 +18,9 @@ StaticConcavePhysicsObject::StaticConcavePhysicsObject(RenderObject* renderObjec
 
 
 	shape = new btBvhTriangleMeshShape(tMesh, false);
-
+	
 	btTransform startTransform;
+
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
 

@@ -319,6 +319,12 @@
       <Filter>Source Files\Game\Objects\Interaction</Filter>
     </ClCompile>
     <ClCompile Include="OneUpGameObject.cpp">
+      <Filter>Source Files\Game\Objects\Interaction</Filter>
+    </ClCompile>
+    <ClCompile Include="Level3.cpp">
+      <Filter>Source Files\Game\Levels\Single Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Level4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -561,6 +567,12 @@
       <Filter>Header Files\Game\Objects\Interaction</Filter>
     </ClInclude>
     <ClInclude Include="OneUpGameObject.h">
+      <Filter>Header Files\Game\Objects\Interaction</Filter>
+    </ClInclude>
+    <ClInclude Include="Level3.h">
+      <Filter>Header Files\Game\Levels\Single Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Level4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -26,6 +26,7 @@ void PoolLevel::Initialise(){
 	cameras[0] = new PlayerFollowCamera(-90);
 	cameras[1] = new AerialCamera();
 	cam = cameras[cameraTracker];
+	setObjectiveHUDText();
 }
 
 void PoolLevel::GameLogic(){
@@ -151,4 +152,8 @@ void PoolLevel::LoadPlayer(){
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-33.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 3, 100.0f);
 	addEventObject(player);
 	players.push_back(player);
+}
+
+void PoolLevel::setObjectiveHUDText(){
+	objectiveHUD.SetControlText("Pool Level: Pot 15 Ball within the Time to WIN!");
 }

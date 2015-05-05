@@ -1,6 +1,6 @@
 #include "GameState.h"
 
-GameState::GameState(sf::RenderWindow* w, const int l) : State(w){
+GameState::GameState(sf::RenderWindow* w, const int l) : State(w) {
 	switch (l){
 	case 1:
 		level = new Level1(w, &renderer);
@@ -9,9 +9,12 @@ GameState::GameState(sf::RenderWindow* w, const int l) : State(w){
 		level = new Level2(w, &renderer);
 		break;
 	case 3: 
-		level = new PoolLevel(w, &renderer);
+		level = new Level3(w, &renderer);
 		break;
 	case 4:
+		level = new PoolLevel(w, &renderer);
+		break;
+	case 5:
 		level = new MultiplayerPoolLevel(w, &renderer);
 		break;
 	default:

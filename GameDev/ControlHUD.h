@@ -5,7 +5,7 @@
 class ControlHUD
 {
 public:
-	ControlHUD(const int width, const int height);
+	ControlHUD(const int width, const int height, const int xPos, const int yPos);
 	~ControlHUD();
 
 	void SetControlText(const std::string text);

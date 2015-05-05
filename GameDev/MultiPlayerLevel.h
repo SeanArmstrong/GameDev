@@ -17,11 +17,13 @@ public:
 	virtual void LoadMap() = 0;
 	virtual void LoadObjects() = 0;
 	virtual void LoadPlayer() = 0;
+
 	virtual std::string getControlText() const;
 
 protected:
 
 	bool allPlayersDead();
+	virtual void setObjectiveHUDText() = 0;
 
 	MultiPlayerGameHUD hud;
 

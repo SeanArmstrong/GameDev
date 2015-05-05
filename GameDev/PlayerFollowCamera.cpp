@@ -11,6 +11,10 @@ PlayerFollowCamera::~PlayerFollowCamera(){
 }
 
 Matrix4 PlayerFollowCamera::setCam(const PhysicsObject* player){
+	if (gravityChanging){
+		setRotatingUpVector();
+	}
+
 	btVector3 bodyPosition = player->getBody()->getWorldTransform().getOrigin();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
@@ -29,9 +33,7 @@ Matrix4 PlayerFollowCamera::setCam(const PhysicsObject* player){
 	cameraPosition = cameraPosition * rot;
 	cameraPosition = cameraPosition * offset;
 
-	Vector3 lookingAt(bodyPosition.getX(),
-		bodyPosition.getY(),
-		bodyPosition.getZ());
+	Vector3 lookingAt(bodyPosition.getX(), bodyPosition.getY(),	bodyPosition.getZ());
 
 	// Left
 	playerLeftVector = (cameraPosition.GetPositionVector() - lookingAt).unitVector();

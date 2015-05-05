@@ -23,6 +23,7 @@ void MultiplayerPoolLevel::Initialise(){
 	world.getPhysicsWorld()->setGravity(btVector3(0, -30.0f, 0));
 
 	cam = new AerialCamera(false, Vector3(35, 250, -20), Vector3(35, 0, -20));
+	setObjectiveHUDText();
 }
 void MultiplayerPoolLevel::GameLogic(){
 	player2->setDirectionVectors(cam->getPlayerForwardVector(),
@@ -160,4 +161,8 @@ void MultiplayerPoolLevel::LoadPlayer(){
 	addEventObject(player2);
 	players.push_back(player);
 	players.push_back(player2);
+}
+
+void MultiplayerPoolLevel::setObjectiveHUDText(){
+	objectiveHUD.SetControlText("Multiplayer Pool Level: Pot the most balls wot WIN!");
 }

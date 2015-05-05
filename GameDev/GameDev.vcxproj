@@ -90,6 +90,8 @@
     <ClCompile Include="ControlHUD.cpp" />
     <ClCompile Include="EndGameGameObject.cpp" />
     <ClCompile Include="EndGameState.cpp" />
+    <ClCompile Include="Level3.cpp" />
+    <ClCompile Include="Level4.cpp" />
     <ClCompile Include="OneUpGameObject.cpp" />
     <ClCompile Include="MovingPlatformGameObject.cpp" />
     <ClCompile Include="MovingPlatformPhysicsObject.cpp" />
@@ -169,6 +171,8 @@
     <ClInclude Include="ControlHUD.h" />
     <ClInclude Include="EndGameGameObject.h" />
     <ClInclude Include="EndGameState.h" />
+    <ClInclude Include="Level3.h" />
+    <ClInclude Include="Level4.h" />
     <ClInclude Include="OneUpGameObject.h" />
     <ClInclude Include="MovingPlatformGameObject.h" />
     <ClInclude Include="MovingPlatformPhysicsObject.h" />

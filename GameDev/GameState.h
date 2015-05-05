@@ -21,6 +21,7 @@
 #include "EndGameState.h"
 #include "Level1.h"
 #include "Level2.h"
+#include "Level3.h"
 #include "PoolLevel.h"
 #include "MultiplayerPoolLevel.h"
 

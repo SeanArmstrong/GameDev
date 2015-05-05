@@ -21,6 +21,7 @@ void Level1::Initialise(){
 
 	timer = 30.0f;
 	cam = new PlayerFollowCamera();
+	setObjectiveHUDText();
 }
 
 void Level1::GameLogic(){
@@ -103,4 +104,8 @@ void Level1::LoadPlayer(){
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 50, 20), 2, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 3);
 	addEventObject(player);
 	players.push_back(player);
+}
+
+void Level1::setObjectiveHUDText(){
+	objectiveHUD.SetControlText("Level 1: Collect ALL the coins");
 }

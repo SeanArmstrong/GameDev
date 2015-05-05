@@ -1,6 +1,7 @@
 #include "Level.h"
 
-Level::Level(sf::RenderWindow* w, SFMLRenderer* r) : pauseMenu(w->getSize().x, w->getSize().y){
+Level::Level(sf::RenderWindow* w, SFMLRenderer* r) 
+: pauseMenu(w->getSize().x, w->getSize().y), objectiveHUD(w->getSize().x, w->getSize().y, (w->getSize().x / 2) - 40.0f, 1.0f){
 	this->window = w;
 	this->renderer = r;
 	setupGravity();
@@ -31,7 +32,7 @@ void Level::rotateGravityRight(){
 	if (timeSinceGravityChanged > GRAVITY_RESET_TIME){
 		timeSinceGravityChanged = 0;
 		gravityTracker = (gravityTracker + 1) % 4;
-		cam->setUpVector(upVectorDirections[gravityTracker]);
+		cam->rotateUpVector(upVectorDirections[gravityTracker]);
 		world.getPhysicsWorld()->setGravity(gravityDirections[gravityTracker]);
 	}
 }
@@ -43,7 +44,7 @@ void Level::rotateGravityLeft(){
 		if (gravityTracker < 0){
 			gravityTracker = 3;
 		}
-		cam->setUpVector(upVectorDirections[gravityTracker]);
+		cam->rotateUpVector(upVectorDirections[gravityTracker]);
 		world.getPhysicsWorld()->setGravity(gravityDirections[gravityTracker]);
 	}
 }
@@ -51,6 +52,7 @@ void Level::rotateGravityLeft(){
 void Level::Render(){
 	RenderLevel();
 	//world.getPhysicsWorld()->debugDrawWorld();
+	objectiveHUD.Draw(window);
 	if (levelState == PAUSED){
 		pauseMenu.Draw(window);
 	}
