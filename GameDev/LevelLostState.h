@@ -14,7 +14,6 @@
  * @author	Sean Armstrong
  * @date	08/03/2015
  */
-
 class LevelLostState : public State
 {
 public:

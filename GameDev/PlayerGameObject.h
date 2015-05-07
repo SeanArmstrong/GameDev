@@ -16,7 +16,6 @@
  * @author	Sean Armstrong
  * @date	05/03/2015
  */
-
 class PlayerGameObject : public GameObject
 {
 public:
@@ -29,13 +28,14 @@ public:
 	 * @author	Sean Armstrong
 	 * @date	05/03/2015
 	 *
-	 * @param [in,out]	s	If non-null, object shader used when creating the render object
-	 * @param	position 	The position in space given to the physical object
-	 * @param	mass	 	The mass of the coin
-	 * @param	radius   	The length of a side
-	 * @param	t		 	The Texture given to the render object
+	 * @param [in,out]	s		If non-null, object shader used when creating the render object
+	 * @param	position 		The position in space given to the physical object
+	 * @param	mass	 		The mass of the coin
+	 * @param	radius   		The length of a side
+	 * @param	t		 		The Texture given to the render object
+	 * @param	lives			The number of lives a player starts with
+	 * @param	movementSpeed	How fast the player will travel
 	 */
-
 	PlayerGameObject(Shader*s, const Vector3& position, const float mass, const float radius, GLuint t, const unsigned int lives = 1, const float movementSpeed = 20.0f);
 	~PlayerGameObject();
 
@@ -50,7 +50,6 @@ public:
 	 *
 	 * @return	The position.
 	 */
-
 	Vector3 getPosition() const;
 
 	/**
@@ -63,7 +62,6 @@ public:
 	 *
 	 * @return	true if alive, false if not.
 	 */
-
 	bool isAlive() const;
 
 	/**
@@ -76,7 +74,6 @@ public:
 	 *
 	 * @return	The score.
 	 */
-
 	int getScore() const;
 
 	/**
@@ -90,7 +87,6 @@ public:
 	 *
 	 * @param	view	The view.
 	 */
-
 	void setPosition(Vector3 view);
 
 	/**
@@ -104,7 +100,6 @@ public:
 	 *
 	 * @param	status	true to status.
 	 */
-
 	void setAlive(bool status);
 
 	/**
@@ -117,7 +112,6 @@ public:
 	 *
 	 * @param	newScore	The new score.
 	 */
-
 	void setScore(int newScore);
 
 	/**
@@ -128,7 +122,6 @@ public:
 	 * @author	Sean Armstrong
 	 * @date	05/03/2015
 	 */
-
 	void incrementScore();
 
 	/**
@@ -142,7 +135,6 @@ public:
 	 * @author	Sean Armstrong
 	 * @date	05/03/2015
 	 */
-
 	virtual void update();
 
 	/**
@@ -155,7 +147,6 @@ public:
 	 *
 	 * @param [in,out]	obj	The object.
 	 */
-
 	virtual void handleCollision(GameObject& obj);
 
 	/**
@@ -168,7 +159,6 @@ public:
 	 *
 	 * @param [in,out]	player	The player.
 	 */
-
 	virtual void handleCollision(PlayerGameObject& player);
 
 	/**
@@ -181,7 +171,6 @@ public:
 	 *
 	 * @param [in,out]	plane	The plane.
 	 */
-
 	virtual void handleCollision(PlaneGameObject& plane);
 
 	/**
@@ -194,8 +183,44 @@ public:
 	 *
 	 * @param [in,out]	coin	The coin.
 	 */
-
 	virtual void handleCollision(CoinGameObject& coin);
+
+
+	/**
+	* @fn	virtual void handleCollision(PoolBallGameObject& poolball);
+	*
+	* @brief	Handles the collision between a player and a poolball.
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*
+	* @param [in,out]	poolball	The poolball.
+	*/
+	virtual void handleCollision(PoolBallGameObject& poolball);
+
+	/**
+	* @fn	virtual void handleCollision(CheckpointGameObject& checkpoint);
+	*
+	* @brief	Handles the collision between a player and a checkpoint.
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*
+	* @param [in,out]	checkpoint	The checkpoint.
+	*/
+	virtual void handleCollision(CheckpointGameObject& checkpoint);
+
+	/**
+	* @fn	virtual void handleCollision(EndGameGameObject& endGame);
+	*
+	* @brief	Handles the collision between a player and a endGame.
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*
+	* @param [in,out]	endGame	The endGame.
+	*/
+	virtual void handleCollision(EndGameGameObject& endGame);
 
 	/**
 	 * @fn	GameObject* PlayerGameObject::spawnCube();
@@ -209,28 +234,119 @@ public:
 	 *
 	 * @return	null if it fails, else a GameObject*.
 	 */
-
 	GameObject* spawnCube();
 
-	virtual void handleCollision(PoolBallGameObject& poolball);
-	virtual void handleCollision(CheckpointGameObject& checkpoint);
-	virtual void handleCollision(EndGameGameObject& endGame);
-
+	/**
+	* @fn	void setDirectionVectors(const Vector3& forward, onst Vector3& backward, const Vector3& left, const Vector3& right);
+	*
+	* @brief	Set Direction Vectors for a player so they move
+	*			relative to the camera
+	* 			
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*
+	* @param forward	The New forward Vector
+	* @param backward	The New backward Vector
+	* @param left		The New left Vector
+	* @param right		The New right Vector
+	*/
 	void setDirectionVectors(const Vector3& forward,
 		const Vector3& backward,
 		const Vector3& left,
 		const Vector3& right);
 
+	/**
+	* @fn	void resetPlayerPosition();
+	*
+	* @brief	Set Direction Vectors for a player so they move
+	*			relative to the camera
+	*
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*/
 	void resetPlayerPosition();
 
+	/**
+	* @fn	void setPlayerLives(const int lives);
+	*
+	* @brief	Sets the players lives
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*
+	* @param lives	The number of lives to give the player
+	*/
 	void setPlayerLives(const int lives);
+
+	/**
+	* @fn	void looseALife();
+	*
+	* @brief	Removes 1 life from the player
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*/
 	void looseALife();
+
+	/**
+	* @fn	int getPlayerLives() const;
+	*
+	* @brief	Gets the number of lives a player has
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*
+	* @return	The number of lives to the player has
+	*/
 	int getPlayerLives() const;
+
+
+	/**
+	* @fn	void updateStartingPosition(const Vector3& newPosition);
+	*
+	* @brief	Sets the start position to the param
+	*			Example use of going through a checkpoint
+	*			Reset plane will set to start position
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*
+	* @param	position	The new position
+	*/
 	void updateStartingPosition(const Vector3& newPosition);
+
+	/**
+	* @fn	void setEndGoalReached(const bool option);
+	*
+	* @brief	Sets if the end goal has been reached by the player
+	*			sets to option params
+	*			
+	*			
+	*
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*
+	* @param	option	Bool to set value to
+	*/
 	void setEndGoalReached(const bool option);
+
+	/**
+	* @fn	inline bool hasReachedEndGoal() 
+	*
+	* @brief	Returns true if the end goal has been reached
+	*			
+	*	
+	* @author	Sean Armstrong
+	* @date	07/05/2015
+	*
+	* @return	if end goal has been reached (BOOL)
+	*/
 	inline bool hasReachedEndGoal() { return endGoalReached; }
 
 private:
+	// Keyboard controls to move player
 	int controlSet;
 
 	/* Life Variables */

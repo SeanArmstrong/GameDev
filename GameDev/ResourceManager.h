@@ -98,6 +98,26 @@ public:
 		AudioManager::Instance().AudioPlaySound(filename);
 	}
 
+	void AudioPlayMusic(const std::string filename){
+		AudioManager::Instance().AudioPlayMusic(filename);
+	}
+
+	void AudioPauseMusic(const std::string filename){
+		AudioManager::Instance().AudioPauseMusic(filename);
+	}
+
+	void AudioPlayAndLoopMusic(const std::string filename){
+		AudioManager::Instance().AudioPlayAndLoopMusic(filename);
+	}
+
+	void AudioStopMusic(const std::string filename){
+		AudioManager::Instance().AudioStopMusic(filename);
+	}
+
+	bool AudioIsMusicPlaying(const std::string filename){
+		AudioManager::Instance().AudioIsMusicPlaying(filename);
+	}
+
 protected:
 
 	/**

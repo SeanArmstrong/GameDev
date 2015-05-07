@@ -22,6 +22,7 @@ void Level1::Initialise(){
 	timer = 30.0f;
 	cam = new PlayerFollowCamera();
 	setObjectiveHUDText();
+	ResourceManager::Instance().AudioPlayAndLoopMusic("retro2.wav");
 }
 
 void Level1::GameLogic(){
@@ -59,6 +60,7 @@ void Level1::LoadResources(){
 	ResourceManager::Instance().AddSound("LostGame.wav");
 	ResourceManager::Instance().AddSound("Clapping.wav");
 	ResourceManager::Instance().AddSound("Checkpoint.wav");
+	ResourceManager::Instance().AddMusic("retro2.wav");
 	ResourceManager::Instance().AddSkybox("rustskybox", "rusted_west.jpg", "rusted_east.jpg", "rusted_up.jpg", "rusted_down.jpg", "rusted_south.jpg", "rusted_north.jpg");
 }
 
@@ -69,23 +71,11 @@ void Level1::LoadMap(){
 	invisibleGround->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 	eventObjects.push_back(invisibleGround);
 
-	GameObject* cube1 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, 0), 0, 50, ResourceManager::Instance().AddTexture("terrain.jpg"));
-	addWorldObject(cube1);
-
-	GameObject* cube2 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -120), 0, 50, ResourceManager::Instance().AddTexture("terrain.jpg"));
-	addWorldObject(cube2);
-
-	GameObject* cube3 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(165, 0, -65), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg"));
-	addWorldObject(cube3);
-
-	GameObject* cube4 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-165, 0, -65), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg"));
-	addWorldObject(cube4);
-
-	GameObject* cube5 = new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -295), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg"));
-	addWorldObject(cube5);
-
-	//GameObject* checkpoint = new CheckpointGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 55, 0), 0, Vector3(3, 3, 0.02f), ResourceManager::Instance().AddTexture("checkpoint.png"), true);
-	//addEventObject(checkpoint);
+	addWorldObject(new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, 0), 0, 50, ResourceManager::Instance().AddTexture("terrain.jpg")));
+	addWorldObject(new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -120), 0, 50, ResourceManager::Instance().AddTexture("terrain.jpg")));
+	addWorldObject(new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(165, 0, -65), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg")));
+	addWorldObject(new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-165, 0, -65), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg")));
+	addWorldObject(new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -295), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg")));
 
 }
 
@@ -108,4 +98,14 @@ void Level1::LoadPlayer(){
 
 void Level1::setObjectiveHUDText(){
 	objectiveHUD.SetControlText("Level 1: Collect ALL the coins");
+}
+
+void* Level1::operator new(size_t i)
+{
+	return _mm_malloc(i, 16);
+}
+
+void Level1::operator delete(void* p)
+{
+	_mm_free(p);
 }

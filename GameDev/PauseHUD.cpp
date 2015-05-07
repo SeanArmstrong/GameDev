@@ -32,16 +32,6 @@ void PauseHUD::Update(){
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
 		MoveDown();
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)){
-		switch (selectedItemIndex){
-		case 0:
-			// Hmm 
-			break;
-		case 1:
-			// Hmm
-			break;
-		}
-	}
 }
 
 void PauseHUD::MoveUp(){

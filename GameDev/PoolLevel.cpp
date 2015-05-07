@@ -157,3 +157,13 @@ void PoolLevel::LoadPlayer(){
 void PoolLevel::setObjectiveHUDText(){
 	objectiveHUD.SetControlText("Pool Level: Pot 15 Ball within the Time to WIN!");
 }
+
+void* PoolLevel::operator new(size_t i)
+{
+	return _mm_malloc(i, 16);
+}
+
+void PoolLevel::operator delete(void* p)
+{
+	_mm_free(p);
+}

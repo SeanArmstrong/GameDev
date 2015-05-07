@@ -14,7 +14,6 @@
 #include "PlatformGameObject.h"
 #include "World.h"
 #include "MainMenuState.h"
-#include "CameraNew.h"
 #include "GameHUD.h"
 #include "LevelWonState.h"
 #include "LevelLostState.h"
@@ -109,19 +108,6 @@ protected:
 
 
 private:
-
-
-	/**
-	 * @fn	void GameState::removeDeletedObjects();
-	 *
-	 * @brief	Removes the deleted game objects from
-	 * 			the physics world and renderer
-	 *
-	 * @author	Sean Armstrong
-	 * @date	08/03/2015
-	 */
-
-	void removeDeletedObjects();
 
 	Level* level;
 

@@ -81,7 +81,6 @@
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BulletDebugDraw.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CameraNew.cpp" />
     <ClCompile Include="CheckpointGameObject.cpp" />
     <ClCompile Include="CoinGameObject.cpp" />
     <ClCompile Include="CoinPhysicsObject.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BulletDebugDraw.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CameraNew.h" />
     <ClInclude Include="CheckpointGameObject.h" />
     <ClInclude Include="CoinGameObject.h" />
     <ClInclude Include="CoinPhysicsObject.h" />

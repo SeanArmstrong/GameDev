@@ -47,7 +47,6 @@ sf::Sound* AudioManager::AddSound(const std::string filename){
 			delete sound;
 			delete s;
 			return NULL;
-			//Bad things
 		}
 		buffs.push_back(s);
 		sound->setBuffer(*s);
@@ -67,20 +66,21 @@ sf::Music* AudioManager::GetMusic(const std::string filename){
 	return NULL;
 }
 
-/*
-* Error here
-
-*/
 sf::Music* AudioManager::AddMusic(const std::string filename){
 	sf::Music* m = GetMusic(filename);
 
 	if (m == NULL){
 		const std::string PATH = "assets/Sounds/";
-		if (!m->openFromFile(filename))
+
+		m = new sf::Music();
+
+		if (!m->openFromFile(PATH + filename))
 		{
-			//Bad things
+			delete m;
+			std::cout << "Failed to load Music File" << std::endl;
 		}
-		//music->insert(std::pair<std::string, sf::Music*>(filename, music));
+
+		music.insert(make_pair(filename, m));
 
 	}
 	return m;
@@ -91,4 +91,41 @@ void AudioManager::AudioPlaySound(const std::string filename){
 	if (s){
 		s->play();
 	}
+}
+void AudioManager::AudioPlayMusic(const std::string filename){
+	sf::Music* m = GetMusic(filename);
+	if (m){
+		m->play();
+	}
+}
+
+void AudioManager::AudioPauseMusic(const std::string filename){
+	sf::Music* m = GetMusic(filename);
+	if (m){
+		m->pause();
+	}
+}
+void AudioManager::AudioPlayAndLoopMusic(const std::string filename){
+	sf::Music* m = GetMusic(filename);
+	if (m){
+		m->play();
+		m->setLoop(true);
+		std::cout << "Looping Music " << filename << std::endl;
+	}
+}
+
+void AudioManager::AudioStopMusic(const std::string filename){
+	sf::Music* m = GetMusic(filename);
+	if (m){
+		m->stop();
+	}
+}
+
+bool AudioManager::AudioIsMusicPlaying(const std::string filename){
+/*	sf::Music* m = GetMusic(filename);
+	if (m){
+		return (m->getStatus == sf::Music::Status::Playing);
+	}
+	*/
+	return false;
 }

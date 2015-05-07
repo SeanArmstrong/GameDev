@@ -68,6 +68,7 @@ void MultiplayerPoolLevel::LoadResources(){
 	ResourceManager::Instance().AddTexture("coin.jpg");
 	ResourceManager::Instance().AddTexture("pool2.png");
 	ResourceManager::Instance().AddTexture("redball.png");
+	ResourceManager::Instance().AddTexture("blueball.png");
 	ResourceManager::Instance().AddTexture("yellowball.png");
 	ResourceManager::Instance().AddTexture("blackball.png");
 	ResourceManager::Instance().AddSound("CoinCollection.wav");
@@ -157,7 +158,7 @@ void MultiplayerPoolLevel::LoadObjects(){
 void MultiplayerPoolLevel::LoadPlayer(){
 	player = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-33.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 1, 100.0f);
 	addEventObject(player);
-	player2 = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-40.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("checkboard.jpg"), 1, 100.0f);
+	player2 = new PlayerGameObject(ResourceManager::Instance().GetShader("Lighting"), Vector3(-40.7f, -7.58f, -20.5f), 10, 1, ResourceManager::Instance().AddTexture("blueball.png"), 1, 100.0f);
 	addEventObject(player2);
 	players.push_back(player);
 	players.push_back(player2);
@@ -165,4 +166,14 @@ void MultiplayerPoolLevel::LoadPlayer(){
 
 void MultiplayerPoolLevel::setObjectiveHUDText(){
 	objectiveHUD.SetControlText("Multiplayer Pool Level: Pot the most balls wot WIN!");
+}
+
+void* MultiplayerPoolLevel::operator new(size_t i)
+{
+	return _mm_malloc(i, 16);
+}
+
+void MultiplayerPoolLevel::operator delete(void* p)
+{
+	_mm_free(p);
 }

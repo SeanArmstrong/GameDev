@@ -30,7 +30,6 @@ class EndGameGameObject;
  * @author	Sean Armstrong
  * @date	05/03/2015
  */
-
 class GameObject
 {
 public:
@@ -47,7 +46,6 @@ public:
 	 *
 	 * @param [in,out]	world	The world.
 	 */
-
 	void addPhysicsObjectToWorld(btDynamicsWorld& world);
 
 	/**
@@ -60,7 +58,6 @@ public:
 	 *
 	 * @param [in,out]	renderer	The renderer.
 	 */
-
 	void addRenderObjectToWorld(SFMLRenderer& renderer);
 
 	/**
@@ -73,7 +70,6 @@ public:
 	 *
 	 * @param [in,out]	world	The world.
 	 */
-
 	void removePhysicsObjectFromWorld(btDynamicsWorld& world);
 
 	/**
@@ -86,7 +82,6 @@ public:
 	 *
 	 * @param [in,out]	renderer	The renderer.
 	 */
-
 	void removeRenderObjectFromWorld(SFMLRenderer& renderer);
 
 	/**
@@ -99,7 +94,6 @@ public:
 	 *
 	 * @return	null if it does not exist, else the render object.
 	 */
-
 	RenderObject* getRenderObject();
 
 	/**
@@ -112,7 +106,6 @@ public:
 	 *
 	 * @return	null if it does not exist, else the physics object.
 	 */
-
 	PhysicsObject* getPhysicsObject();
 
 	/**
@@ -128,7 +121,6 @@ public:
 	 *
 	 * @return	true if it succeeds, false if it fails.
 	 */
-
 	bool getExistsInWorld();
 
 	/**
@@ -142,7 +134,6 @@ public:
 	 *
 	 * @param	status	true to status.
 	 */
-
 	void setExistsInWorld(bool status);
 
 	/**
@@ -153,7 +144,6 @@ public:
 	 * @author	Sean Armstrong
 	 * @date	05/03/2015
 	 */
-
 	virtual void update();
 
 	/**
@@ -166,7 +156,6 @@ public:
 	 *
 	 * @param [in,out]	obj	The object.
 	 */
-
 	virtual void handleCollision(GameObject& obj) = 0;
 
 	/**
@@ -179,7 +168,6 @@ public:
 	 *
 	 * @param [in,out]	player	The player.
 	 */
-
 	virtual void handleCollision(PlayerGameObject& player)= 0;
 
 	/**
@@ -192,7 +180,6 @@ public:
 	 *
 	 * @param [in,out]	plane	The plane.
 	 */
-
 	virtual void handleCollision(PlaneGameObject& plane) = 0;
 
 	/**
@@ -205,10 +192,42 @@ public:
 	 *
 	 * @param [in,out]	coin	The coin.
 	 */
-
 	virtual void handleCollision(CoinGameObject& coin) = 0;
+
+	/**
+	* @fn	virtual void handleCollision(PoolBallGameObject& poolball) = 0;
+	*
+	* @brief	Handles the collision with a poolball.
+	*
+	* @author	Sean Armstrong
+	* @date	05/03/2015
+	*
+	* @param [in,out]	poolball	The poolball.
+	*/
 	virtual void handleCollision(PoolBallGameObject& poolball) = 0;
+
+	/**
+	* @fn	virtual void handleCollision(CheckpointGameObject& checkpoint) = 0;
+	*
+	* @brief	Handles the collision with a checkpoint.
+	*
+	* @author	Sean Armstrong
+	* @date	05/03/2015
+	*
+	* @param [in,out]	checkpoint	The checkpoint.
+	*/
 	virtual void handleCollision(CheckpointGameObject& checkpoint) = 0;
+
+	/**
+	* @fn	virtual void handleCollision(EndGameGameObject& endGame) = 0;
+	*
+	* @brief	Handles the collision with a endGame.
+	*
+	* @author	Sean Armstrong
+	* @date	05/03/2015
+	*
+	* @param [in,out]	endGame	The End Game Game Object.
+	*/
 	virtual void handleCollision(EndGameGameObject& endGame) = 0;
 
 protected:
@@ -216,8 +235,6 @@ protected:
 	PhysicsObject* po;
 
 	bool existsInWorld = true;
-	//GameObject* parent;
-	//std::vector<GameObject> children;
 
 };
 

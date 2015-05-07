@@ -1,6 +1,18 @@
 #pragma once
 #include "GameObject.h"
 
+/**
+* @class	OneUpGameObject
+
+******UNIMPLEMENTED********
+*
+* @brief	TODO - Gives life to player
+*			TODO - Create Parent Collectable Class for coin and one up?
+*			
+*
+* @author	Sean Armstrong
+* @date	07/05/2015
+*/
 class OneUpGameObject : public GameObject
 {
 public:

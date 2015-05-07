@@ -195,9 +195,6 @@
     <ClCompile Include="CoinPhysicsObject.cpp">
       <Filter>Source Files\Physics\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="CameraNew.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="BulletDebugDraw.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
@@ -325,7 +322,7 @@
       <Filter>Source Files\Game\Levels\Single Player</Filter>
     </ClCompile>
     <ClCompile Include="Level4.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Levels\Single Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -445,9 +442,6 @@
     </ClInclude>
     <ClInclude Include="CoinPhysicsObject.h">
       <Filter>Header Files\Physics\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraNew.h">
-      <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="BulletDebugDraw.h">
       <Filter>Header Files\Core</Filter>

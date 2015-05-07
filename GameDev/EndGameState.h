@@ -2,6 +2,14 @@
 #include "State.h"
 #include "MainMenuState.h"
 
+/**
+* @class	EndGameState
+*
+* @brief	Occurs for multiplayer games with a given text result
+*			
+* @author	Sean Armstrong
+* @date	08/03/2015
+*/
 class EndGameState : public State
 {
 public:
