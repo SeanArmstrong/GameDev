@@ -1,20 +1,20 @@
-#include "InputManager.h"
+#include "PlayerInputManager.h"
 
 
-InputManager::InputManager()
+PlayerInputManager::PlayerInputManager()
 {
 }
 
 
-InputManager::~InputManager()
+PlayerInputManager::~PlayerInputManager()
 {
 }
 
-int InputManager::getControlSet(){
+int PlayerInputManager::getControlSet(){
 	return controlSetTracker++;
 }
 
-bool InputManager::MovePlayerForward(const int playerControlSet){
+bool PlayerInputManager::MovePlayerForward(const int playerControlSet){
 	if (playerControlSet == ControlSets::WASD){ // WASD
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
 			return true;
@@ -28,7 +28,7 @@ bool InputManager::MovePlayerForward(const int playerControlSet){
 	return false;
 }
 
-bool InputManager::MovePlayerBackward(const int playerControlSet){
+bool PlayerInputManager::MovePlayerBackward(const int playerControlSet){
 	if (playerControlSet == ControlSets::WASD){
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
 			return true;
@@ -42,7 +42,7 @@ bool InputManager::MovePlayerBackward(const int playerControlSet){
 	return false;
 }
 
-bool InputManager::MovePlayerLeft(const int playerControlSet){
+bool PlayerInputManager::MovePlayerLeft(const int playerControlSet){
 	if (playerControlSet == ControlSets::WASD){ // WASD
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
 			return true;
@@ -56,7 +56,7 @@ bool InputManager::MovePlayerLeft(const int playerControlSet){
 	return false;
 }
 
-bool InputManager::MovePlayerRight(const int playerControlSet){
+bool PlayerInputManager::MovePlayerRight(const int playerControlSet){
 	if (playerControlSet == ControlSets::WASD){ // WASD
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 			return true;
@@ -70,7 +70,7 @@ bool InputManager::MovePlayerRight(const int playerControlSet){
 	return false;
 }
 
-bool InputManager::JumpPlayer(const int playerControlSet){
+bool PlayerInputManager::JumpPlayer(const int playerControlSet){
 	if (playerControlSet == ControlSets::WASD){ // WASD
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
 			return true;

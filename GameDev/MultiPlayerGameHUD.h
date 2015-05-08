@@ -8,6 +8,7 @@
 *
 * @brief	HUD used to display scores and lives for all
 *			players within the game
+*			TODO Generic HUD
 *
 * @author	Sean Armstrong
 * @date	07/05/2015

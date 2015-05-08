@@ -27,12 +27,9 @@
 /**
  * @class	GameState
  *
- * @brief	A game state. Most complex state which actually builds and
- * 			runs the game. 
- * 			Future plans to have the game incased within scenes or levels
- * 			for now all game objects are built here and all game logic takes
- * 			place within the update function
- *
+ * @brief	Game state class updates the game levels
+ * 			
+ * 			
  * @author	Sean Armstrong
  * @date	08/03/2015
  */

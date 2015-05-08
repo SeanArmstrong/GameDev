@@ -54,6 +54,8 @@ void Level1::LoadResources(){
 	ResourceManager::Instance().AddTexture("terrain.jpg");
 	ResourceManager::Instance().AddTexture("ground.jpg");
 	ResourceManager::Instance().AddTexture("fire.png");
+	ResourceManager::Instance().AddTexture("checkpoint.jpg");
+	ResourceManager::Instance().AddTexture("checkpoint.png");
 	ResourceManager::Instance().AddTexture("checkboard.jpg");
 	ResourceManager::Instance().AddTexture("coin.jpg");
 	ResourceManager::Instance().AddSound("CoinCollection.wav");
@@ -76,6 +78,9 @@ void Level1::LoadMap(){
 	addWorldObject(new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(165, 0, -65), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg")));
 	addWorldObject(new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-165, 0, -65), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg")));
 	addWorldObject(new CubeGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(0, 0, -295), 0, 115, ResourceManager::Instance().AddTexture("brick.jpg")));
+
+	GameObject* checkpoint = new CheckpointGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 52, -110), 0, Vector3(10, 5, 0.1f), 1, ResourceManager::Instance().AddTexture("checkpoint.png"), true);
+	addEventObject(checkpoint, true);
 
 }
 

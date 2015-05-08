@@ -9,6 +9,9 @@ SFMLRenderer::~SFMLRenderer(void){
 	for (vector<RenderObject*>::iterator i = renderObjects.begin(); i != renderObjects.end(); ++i) {
 		delete *i;
 	}
+	for (vector<RenderObject*>::iterator i = transparentRenderObjects.begin(); i != transparentRenderObjects.end(); ++i) {
+		delete *i;
+	}
 }
 
 void SFMLRenderer::RenderScene(){
@@ -16,6 +19,9 @@ void SFMLRenderer::RenderScene(){
 		RenderSkybox(*skybox->getRenderObject());
 	}
 	for (vector<RenderObject*>::iterator i = renderObjects.begin(); i != renderObjects.end(); ++i) {
+		Render(*(*i));
+	}
+	for (vector<RenderObject*>::iterator i = transparentRenderObjects.begin(); i != transparentRenderObjects.end(); ++i) {
 		Render(*(*i));
 	}
 }
@@ -55,6 +61,9 @@ void SFMLRenderer::RenderSkybox(const RenderObject& o){
 void SFMLRenderer::UpdateScene(float msec) {
 	for (vector<RenderObject*>::iterator i = renderObjects.begin(); i != renderObjects.end(); ++i) {
 			(*i)->Update(msec);
+	}
+	for (vector<RenderObject*>::iterator i2 = transparentRenderObjects.begin(); i2 != transparentRenderObjects.end(); ++i2) {
+		(*i2)->Update(msec);
 	}
 }
 

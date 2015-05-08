@@ -9,6 +9,8 @@
 *			The x and y position of this control hud can be set 
 *			on initialisation
 *
+*			TODO - Generic HUD
+*
 * @author	Sean Armstrong
 * @date	07/05/2015
 */

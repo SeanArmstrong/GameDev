@@ -4,11 +4,12 @@
 #include <SFML\Window.hpp>
 #include "PlayerGameObject.h"
 
-class InputManager : public Singleton<InputManager>
+// Deals with player input during game levels
+class PlayerInputManager : public Singleton<PlayerInputManager>
 {
 public:
 
-	friend class Singleton<InputManager>;
+	friend class Singleton<PlayerInputManager>;
 
 	enum ControlSets { WASD, ARROWS };
 
@@ -22,8 +23,8 @@ public:
 
 protected:
 
-	InputManager();
-	~InputManager();
+	PlayerInputManager();
+	~PlayerInputManager();
 
 private:
 	int controlSetTracker = 0;

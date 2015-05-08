@@ -60,6 +60,8 @@ public:
 	 */
 	void addRenderObjectToWorld(SFMLRenderer& renderer);
 
+	void addTransparentRenderObjectToWorld(SFMLRenderer& renderer);
+
 	/**
 	 * @fn	void GameObject::removePhysicsObjectFromWorld(btDynamicsWorld& world);
 	 *

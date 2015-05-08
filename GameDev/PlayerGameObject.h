@@ -5,7 +5,7 @@
 #include "PlaneGameObject.h"
 #include "CollisionResponse.h"
 #include "CubeGameObject.h"
-#include "InputManager.h"
+#include "PlayerInputManager.h"
 
 /**
  * @class	PlayerGameObject

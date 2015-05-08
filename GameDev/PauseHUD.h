@@ -9,6 +9,7 @@
 *
 * @brief	HUD that appears when a level is paused
 *			Contains a resume and a exit button
+*			TODO Generic HUD
 *
 * @author	Sean Armstrong
 * @date	07/05/2015

@@ -9,7 +9,6 @@
  * @author	Sean Armstrong
  * @date	05/03/2015
  */
-
 class SpherePhysicsObject : public PhysicsObject
 {
 public:
@@ -27,7 +26,6 @@ public:
 	 * @param	mass					The mass.
 	 * @param	radius					The radius.
 	 */
-
 	SpherePhysicsObject(RenderObject* renderObject, const Vector3& pos, const float mass, const float radius);
 	virtual ~SpherePhysicsObject();
 
@@ -39,7 +37,6 @@ public:
 	 * @author	Sean Armstrong
 	 * @date	05/03/2015
 	 */
-
 	virtual void updateRenderObject();
 
 protected:

@@ -59,6 +59,7 @@ void Level2::LoadResources(){
 	ResourceManager::Instance().AddTexture("smiley.png");
 	ResourceManager::Instance().AddTexture("metaltile.jpg");
 	ResourceManager::Instance().AddTexture("metaltile2.png");
+	ResourceManager::Instance().AddTexture("checkpoint.jpg");
 	ResourceManager::Instance().AddTexture("tile.png");
 	ResourceManager::Instance().AddTexture("checkpoint.png");
 	ResourceManager::Instance().AddSound("CoinCollection.wav");
@@ -66,8 +67,6 @@ void Level2::LoadResources(){
 	ResourceManager::Instance().AddSound("Clapping.wav");
 	ResourceManager::Instance().AddSound("Checkpoint.wav");
 	ResourceManager::Instance().AddMusic("retro3.wav");
-	ResourceManager::Instance().AddMeshFile("funkyshape", 1, "funkyshape.obj");
-	ResourceManager::Instance().AddMeshFile("pooltable", 1, "pooltable.obj");
 	ResourceManager::Instance().AddMeshFile("platform1", 1, "platform1.obj");
 	ResourceManager::Instance().AddMeshFromMethod("quad", 2);
 	ResourceManager::Instance().AddSkybox("rustskybox", "rusted_west.jpg", "rusted_east.jpg", "rusted_up.jpg", "rusted_down.jpg", "rusted_south.jpg", "rusted_north.jpg");
@@ -82,7 +81,6 @@ void Level2::LoadMap(){
 	addEventObject(plane);
 	
 	GameObject* platform;
-	GameObject* checkpoint;
 
 	// Start Bottom
 	addWorldObject(new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 0, 0), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("metaltile.jpg")));
@@ -109,9 +107,7 @@ void Level2::LoadMap(){
 	addWorldObject(new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -60), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("tile.png")));
 	addWorldObject(new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 20, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("tile.png")));
 	// Level 1 Checkpoint
-	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 26, -83), 0, Vector3(10, 5, 0.1f), 1);
-	checkpoint->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(checkpoint);
+	addEventObject(new CheckpointGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 22, -83), 0, Vector3(10, 2, 0.1f), 1, ResourceManager::Instance().AddTexture("checkpoint.png"), true), true);
 
 	// Level 2
 	addWorldObject(new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, 0), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("tile.png")));
@@ -120,9 +116,7 @@ void Level2::LoadMap(){
 	addWorldObject(new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -60), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("tile.png")));
 	addWorldObject(new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 40, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("tile.png")));
 	// Level 2 Checkpoint
-	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 41, 3), 0, Vector3(10, 10, 0.1f), 1);
-	checkpoint->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(checkpoint);
+	addEventObject(new CheckpointGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 42, 3), 0, Vector3(10, 2, 0.1f), 1, ResourceManager::Instance().AddTexture("checkpoint.png"), true), true);
 
 	// Level3
 	addWorldObject(new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, -80), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("tile.png")));
@@ -133,9 +127,9 @@ void Level2::LoadMap(){
 	addWorldObject(new MovingPlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, 20), 0, Vector3(10, 0.2f, 10), Vector3(0, 0, -1), 20, 5.0f, ResourceManager::Instance().AddTexture("tile.png")));
 
 	addWorldObject(new PlatformGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 60, 40), 0, Vector3(10, 0.2f, 10), ResourceManager::Instance().AddTexture("checkboard.jpg")));
-	checkpoint = new CheckpointGameObject(NULL, Vector3(0, 66, -83), 0, Vector3(10, 5, 0.1f), 1);
-	checkpoint->addPhysicsObjectToWorld(*world.getPhysicsWorld());
-	eventObjects.push_back(checkpoint);
+	
+	// Level 3 Checkpoint
+	addEventObject(new CheckpointGameObject(ResourceManager::Instance().GetShader("Basic"), Vector3(0, 62, -83), 0, Vector3(10, 2, 0.1f), 1, ResourceManager::Instance().AddTexture("checkpoint.png"), true), true);
 
 	// Level 0 - Moving Platform
 	addWorldObject(new MovingPlatformGameObject(ResourceManager::Instance().GetShader("BasicRepeating"), Vector3(-10, 9, -20), 0, Vector3(0.2f, 9, 10), Vector3(1, 0, 0), 20, 12.25f, ResourceManager::Instance().AddTexture("metaltile.jpg")));

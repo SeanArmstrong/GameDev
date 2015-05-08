@@ -114,7 +114,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameTimer.cpp" />
-    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="PlayerInputManager.cpp" />
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Level1.cpp" />
@@ -194,7 +194,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameTimer.h" />
-    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="PlayerInputManager.h" />
     <ClInclude Include="IntroState.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Level1.h" />

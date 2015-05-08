@@ -183,7 +183,7 @@ protected:
 	*
 	* @param	g	 	Game Object to add to the world
 	*/
-	void addWorldObject(GameObject* g);
+	void addWorldObject(GameObject* g, const bool transparent = false);
 
 	/**
 	* @fn	void addEventObject(GameObject* g);
@@ -198,7 +198,7 @@ protected:
 	*
 	* @param	g	 	Game Object to add to the world
 	*/
-	void addEventObject(GameObject* g);
+	void addEventObject(GameObject* g, const bool transparent = false);
 
 	/**
 	* @fn	void addToWorlds(GameObject* g);
@@ -210,7 +210,7 @@ protected:
 	*
 	* @param	g	 	Game Object to add to the world
 	*/
-	void addToWorlds(GameObject* g);
+	void addToWorlds(GameObject* g, const bool transparent = false);
 
 	/**
 	* @fn	void rotateGravityRight();

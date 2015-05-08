@@ -11,6 +11,9 @@ void GameObject::addPhysicsObjectToWorld(btDynamicsWorld& world){
 void GameObject::addRenderObjectToWorld(SFMLRenderer& renderer){
 	renderer.AddRenderObject(*ro);
 }
+void GameObject::addTransparentRenderObjectToWorld(SFMLRenderer& renderer){
+	renderer.AddTransparentRenderObject(*ro);
+}
 
 void GameObject::removePhysicsObjectFromWorld(btDynamicsWorld& world){
 	world.removeRigidBody(po->getBody());

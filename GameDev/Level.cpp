@@ -74,17 +74,22 @@ void Level::removeDeletedObjects(){
 	}
 }
 
-void Level::addWorldObject(GameObject* g){
-	addToWorlds(g);
+void Level::addWorldObject(GameObject* g, const bool transparent){
+	addToWorlds(g, transparent);
 	worldObjects.push_back(g);
 }
-void Level::addEventObject(GameObject* g){
-	addToWorlds(g);
+void Level::addEventObject(GameObject* g, const bool transparent){
+	addToWorlds(g, transparent);
 	eventObjects.push_back(g);
 }
 
-void Level::addToWorlds(GameObject* g){
-	g->addRenderObjectToWorld(*renderer);
+void Level::addToWorlds(GameObject* g, const bool transparent){
+	if (transparent){
+		g->addTransparentRenderObjectToWorld(*renderer);
+	}
+	else{
+		g->addRenderObjectToWorld(*renderer);
+	}
 	g->addPhysicsObjectToWorld(*world.getPhysicsWorld());
 }
 

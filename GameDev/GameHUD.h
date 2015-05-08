@@ -19,6 +19,8 @@
  *			that is drawn to the screen infront of everything else (setting depth buffer)
  *			hence the seperate class without inheriting or anything like that
  *
+ *			TODO - Generic HUD
+ *
  * @author	Sean Armstrong
  * @date	05/03/2015
  */

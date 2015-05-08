@@ -76,22 +76,22 @@ void GameState::HandleEvents(CoreEngine& engine, sf::Event event){
 }
 
 void GameState::LevelLost(CoreEngine& engine, std::string message){
-	InputManager::ResetInstance();
+	PlayerInputManager::ResetInstance();
 	engine.ChangeState(new LevelLostState(window, message));
 }
 
 void GameState::LevelWon(CoreEngine& engine, std::string message){
-	InputManager::ResetInstance();
+	PlayerInputManager::ResetInstance();
 	engine.ChangeState(new LevelWonState(window, message));
 }
 
 void GameState::LevelFinished(CoreEngine& engine, std::string message){
-	InputManager::ResetInstance();
+	PlayerInputManager::ResetInstance();
 	engine.ChangeState(new EndGameState(window, message));
 }
 
 void GameState::QuitLevel(CoreEngine& engine){
-	InputManager::ResetInstance();
+	PlayerInputManager::ResetInstance();
 	ResourceManager::ResetInstance();
 	engine.ChangeState(new MainMenuState(window));
 }

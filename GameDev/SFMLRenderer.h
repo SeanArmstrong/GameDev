@@ -41,6 +41,10 @@ public:
 		renderObjects.push_back(&r);
 	}
 
+	void AddTransparentRenderObject(RenderObject& r){
+		transparentRenderObjects.push_back(&r);
+	}
+
 	void RemoveRenderObject(RenderObject &r){
 		for (unsigned int i = 0; i < renderObjects.size(); ++i){
 			if (renderObjects[i] == &r){
@@ -79,6 +83,7 @@ protected:
 
 private:
 	vector<RenderObject*> renderObjects;
+	vector<RenderObject*> transparentRenderObjects;
 	Matrix4 projMatrix;
 	Matrix4 modelMatrix;
 	Matrix4 viewMatrix;
